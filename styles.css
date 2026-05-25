@@ -1845,27 +1845,26 @@ image-slot::part(frame) {
   padding: 18px 0;
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 .zone-cities li {
-  font-size: 12.5px;
-  color: rgba(255,255,255,0.85);
-  position: relative;
-  padding-left: 12px;
-  letter-spacing: 0.01em;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  padding: 6px 12px;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: all 0.25s var(--ease-out);
 }
-.zone-cities li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--or);
-  box-shadow: 0 0 6px rgba(201,168,76,0.6);
+.zone-cities li:hover {
+  background: rgba(201, 168, 76, 0.18);
+  border-color: rgba(201, 168, 76, 0.45);
+  transform: translateY(-1px);
 }
 
 .zone-foot {
@@ -2129,7 +2128,6 @@ image-slot::part(frame) {
   .zone-num .num { font-size: 44px; }
   .zone-pin { width: 32px; height: 32px; top: 22px; right: 20px; }
   .zone-pin svg { width: 15px; height: 15px; }
-  .zone-cities { grid-template-columns: 1fr 1fr; }
   .zones-note {
     flex-direction: column;
     text-align: center;
