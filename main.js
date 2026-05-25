@@ -55,36 +55,6 @@
   );
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-  /* ---------- SIMULATEUR -50% ---------- */
-  const simRange = document.getElementById('simRange');
-  const simBefore = document.getElementById('simBefore');
-  const simAfter = document.getElementById('simAfter');
-  const simSave = document.getElementById('simSave');
-
-  function fmt(n) {
-    return n.toLocaleString('fr-FR') + ' €';
-  }
-
-  function updateSimulator() {
-    if (!simRange) return;
-    const before = parseInt(simRange.value, 10);
-    const after = Math.round(before / 2);
-    const save = before - after;
-    simBefore.textContent = fmt(before);
-    simAfter.textContent = fmt(after);
-    simSave.textContent = fmt(save);
-
-    const min = parseInt(simRange.min, 10);
-    const max = parseInt(simRange.max, 10);
-    const pct = ((before - min) / (max - min)) * 100;
-    simRange.style.setProperty('--p', pct + '%');
-  }
-
-  if (simRange) {
-    simRange.addEventListener('input', updateSimulator);
-    updateSimulator();
-  }
-
   /* ---------- BEFORE / AFTER SLIDERS (clip-path based) ---------- */
   document.querySelectorAll('[data-slider]').forEach((slider) => {
     let isDragging = false;
@@ -404,23 +374,3 @@
   }
 
 })();
-
-/* ============================================
-   LUXEO — Réservation express
-   ============================================ */
-window.luxeoReserve = function (form) {
-  const tel = (document.getElementById('rf-tel')?.value || '').trim();
-  const phoneEl = document.getElementById('successPhone');
-  if (phoneEl && tel) phoneEl.textContent = tel;
-
-  form.classList.add('success');
-
-  // Lightly scroll the success card into view in case keyboard was open
-  setTimeout(() => {
-    const card = document.querySelector('.reservation-card');
-    if (card) {
-      const y = card.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  }, 100);
-};
