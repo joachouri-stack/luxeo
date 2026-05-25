@@ -111,7 +111,12 @@
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
       const href = a.getAttribute('href');
-      if (href === '#' || href.length < 2) return;
+      // href="#" or "#top" → smooth scroll to top of page
+      if (href === '#' || href === '#top' || href.length < 2) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
       const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
