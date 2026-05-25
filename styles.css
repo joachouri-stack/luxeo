@@ -553,32 +553,6 @@ image-slot::part(frame) {
   flex-wrap: wrap;
 }
 
-.hero-meta {
-  position: absolute;
-  right: var(--gutter);
-  bottom: 110px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 18px;
-  text-align: right;
-}
-.hero-meta .num {
-  font-size: 64px;
-  font-weight: 200;
-  color: #fff;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.hero-meta .num .small { font-size: 36px; color: var(--or); }
-.hero-meta .lbl {
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-}
-
 @keyframes scrollLine {
   to { top: 100%; }
 }
@@ -4151,7 +4125,6 @@ footer {
   .intro-grid, .partenaire-grid, .parr-grid, .contact-grid {
     grid-template-columns: 1fr;
   }
-  .hero-meta { display: none; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .materiaux { grid-template-columns: 1fr 1fr; }
   .timeline-grid { grid-template-columns: 1fr; }
@@ -4170,6 +4143,9 @@ footer {
     --gutter: 20px;
   }
   body { font-size: 15px; }
+
+  /* Hero meta badge: hidden on small screens to keep hero CTAs uncluttered */
+  .hero-meta { display: none; }
 
   /* Section heads */
   .section-head { margin-bottom: 40px; }
@@ -4482,18 +4458,6 @@ footer {
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* Hero meta mobile tweaks */
-@media (max-width: 600px) {
-  .hero-meta {
-    right: 14px;
-    bottom: 80px;
-    padding: 12px 14px;
-    border-radius: 12px;
-  }
-  .hero-meta .num { font-size: 26px; }
-  .hero-meta .num .small { font-size: 14px; }
-  .hero-meta .lbl { font-size: 10px; }
-}
 
 /* ============================================
    PACK FEATURED — animated gold ring "Best seller"
