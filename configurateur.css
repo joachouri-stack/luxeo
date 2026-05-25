@@ -193,11 +193,14 @@
 }
 .cfg-wall, .cfg-floor {
   position: absolute;
-  background-image: var(--tile-img);
   background-size: 25% auto;
   background-repeat: repeat;
   transition: background-image .6s var(--ease-out);
 }
+.cfg-wall-back,
+.cfg-wall-left { background-image: var(--tile-murs, var(--tile-img)); }
+.cfg-floor     { background-image: var(--tile-sol,  var(--tile-img)); }
+
 .cfg-wall-back {
   inset: 0 0 36% 26%;
   background-blend-mode: normal;
@@ -678,4 +681,383 @@
   .cfg-panel .selected-list { display: none; }
   .cfg-devis { padding: 60px var(--gutter); }
   .cfg-selection { padding: 20px 18px; }
+}
+
+/* ============================================
+   ZONE SUMMARY (dans le bloc preview, à gauche du visualiseur)
+   ============================================ */
+.cfg-zone-summary {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cfg-zsum {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--ligne);
+  border-left: 3px solid var(--turquoise);
+  border-radius: 4px;
+  transition: border-color .3s;
+}
+.cfg-zsum[data-zone="murs"] { border-left-color: var(--or); }
+.cfg-zsum .zs-ico {
+  width: 38px;
+  height: 38px;
+  background: rgba(14, 124, 123, 0.08);
+  color: var(--turquoise);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.cfg-zsum[data-zone="murs"] .zs-ico {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--or);
+}
+.cfg-zsum .zs-info { flex: 1; min-width: 0; }
+.cfg-zsum .zs-lbl {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--texte-mute);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.cfg-zsum .zs-ref {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--texte);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cfg-zsum .zs-ref.filled { color: var(--texte); }
+.cfg-zsum .zs-meta {
+  font-size: 11px;
+  color: var(--texte-mute);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   ZONE PICKER (étape 1 : Sol / Murs)
+   ============================================ */
+.cfg-zone-picker {
+  background: #fff;
+  padding: 30px var(--gutter);
+  border-top: 1px solid var(--ligne);
+  border-bottom: 1px solid var(--ligne);
+}
+.cfg-zone-picker-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.cfg-zp-head {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.cfg-zp-head .eyebrow { color: var(--turquoise); justify-content: center; }
+.cfg-zp-head .eyebrow::before { background: var(--turquoise); }
+.cfg-zp-head p {
+  font-size: 13px;
+  color: var(--texte-mute);
+  margin-top: 10px;
+}
+
+.cfg-zone-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cfg-zone-tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #fff;
+  border: 2px solid var(--ligne);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .3s var(--ease-out);
+  text-align: left;
+  position: relative;
+}
+.cfg-zone-tab:hover {
+  border-color: var(--turquoise);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -16px rgba(14, 124, 123, 0.35);
+}
+.cfg-zone-tab.active {
+  border-color: var(--turquoise);
+  background: linear-gradient(180deg, rgba(14, 124, 123, 0.04) 0%, #fff 100%);
+  box-shadow: 0 0 0 1px var(--turquoise), 0 14px 32px -14px rgba(14, 124, 123, 0.4);
+}
+.cfg-zone-tab[data-zone="murs"].active {
+  border-color: var(--or);
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0.04) 0%, #fff 100%);
+  box-shadow: 0 0 0 1px var(--or), 0 14px 32px -14px rgba(201, 168, 76, 0.4);
+}
+.cfg-zone-tab .zt-ico {
+  width: 50px;
+  height: 50px;
+  background: rgba(14, 124, 123, 0.08);
+  color: var(--turquoise);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: all .3s;
+}
+.cfg-zone-tab[data-zone="murs"] .zt-ico {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--or);
+}
+.cfg-zone-tab.active .zt-ico {
+  transform: scale(1.05);
+}
+.cfg-zone-tab .zt-text { flex: 1; min-width: 0; }
+.cfg-zone-tab .zt-lbl {
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--texte);
+  margin-bottom: 2px;
+}
+.cfg-zone-tab .zt-help {
+  display: block;
+  font-size: 12px;
+  color: var(--texte-mute);
+}
+.cfg-zone-tab .zt-status {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--texte-mute);
+  background: rgba(0,0,0,0.04);
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cfg-zone-tab .zt-status.done {
+  color: #1a7a30;
+  background: rgba(26, 122, 48, 0.1);
+}
+
+/* ============================================
+   CATALOG HEAD (étape 2)
+   ============================================ */
+.cfg-cat-head {
+  max-width: var(--max);
+  margin: 0 auto 30px;
+  text-align: center;
+}
+.cfg-cat-head .eyebrow { color: var(--turquoise); justify-content: center; }
+.cfg-cat-head .eyebrow::before { background: var(--turquoise); }
+.cfg-cat-head p {
+  font-size: 13px;
+  color: var(--texte-mute);
+  margin-top: 10px;
+}
+.cfg-cat-head p strong {
+  color: var(--turquoise);
+  font-weight: 600;
+}
+
+/* Tile that's selected for the OTHER zone — subtle hint */
+.cfg-tile.in-other {
+  position: relative;
+}
+.cfg-tile.in-other::before {
+  content: '↳ utilisé sur l\'autre zone';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  background: rgba(10, 42, 42, 0.85);
+  color: var(--or);
+  padding: 4px 8px;
+  border-radius: 999px;
+  z-index: 3;
+  backdrop-filter: blur(8px);
+}
+
+/* ============================================
+   STICKY PANEL (2 zones)
+   ============================================ */
+.cfg-panel-zones {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-right: 16px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.cp-zone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+.cp-zone .cp-ico {
+  width: 26px;
+  height: 26px;
+  background: rgba(14, 124, 123, 0.2);
+  color: var(--turquoise);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+.cp-zone[data-zone="murs"] .cp-ico {
+  background: rgba(201, 168, 76, 0.2);
+  color: var(--or);
+}
+.cp-zone .cp-lbl {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.cp-zone .cp-ref {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Sora', monospace;
+}
+.cp-zone .cp-ref.filled { color: #fff; }
+
+/* ============================================
+   ZONE SLOTS (devis section)
+   ============================================ */
+.cfg-zone-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.cfg-zone-slot {
+  background: rgba(14, 124, 123, 0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--turquoise);
+  border-radius: 4px;
+  padding: 16px;
+}
+.cfg-zone-slot[data-zone="murs"] {
+  background: rgba(201, 168, 76, 0.06);
+  border-left-color: var(--or);
+}
+.cfg-zone-slot .zs-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.cfg-zone-slot .zs-header .zs-ico {
+  width: 28px;
+  height: 28px;
+  background: rgba(14, 124, 123, 0.25);
+  color: var(--turquoise);
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+.cfg-zone-slot[data-zone="murs"] .zs-header .zs-ico {
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--or);
+}
+.cfg-zone-slot .zs-header .zs-zone {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 500;
+}
+.cfg-zone-slot .zs-empty {
+  text-align: center;
+  padding: 20px 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+.cfg-zone-slot .zs-empty span {
+  display: block;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 6px;
+}
+.cfg-zone-slot .zs-tile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cfg-zone-slot .zs-img {
+  width: 56px;
+  height: 56px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.cfg-zone-slot .zs-tile-info { flex: 1; min-width: 0; }
+.cfg-zone-slot .zs-tile-ref {
+  font-size: 10px;
+  color: var(--or);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.cfg-zone-slot .zs-tile-name {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.cfg-zone-slot .zs-tile-meta {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+}
+.cfg-zone-slot .zs-x {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: rgba(255,255,255,0.6);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all .2s;
+}
+.cfg-zone-slot .zs-x:hover { background: #d63a3a; color: #fff; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cfg-zone-tabs { grid-template-columns: 1fr; }
+  .cfg-zone-tab { padding: 14px 16px; gap: 12px; }
+  .cfg-zone-tab .zt-ico { width: 42px; height: 42px; font-size: 18px; }
+  .cfg-zone-tab .zt-lbl { font-size: 15px; }
+  .cfg-zone-tab .zt-help { font-size: 11px; }
+  .cfg-zone-slots { grid-template-columns: 1fr; }
+  .cfg-panel-zones { gap: 10px; padding-right: 12px; }
+  .cp-zone .cp-lbl { display: none; }
+  .cp-zone { gap: 6px; }
 }

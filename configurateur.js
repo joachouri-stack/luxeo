@@ -1,26 +1,58 @@
 /* ============================================
-   LUXEO — Configurateur logic
+   LUXEO — Configurateur (Sol / Murs séparés)
    ============================================ */
 (function () {
   'use strict';
 
-  const grid       = document.getElementById('cfgGrid');
-  const filtersEl  = document.getElementById('cfgFilters');
-  const shownEl    = document.getElementById('cfgShown');
-  const scene      = document.getElementById('cfgScene');
-  const prevRef    = document.getElementById('cfgPreviewRef');
-  const prevName   = document.getElementById('cfgPreviewName');
-  const prevMeta   = document.getElementById('cfgPreviewMeta');
-  const chipsEl    = document.getElementById('cfgChips');
-  const countEl    = document.getElementById('cfgCount');
-  const panelEl    = document.getElementById('cfgPanel');
-  const listEl     = document.getElementById('cfgList');
-  const emptyEl    = document.getElementById('cfgEmpty');
-  const clearBtn   = document.getElementById('cfgClear');
-  const refsHidden = document.getElementById('cf-refs');
+  const grid        = document.getElementById('cfgGrid');
+  const filtersEl   = document.getElementById('cfgFilters');
+  const shownEl     = document.getElementById('cfgShown');
+  const scene       = document.getElementById('cfgScene');
+  const panelEl     = document.getElementById('cfgPanel');
+  const clearBtn    = document.getElementById('cfgClear');
+  const activeLbl   = document.getElementById('cfgActiveZoneLbl');
 
+  // Zone tabs
+  const zoneTabs = document.querySelectorAll('.cfg-zone-tab');
+
+  // Zone summary (in preview)
+  const zsRef = {
+    sol:  document.getElementById('zsRefSol'),
+    murs: document.getElementById('zsRefMurs'),
+  };
+  const zsMeta = {
+    sol:  document.getElementById('zsMetaSol'),
+    murs: document.getElementById('zsMetaMurs'),
+  };
+
+  // Zone status (in tabs)
+  const ztStatus = {
+    sol:  document.getElementById('ztStatusSol'),
+    murs: document.getElementById('ztStatusMurs'),
+  };
+
+  // Sticky panel refs
+  const cpRef = {
+    sol:  document.getElementById('cpRefSol'),
+    murs: document.getElementById('cpRefMurs'),
+  };
+
+  // Devis slots
+  const slotEl = {
+    sol:  document.getElementById('zoneSlotSol'),
+    murs: document.getElementById('zoneSlotMurs'),
+  };
+
+  // Hidden form fields
+  const hiddenSol  = document.getElementById('composer_sol');
+  const hiddenMurs = document.getElementById('composer_murs');
+
+  const ZONE_LABELS = { sol: 'Sol', murs: 'Murs' };
+
+  // ---- STATE ----
   let currentFilter = 'all';
-  const selected = new Map(); // ref => product
+  let activeZone    = 'sol';
+  const selection   = { sol: null, murs: null };
 
   /* ---------- FILTERS ---------- */
   filtersEl.innerHTML = LUXEO_FILTERS.map(f => `
@@ -38,6 +70,21 @@
     });
   });
 
+  /* ---------- ZONE TABS ---------- */
+  zoneTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      zoneTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      activeZone = tab.dataset.zone;
+      if (activeLbl) activeLbl.textContent = 'zone ' + ZONE_LABELS[activeZone];
+      renderGrid(); // refresh "selected" markers
+    });
+  });
+
   /* ---------- GRID ---------- */
   function renderGrid() {
     const items = currentFilter === 'all'
@@ -45,130 +92,153 @@
       : LUXEO_CATALOG.filter(p => p.cat === currentFilter);
     shownEl.textContent = items.length;
 
-    grid.innerHTML = items.map(p => `
-      <article class="cfg-tile${selected.has(p.ref) ? ' selected' : ''}" data-ref="${p.ref}">
-        <div class="cfg-tile-img" style="background-image:url('assets/tiles/${p.ref}.jpg');"></div>
-        <div class="cfg-tile-info">
-          <div class="cfg-tile-ref">Réf. ${p.ref}</div>
-          <div class="cfg-tile-name">${p.name}</div>
-          <div class="cfg-tile-meta">
-            <span>${p.dims} · ${p.finish}</span>
-            <span class="cfg-tile-price">${p.price}</span>
+    const activeSel = selection[activeZone];
+
+    grid.innerHTML = items.map(p => {
+      const isActiveSel = activeSel && activeSel.ref === p.ref;
+      const inOther = (activeZone === 'sol' && selection.murs && selection.murs.ref === p.ref)
+                   || (activeZone === 'murs' && selection.sol && selection.sol.ref === p.ref);
+      return `
+        <article class="cfg-tile${isActiveSel ? ' selected' : ''}${inOther ? ' in-other' : ''}" data-ref="${p.ref}">
+          <div class="cfg-tile-img" style="background-image:url('assets/tiles/${p.ref}.jpg');"></div>
+          <div class="cfg-tile-info">
+            <div class="cfg-tile-ref">Réf. ${p.ref}</div>
+            <div class="cfg-tile-name">${p.name}</div>
+            <div class="cfg-tile-meta">
+              <span>${p.dims} · ${p.finish}</span>
+              <span class="cfg-tile-price">${p.price}</span>
+            </div>
           </div>
-        </div>
-      </article>
-    `).join('');
+        </article>
+      `;
+    }).join('');
 
     grid.querySelectorAll('.cfg-tile').forEach(card => {
       card.addEventListener('click', () => {
         const ref = card.dataset.ref;
         const product = LUXEO_CATALOG.find(p => p.ref === ref);
-        applyPreview(product);
-        toggleSelect(product);
+        setZoneSelection(activeZone, product);
       });
     });
-  }
-
-  /* ---------- PREVIEW ---------- */
-  function applyPreview(p) {
-    scene.style.setProperty('--tile-img', `url('assets/tiles/${p.ref}.jpg')`);
-    prevRef.textContent = p.ref;
-    prevName.textContent = p.name;
-    prevMeta.textContent = `${p.dims} · ${p.finish}`;
-
-    // Flash effect
-    scene.style.transition = 'box-shadow .4s ease';
-    scene.style.boxShadow = '0 0 0 3px var(--turquoise), var(--sh-strong, 0 30px 80px rgba(0,0,0,.3)), 0 0 80px rgba(14,124,123,0.35)';
-    clearTimeout(applyPreview._t);
-    applyPreview._t = setTimeout(() => scene.style.boxShadow = '', 700);
   }
 
   /* ---------- SELECTION ---------- */
-  function toggleSelect(p) {
-    if (selected.has(p.ref)) {
-      selected.delete(p.ref);
-    } else {
-      selected.set(p.ref, p);
-    }
+  function setZoneSelection(zone, product) {
+    selection[zone] = product;
+    applyToScene(zone, product);
+    flashScene();
     updateUI();
   }
 
+  function applyToScene(zone, product) {
+    const varName = zone === 'sol' ? '--tile-sol' : '--tile-murs';
+    scene.style.setProperty(varName, `url('assets/tiles/${product.ref}.jpg')`);
+  }
+
+  function flashScene() {
+    scene.style.transition = 'box-shadow .4s ease';
+    scene.style.boxShadow = '0 0 0 3px var(--turquoise), 0 40px 80px -30px rgba(10,42,42,0.4), 0 0 80px rgba(14,124,123,0.35)';
+    clearTimeout(flashScene._t);
+    flashScene._t = setTimeout(() => scene.style.boxShadow = '', 700);
+  }
+
+  /* ---------- UI UPDATE ---------- */
   function updateUI() {
-    // Tile cards highlight
+    ['sol', 'murs'].forEach(zone => {
+      const sel = selection[zone];
+
+      // Zone summary in preview
+      if (zsRef[zone] && zsMeta[zone]) {
+        if (sel) {
+          zsRef[zone].textContent  = sel.name + ' · ' + sel.ref;
+          zsMeta[zone].textContent = sel.dims + ' · ' + sel.finish + ' · ' + sel.price;
+          zsRef[zone].classList.add('filled');
+        } else {
+          zsRef[zone].textContent  = '— Aucun choix —';
+          zsMeta[zone].textContent = 'Sélectionnez la zone ' + ZONE_LABELS[zone] + ' ci-dessous';
+          zsRef[zone].classList.remove('filled');
+        }
+      }
+
+      // Status badge in zone tab
+      if (ztStatus[zone]) {
+        ztStatus[zone].textContent = sel ? '✓ ' + sel.ref : 'À choisir';
+        ztStatus[zone].classList.toggle('done', !!sel);
+      }
+
+      // Sticky panel ref
+      if (cpRef[zone]) {
+        cpRef[zone].textContent = sel ? sel.ref : '—';
+        cpRef[zone].classList.toggle('filled', !!sel);
+      }
+
+      // Devis slot
+      if (slotEl[zone]) {
+        if (sel) {
+          slotEl[zone].innerHTML = `
+            <div class="zs-tile">
+              <div class="zs-img" style="background-image:url('assets/tiles/${sel.ref}.jpg');"></div>
+              <div class="zs-tile-info">
+                <div class="zs-tile-ref">Réf. ${sel.ref}</div>
+                <div class="zs-tile-name">${sel.name}</div>
+                <div class="zs-tile-meta">${sel.dims} · ${sel.finish} · ${sel.price}</div>
+              </div>
+              <button type="button" class="zs-x" aria-label="Retirer" data-zone="${zone}">×</button>
+            </div>
+          `;
+          slotEl[zone].querySelector('.zs-x').addEventListener('click', () => clearZone(zone));
+        } else {
+          slotEl[zone].innerHTML = `<div class="zs-empty">— Aucun carrelage sélectionné —<br><span>Choisissez la zone ${ZONE_LABELS[zone]} puis un carrelage</span></div>`;
+        }
+      }
+    });
+
+    // Sticky panel visibility
+    const hasAny = selection.sol || selection.murs;
+    panelEl.classList.toggle('show', !!hasAny);
+
+    // Hidden fields
+    if (hiddenSol)  hiddenSol.value  = selection.sol  ? `${selection.sol.name}  - Réf. ${selection.sol.ref}  - ${selection.sol.dims}  - ${selection.sol.finish}  - ${selection.sol.price}` : '';
+    if (hiddenMurs) hiddenMurs.value = selection.murs ? `${selection.murs.name} - Réf. ${selection.murs.ref} - ${selection.murs.dims} - ${selection.murs.finish} - ${selection.murs.price}` : '';
+
+    // Re-render grid to update selection markers
+    refreshGridSelection();
+  }
+
+  function refreshGridSelection() {
+    const activeSel = selection[activeZone];
     grid.querySelectorAll('.cfg-tile').forEach(card => {
-      card.classList.toggle('selected', selected.has(card.dataset.ref));
+      const ref = card.dataset.ref;
+      const isActiveSel = activeSel && activeSel.ref === ref;
+      const inOther = (activeZone === 'sol' && selection.murs && selection.murs.ref === ref)
+                   || (activeZone === 'murs' && selection.sol && selection.sol.ref === ref);
+      card.classList.toggle('selected', !!isActiveSel);
+      card.classList.toggle('in-other', !!inOther);
     });
+  }
 
-    // Sticky panel chips
-    countEl.textContent = selected.size;
-    chipsEl.innerHTML = Array.from(selected.values()).slice(0, 4).map(p => `
-      <div class="cfg-chip" data-ref="${p.ref}">
-        <div class="chip-img" style="background-image:url('assets/tiles/${p.ref}.jpg');"></div>
-        <span>${p.ref}</span>
-        <button class="chip-x" aria-label="Retirer">×</button>
-      </div>
-    `).join('') + (selected.size > 4 ? `<div class="cfg-chip more">+${selected.size - 4}</div>` : '');
-
-    chipsEl.querySelectorAll('.chip-x').forEach(x => {
-      x.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const ref = x.closest('.cfg-chip').dataset.ref;
-        selected.delete(ref);
-        updateUI();
-      });
-    });
-
-    panelEl.classList.toggle('show', selected.size > 0);
-
-    // Devis selection list
-    if (selected.size === 0) {
-      emptyEl.style.display = '';
-      listEl.style.display = 'none';
-      listEl.innerHTML = '';
-    } else {
-      emptyEl.style.display = 'none';
-      listEl.style.display = '';
-      listEl.innerHTML = Array.from(selected.values()).map(p => `
-        <li class="cfg-sel-item" data-ref="${p.ref}">
-          <div class="sel-img" style="background-image:url('assets/tiles/${p.ref}.jpg');"></div>
-          <div class="sel-info">
-            <div class="sel-ref">Réf. ${p.ref}</div>
-            <div class="sel-name">${p.name}</div>
-            <div class="sel-meta">${p.dims} · ${p.finish} · ${p.price}</div>
-          </div>
-          <button class="sel-x" aria-label="Retirer">×</button>
-        </li>
-      `).join('');
-      listEl.querySelectorAll('.sel-x').forEach(x => {
-        x.addEventListener('click', () => {
-          const ref = x.closest('.cfg-sel-item').dataset.ref;
-          selected.delete(ref);
-          updateUI();
-        });
-      });
-    }
-
-    // Hidden field
-    if (refsHidden) {
-      refsHidden.value = Array.from(selected.values())
-        .map(p => `${p.name} (${p.ref}) ${p.dims} ${p.finish} ${p.price}`)
-        .join(' | ');
-    }
+  function clearZone(zone) {
+    selection[zone] = null;
+    scene.style.removeProperty(zone === 'sol' ? '--tile-sol' : '--tile-murs');
+    updateUI();
   }
 
   /* ---------- CLEAR ALL ---------- */
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-      selected.clear();
+      selection.sol = null;
+      selection.murs = null;
+      scene.style.removeProperty('--tile-sol');
+      scene.style.removeProperty('--tile-murs');
       updateUI();
     });
   }
 
   /* ---------- SUBMIT ---------- */
   window.cfgSubmit = function (form) {
-    if (refsHidden) refsHidden.value = Array.from(selected.values())
-      .map(p => `${p.name} (${p.ref}) ${p.dims} ${p.finish} ${p.price}`)
-      .join(' | ');
+    if (hiddenSol)  hiddenSol.value  = selection.sol  ? `${selection.sol.name}  - Réf. ${selection.sol.ref}  - ${selection.sol.dims}  - ${selection.sol.finish}  - ${selection.sol.price}` : '';
+    if (hiddenMurs) hiddenMurs.value = selection.murs ? `${selection.murs.name} - Réf. ${selection.murs.ref} - ${selection.murs.dims} - ${selection.murs.finish} - ${selection.murs.price}` : '';
+
     const btn = form.querySelector('button[type=submit]');
     const original = btn.innerHTML;
     btn.innerHTML = '✓ Composition envoyée à info@luxeo.pro';
@@ -176,10 +246,14 @@
     btn.style.background = 'var(--or)';
     btn.style.borderColor = 'var(--or)';
     btn.style.color = '#1a1100';
-    console.log('Configurateur — refs transmises :', refsHidden ? refsHidden.value : '');
+    console.log('Configurateur — Sol :',  hiddenSol  ? hiddenSol.value  : '');
+    console.log('Configurateur — Murs :', hiddenMurs ? hiddenMurs.value : '');
     setTimeout(() => {
       form.reset();
-      selected.clear();
+      selection.sol = null;
+      selection.murs = null;
+      scene.style.removeProperty('--tile-sol');
+      scene.style.removeProperty('--tile-murs');
       updateUI();
       btn.innerHTML = original;
       btn.disabled = false;

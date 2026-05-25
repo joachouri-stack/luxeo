@@ -60,16 +60,30 @@
     <div class="cfg-preview-text">
       <span class="eyebrow">Votre aperçu en direct</span>
       <h2>Visualisez votre <em>future douche.</em></h2>
-      <p>Cliquez sur n'importe quel carrelage du catalogue ci-dessous pour le voir appliqué dans votre douche italienne. Chaque clic, une projection nouvelle.</p>
-      <div class="cfg-preview-info">
-        <span class="lbl">Carrelage sélectionné</span>
-        <div class="cfg-preview-ref" id="cfgPreviewRef">LUX-MOS-001</div>
-        <div class="cfg-preview-name" id="cfgPreviewName">Mosaïque Turquoise</div>
-        <div class="cfg-preview-meta" id="cfgPreviewMeta">30×30 cm · Brillant</div>
+      <p>Choisissez la zone à habiller, puis cliquez sur un carrelage du catalogue. Le sol et les murs ont chacun leur propre sélection.</p>
+
+      <div class="cfg-zone-summary">
+        <div class="cfg-zsum" data-zone="sol">
+          <div class="zs-ico">▦</div>
+          <div class="zs-info">
+            <div class="zs-lbl">Sol</div>
+            <div class="zs-ref" id="zsRefSol">— Aucun choix —</div>
+            <div class="zs-meta" id="zsMetaSol">Sélectionnez la zone Sol ci-dessous</div>
+          </div>
+        </div>
+        <div class="cfg-zsum" data-zone="murs">
+          <div class="zs-ico">⊞</div>
+          <div class="zs-info">
+            <div class="zs-lbl">Murs</div>
+            <div class="zs-ref" id="zsRefMurs">— Aucun choix —</div>
+            <div class="zs-meta" id="zsMetaMurs">Sélectionnez la zone Murs ci-dessous</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="cfg-scene" id="cfgScene" style="--tile-img: url('assets/tiles/LUX-MOS-001.jpg');">
+    <div class="cfg-scene" id="cfgScene"
+         style="--tile-img: url('assets/tiles/LUX-MOS-001.jpg');">
       <div class="cfg-wall cfg-wall-back"></div>
       <div class="cfg-wall cfg-wall-left"></div>
       <div class="cfg-floor"></div>
@@ -86,18 +100,57 @@
   </div>
 </section>
 
+<!-- ZONE PICKER (Sol / Murs) -->
+<section class="cfg-zone-picker">
+  <div class="cfg-zone-picker-inner">
+    <div class="cfg-zp-head">
+      <span class="eyebrow">Étape 1 · Choisissez la zone à habiller</span>
+      <p>Le carrelage suivant que vous cliquerez sera appliqué à cette zone.</p>
+    </div>
+    <div class="cfg-zone-tabs" role="tablist">
+      <button type="button" class="cfg-zone-tab active" data-zone="sol" role="tab" aria-selected="true">
+        <span class="zt-ico">▦</span>
+        <span class="zt-text">
+          <span class="zt-lbl">Sol</span>
+          <span class="zt-help">Carrelage de sol — receveur / extra-plat</span>
+        </span>
+        <span class="zt-status" id="ztStatusSol">À choisir</span>
+      </button>
+      <button type="button" class="cfg-zone-tab" data-zone="murs" role="tab" aria-selected="false">
+        <span class="zt-ico">⊞</span>
+        <span class="zt-text">
+          <span class="zt-lbl">Murs</span>
+          <span class="zt-help">Faïence / mosaïque / grand format</span>
+        </span>
+        <span class="zt-status" id="ztStatusMurs">À choisir</span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- CATALOG -->
 <section class="cfg-catalog">
+  <div class="cfg-cat-head">
+    <span class="eyebrow">Étape 2 · Catalogue carrelages</span>
+    <p>Cliquez sur un carrelage pour l'appliquer à la <strong id="cfgActiveZoneLbl">zone Sol</strong>.</p>
+  </div>
   <div class="cfg-grid" id="cfgGrid"></div>
 </section>
 
 <!-- STICKY PANEL -->
 <div class="cfg-panel" id="cfgPanel">
-  <div class="count">
-    <span class="n" id="cfgCount">0</span>
-    <span class="lbl">Sélection</span>
+  <div class="cfg-panel-zones">
+    <div class="cp-zone" data-zone="sol">
+      <span class="cp-ico">▦</span>
+      <span class="cp-lbl">Sol</span>
+      <span class="cp-ref" id="cpRefSol">—</span>
+    </div>
+    <div class="cp-zone" data-zone="murs">
+      <span class="cp-ico">⊞</span>
+      <span class="cp-lbl">Murs</span>
+      <span class="cp-ref" id="cpRefMurs">—</span>
+    </div>
   </div>
-  <div class="selected-list" id="cfgChips"></div>
   <a href="#devis" class="btn btn-gold">Continuer <span class="arrow">→</span></a>
 </div>
 
@@ -107,7 +160,7 @@
     <div class="cfg-devis-head">
       <span class="eyebrow">Demande de devis</span>
       <h2>Vos carrelages.<br><em>Votre devis sur mesure.</em></h2>
-      <p>Vos références sélectionnées sont automatiquement jointes à votre demande. Réponse sous 24h ouvrées par un conseiller Luxeo.</p>
+      <p>Vos références Sol et Murs sont automatiquement jointes à votre demande. Réponse sous 24h ouvrées par un conseiller Luxeo.</p>
     </div>
 
     <div class="cfg-selection">
@@ -115,10 +168,25 @@
         <h3>Vos carrelages sélectionnés</h3>
         <button type="button" class="clear" id="cfgClear">Tout effacer</button>
       </div>
-      <ul class="cfg-selection-list" id="cfgList"></ul>
-      <div class="cfg-empty" id="cfgEmpty">
-        — Aucun carrelage sélectionné pour l'instant —<br>
-        Parcourez le catalogue ci-dessus pour en choisir.
+      <div class="cfg-zone-slots">
+        <div class="cfg-zone-slot" data-zone="sol">
+          <div class="zs-header">
+            <span class="zs-ico">▦</span>
+            <span class="zs-zone">Sol</span>
+          </div>
+          <div class="zs-body" id="zoneSlotSol">
+            <div class="zs-empty">— Aucun carrelage sélectionné —<br><span>Choisissez la zone Sol puis un carrelage</span></div>
+          </div>
+        </div>
+        <div class="cfg-zone-slot" data-zone="murs">
+          <div class="zs-header">
+            <span class="zs-ico">⊞</span>
+            <span class="zs-zone">Murs</span>
+          </div>
+          <div class="zs-body" id="zoneSlotMurs">
+            <div class="zs-empty">— Aucun carrelage sélectionné —<br><span>Choisissez la zone Murs puis un carrelage</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -150,7 +218,8 @@
         <div class="field field-full"><textarea id="cf-msg" placeholder=" " rows="3"></textarea><label for="cf-msg">Votre projet (facultatif)</label></div>
       </div>
 
-      <input type="hidden" id="cf-refs" name="references_carrelage" value="">
+      <input type="hidden" id="composer_sol"  name="composer_sol"  value="">
+      <input type="hidden" id="composer_murs" name="composer_murs" value="">
 
       <button type="submit" class="btn btn-primary">Envoyer ma demande <span class="arrow">→</span></button>
       <p class="consent">En envoyant ce formulaire, vous acceptez que Luxeo vous contacte concernant votre projet. Aucune donnée n'est transmise à des tiers.</p>
