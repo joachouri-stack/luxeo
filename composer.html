@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a2a2a">
 <title>Composez votre douche italienne en direct | Luxeo</title>
-<meta name="description" content="Visualisez votre future douche italienne en direct. Choisissez sol, murs, colonne et paroi — recevez votre devis avec vos sélections.">
+<meta name="description" content="Visualisez votre future douche italienne en direct. Choisissez sol, murs, colonne et paroi parmi notre catalogue premium — recevez votre devis avec vos sélections.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -45,10 +45,16 @@
     <span class="eyebrow">Configurateur interactif</span>
     <h1>Composez votre <em>douche italienne.</em></h1>
     <p>Visualisez en direct, choisissez vos matériaux — chaque sélection est transmise automatiquement avec votre demande de devis.</p>
+
+    <div class="cmp-hero-features">
+      <div><span class="num">04</span><span class="lbl">Zones interactives</span></div>
+      <div><span class="num">32</span><span class="lbl">Produits HD</span></div>
+      <div><span class="num">∞</span><span class="lbl">Combinaisons possibles</span></div>
+    </div>
   </div>
 </header>
 
-<!-- APERÇU LIVE + VISUALISEUR -->
+<!-- APERÇU LIVE -->
 <section class="cmp-preview-wrap">
   <div class="wrap">
     <div class="cmp-preview-head">
@@ -57,40 +63,49 @@
       <p>Cliquez sur n'importe quel produit du catalogue ci-dessous pour le voir appliqué dans votre douche italienne. Chaque clic, une projection nouvelle.</p>
     </div>
 
-    <!-- VISUALISEUR -->
-    <div class="cmp-scene" id="cmpScene" aria-label="Visualiseur 3D douche italienne">
-      <!-- Mur arrière -->
-      <div class="sc-wall sc-wall-back" id="scWallBack"></div>
-      <!-- Mur latéral -->
-      <div class="sc-wall sc-wall-left" id="scWallLeft"></div>
-      <!-- Sol -->
-      <div class="sc-floor" id="scFloor"></div>
-      <!-- Caniveau -->
-      <div class="sc-drain"></div>
-      <!-- Colonne de douche -->
-      <div class="sc-column" id="scColumn">
-        <div class="sc-col-arm"></div>
-        <div class="sc-col-head"></div>
-        <div class="sc-col-handheld"></div>
-        <div class="sc-col-mixer"></div>
-        <div class="sc-water">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
+    <!-- VISUALISEUR PHOTORÉALISTE -->
+    <div class="cmp-scene" id="cmpScene" aria-label="Visualiseur photoréaliste douche italienne">
+      <!-- Base photo douche italienne -->
+      <div class="sc-base">
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1800&q=85" alt="Douche italienne — base">
       </div>
-      <!-- Paroi vitrée -->
-      <div class="sc-glass" id="scGlass">
-        <div class="sc-glass-pane"></div>
-        <div class="sc-glass-edge"></div>
-        <div class="sc-glass-frame"></div>
+
+      <!-- Zone Sol — overlay teinté -->
+      <div class="sc-zone sc-zone-floor" id="zoneFloor" aria-label="Zone sol">
+        <span class="sc-zone-tag">Sol</span>
       </div>
-      <!-- Effets ambiance -->
+
+      <!-- Zone Murs — overlay teinté -->
+      <div class="sc-zone sc-zone-walls" id="zoneWalls" aria-label="Zone murs">
+        <span class="sc-zone-tag">Murs</span>
+      </div>
+
+      <!-- Zone Colonne — overlay -->
+      <div class="sc-zone sc-zone-column" id="zoneColumn" aria-label="Zone colonne">
+        <span class="sc-zone-tag">Colonne</span>
+      </div>
+
+      <!-- Zone Paroi — overlay -->
+      <div class="sc-zone sc-zone-glass" id="zoneGlass" aria-label="Zone paroi">
+        <span class="sc-zone-tag">Paroi</span>
+      </div>
+
+      <!-- Lumière chaude + vignette -->
       <div class="sc-light"></div>
       <div class="sc-steam"></div>
       <div class="sc-vignette"></div>
+
+      <!-- Tag info -->
       <div class="sc-info-tag" id="scInfoTag">
-        <span class="lbl">Aperçu</span>
-        <span class="val" id="scInfoVal">Composez votre douche</span>
+        <span class="lbl">Dernière sélection</span>
+        <span class="val" id="scInfoVal">Cliquez sur un produit du catalogue</span>
       </div>
+
+      <!-- Légende zones -->
+      <button class="sc-legend-toggle" id="scLegendToggle" aria-label="Afficher les zones">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Zones</span>
+      </button>
     </div>
 
     <!-- VOS CARRELAGES SÉLECTIONNÉS -->
@@ -131,13 +146,30 @@
     <div class="cmp-cat-head">
       <span class="eyebrow">Catalogue produits</span>
       <h2>Choisissez chaque <em>matériau.</em></h2>
+      <p>Inspiré Leroy Merlin et Brico Dépôt — chaque référence est associée à notre fournisseur partenaire.</p>
     </div>
 
     <div class="cmp-tabs" role="tablist">
-      <button class="cmp-tab active" data-tab="sol" role="tab">Sol</button>
-      <button class="cmp-tab" data-tab="murs" role="tab">Murs</button>
-      <button class="cmp-tab" data-tab="colonne" role="tab">Colonne</button>
-      <button class="cmp-tab" data-tab="paroi" role="tab">Paroi</button>
+      <button class="cmp-tab active" data-tab="sol" role="tab">
+        <span class="tab-icon">▦</span>
+        <span class="tab-name">Sol</span>
+        <span class="tab-count" id="tabCountSol">8</span>
+      </button>
+      <button class="cmp-tab" data-tab="murs" role="tab">
+        <span class="tab-icon">⊞</span>
+        <span class="tab-name">Murs</span>
+        <span class="tab-count" id="tabCountMurs">8</span>
+      </button>
+      <button class="cmp-tab" data-tab="colonne" role="tab">
+        <span class="tab-icon">⇣</span>
+        <span class="tab-name">Colonne</span>
+        <span class="tab-count" id="tabCountColonne">6</span>
+      </button>
+      <button class="cmp-tab" data-tab="paroi" role="tab">
+        <span class="tab-icon">▮</span>
+        <span class="tab-name">Paroi</span>
+        <span class="tab-count" id="tabCountParoi">6</span>
+      </button>
     </div>
 
     <div class="cmp-products" id="cmpProducts">
