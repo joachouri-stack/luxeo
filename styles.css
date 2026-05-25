@@ -2469,8 +2469,13 @@ footer {
     width: 4px;
     height: 4px;
   }
-  body { cursor: none; }
-  body a, body button, body input, body textarea, body select, body [data-slider] { cursor: none; }
+  body.has-custom-cursor { cursor: none; }
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select,
+  body.has-custom-cursor [data-slider] { cursor: none; }
 }
 
 /* ============================================

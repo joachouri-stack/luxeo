@@ -200,6 +200,8 @@
   if (supportsHover) {
     const dot = document.getElementById('curDot');
     const ring = document.getElementById('curRing');
+    // Only hide native cursor if both custom-cursor elements exist
+    if (dot && ring) document.body.classList.add('has-custom-cursor');
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
     let rx = mx, ry = my;
