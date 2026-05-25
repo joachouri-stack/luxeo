@@ -4594,3 +4594,97 @@ footer {
   .galerie-page .gal-grid { gap: 28px; }
   .galerie-page .gal-card { padding: 12px; }
 }
+
+/* ============================================
+   QUOTE STRIP — preuve sociale entre urgence et intro
+   ============================================ */
+.quote-strip {
+  background: linear-gradient(180deg, #fff 0%, var(--fond-clair) 100%);
+  padding: 30px var(--gutter);
+  border-bottom: 1px solid var(--ligne);
+  position: relative;
+}
+.quote-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+}
+.quote-strip .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.quote-strip .qs-stars {
+  color: var(--or);
+  font-size: 14px;
+  letter-spacing: 3px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(201,168,76,0.3));
+}
+.quote-strip .qs-text {
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.55;
+  color: var(--texte);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 64ch;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.quote-strip .qs-em {
+  font-weight: 500;
+  color: var(--turquoise);
+  font-style: normal;
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.005em;
+}
+.quote-strip .qs-author {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--texte-mute);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.quote-strip .qs-sep { color: var(--or); margin: 0 4px; }
+
+@media (max-width: 768px) {
+  .quote-strip { padding: 24px var(--gutter); }
+  .quote-strip .wrap { gap: 14px; }
+  .quote-strip .qs-stars { font-size: 13px; letter-spacing: 2px; }
+  .quote-strip .qs-text { font-size: 14px; }
+  .quote-strip .qs-author { font-size: 10px; }
+}
+
+/* ============================================
+   FINITIONS CTA — relie au Pack Luxe
+   ============================================ */
+.finitions-cta {
+  margin: 60px auto 0;
+  max-width: 720px;
+  text-align: center;
+  padding: 28px;
+  background: rgba(201, 168, 76, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+}
+.finitions-cta p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.finitions-cta p b {
+  color: var(--or);
+  font-weight: 600;
+}
