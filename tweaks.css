@@ -1,0 +1,318 @@
+/* ============================================
+   LUXEO — Tweaks panel (3 expressive controls)
+   ============================================ */
+
+/* ---------- TWEAK PANEL UI ---------- */
+#luxeoTweaks {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: #0a1f1f;
+  color: #fff;
+  font-family: 'Sora', system-ui, sans-serif;
+  border-radius: 6px;
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 48px);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(201, 168, 76, 0.2),
+              0 0 60px -10px rgba(14, 124, 123, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+#luxeoTweaks.show {
+  display: flex;
+  animation: tweaksIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes tweaksIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tweaks-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0.08), transparent);
+}
+.tweaks-head h4 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.tweaks-head h4::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c9a84c;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.7);
+}
+.tweaks-close {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tweaks-close:hover {
+  background: rgba(201, 168, 76, 0.2);
+  color: #c9a84c;
+}
+
+.tweaks-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  overflow-y: auto;
+}
+
+.tweak-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tweak-group .lbl {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.tweak-group .lbl .current {
+  color: #c9a84c;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.tweak-segments {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.tweak-seg {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.3s;
+  letter-spacing: 0.02em;
+}
+.tweak-seg:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+.tweak-seg.active {
+  background: rgba(201, 168, 76, 0.18);
+  color: #c9a84c;
+  font-weight: 500;
+}
+
+.tweak-foot {
+  padding: 12px 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+/* ===================================================
+   ============== TWEAK MOODS / AMBIANCE ============== 
+   =================================================== */
+
+/* SPA (default) — turquoise + or, vaporous spa */
+body.mood-spa {
+  --turquoise: #0e7c7b;
+  --turquoise-deep: #095958;
+  --turquoise-glow: rgba(14, 124, 123, 0.35);
+  --or: #c9a84c;
+  --or-deep: #a78a35;
+  --fond-clair: #f0fafa;
+  --fond-sombre: #0a2a2a;
+  --fond-sombre-2: #0f3938;
+}
+
+/* ÉLÉGANT — warm cream + bronze, daytime magazine */
+body.mood-elegant {
+  --turquoise: #735c3a;
+  --turquoise-deep: #5a4628;
+  --turquoise-glow: rgba(115, 92, 58, 0.35);
+  --or: #b8884f;
+  --or-deep: #8a6533;
+  --fond-clair: #faf6ee;
+  --fond-sombre: #2d2418;
+  --fond-sombre-2: #3d3220;
+  --texte: #1f1a10;
+  --ligne: rgba(115, 92, 58, 0.14);
+}
+body.mood-elegant .hero-bg {
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(184, 136, 79, 0.22), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(115, 92, 58, 0.42), transparent 55%),
+    linear-gradient(135deg, #2d2418 0%, #3d3220 45%, #2a2014 100%);
+}
+
+/* NUIT — indigo + champagne, cool nocturnal */
+body.mood-nuit {
+  --turquoise: #4b5b9a;
+  --turquoise-deep: #2e3a78;
+  --turquoise-glow: rgba(75, 91, 154, 0.4);
+  --or: #e4cea7;
+  --or-deep: #c2ad84;
+  --fond-clair: #f5f6fa;
+  --fond-sombre: #0c1130;
+  --fond-sombre-2: #14193d;
+  --texte: #1a1d2e;
+  --ligne: rgba(75, 91, 154, 0.14);
+}
+body.mood-nuit .hero-bg {
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(228, 206, 167, 0.18), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(75, 91, 154, 0.45), transparent 55%),
+    linear-gradient(135deg, #0c1130 0%, #14193d 45%, #080a22 100%);
+}
+
+/* ===================================================
+   =========== TWEAK ATMOSPHÈRE / DRAMA =============== 
+   =================================================== */
+
+/* CALME — kill all kinetic atmosphere */
+body.atmo-calme .hero-shimmer,
+body.atmo-calme .hero-orbs,
+body.atmo-calme .shower-water,
+body.atmo-calme .wa-btn::before,
+body.atmo-calme .urgence-band .pulse-dot::before {
+  display: none !important;
+}
+body.atmo-calme .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+body.atmo-calme .scroll-cue {
+  display: none;
+}
+body.atmo-calme * {
+  animation-duration: 0s !important;
+  animation-iteration-count: 1 !important;
+}
+body.atmo-calme .counter[data-target] {
+  /* Disable animated counters (just show target value) */
+}
+
+/* NATUREL — current default; no overrides needed */
+
+/* SPA — amplify */
+body.atmo-spa .hero-shimmer::before,
+body.atmo-spa .hero-shimmer::after {
+  animation-duration: 6s;
+  filter: brightness(1.4);
+}
+body.atmo-spa .hero-orbs span {
+  animation-duration: 9s;
+  filter: blur(14px) brightness(1.2);
+}
+body.atmo-spa .shower-water span {
+  animation-duration: 1.1s;
+}
+body.atmo-spa .urgence-band .pulse-dot::before {
+  animation-duration: 1.2s;
+}
+
+/* ===================================================
+   ========== TWEAK DENSITÉ ÉDITORIALE ================ 
+   =================================================== */
+
+/* AÉRÉ — luxurious editorial breathing */
+body.dens-aere {
+  --section-y: clamp(120px, 14vw, 220px);
+}
+body.dens-aere h1 { font-size: clamp(48px, 7.5vw, 110px); }
+body.dens-aere h2 { font-size: clamp(38px, 5.4vw, 76px); }
+body.dens-aere .lead { font-size: clamp(17px, 1.4vw, 21px); line-height: 1.75; }
+body.dens-aere .section-head { margin-bottom: clamp(70px, 8vw, 110px); }
+body.dens-aere .pack-body { padding: 36px 32px 40px; }
+body.dens-aere .pack-feat li { padding: 11px 0 11px 30px; font-size: 15px; }
+body.dens-aere .hero-content { padding-top: 160px; padding-bottom: 130px; }
+body.dens-aere .hero h1 { margin-bottom: 44px; }
+
+/* MAGAZINE — current default */
+
+/* COMPACT — efficient, scannable */
+body.dens-compact {
+  --section-y: clamp(50px, 6vw, 90px);
+}
+body.dens-compact h1 { font-size: clamp(34px, 5vw, 64px); }
+body.dens-compact h2 { font-size: clamp(26px, 3.6vw, 48px); }
+body.dens-compact h3 { font-size: clamp(18px, 2vw, 26px); }
+body.dens-compact .lead { font-size: 15px; line-height: 1.5; }
+body.dens-compact .section-head { margin-bottom: clamp(32px, 4vw, 50px); }
+body.dens-compact .pack-body { padding: 20px 22px 24px; }
+body.dens-compact .pack-feat li { padding: 6px 0 6px 24px; font-size: 13px; }
+body.dens-compact .pack-price { padding: 16px 0; margin-bottom: 18px; }
+body.dens-compact .pack-price .real { font-size: 38px; }
+body.dens-compact .hero-content { padding-top: 110px; padding-bottom: 70px; }
+body.dens-compact .hero h1 { margin-bottom: 22px; }
+body.dens-compact .hero-eyebrow { margin-bottom: 20px; }
+body.dens-compact .timeline-day { padding: 36px 26px; }
+body.dens-compact .day-big { font-size: clamp(52px, 6vw, 80px); }
+body.dens-compact .gal-grid { gap: 22px; }
+body.dens-compact .avis-card { padding: 24px 26px; }
+body.dens-compact .avis-text { font-size: 14px; }
+body.dens-compact .zone-card { padding: 24px 22px; }
+body.dens-compact .faq-q { padding: 20px 60px 20px 0; font-size: 15px; }
+
+@media (max-width: 600px) {
+  #luxeoTweaks {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+  }
+  .tweaks-body { padding: 18px; gap: 22px; }
+  .tweak-segments { gap: 4px; }
+  .tweak-seg { padding: 9px 4px; font-size: 11px; }
+}
