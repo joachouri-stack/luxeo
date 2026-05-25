@@ -201,15 +201,38 @@
 .cfg-wall-left { background-image: var(--tile-murs, var(--tile-img)); }
 .cfg-floor     { background-image: var(--tile-sol,  var(--tile-img)); }
 
+/* ===== MUR DU FOND ===== */
 .cfg-wall-back {
   inset: 0 0 36% 26%;
   background-blend-mode: normal;
+  /* Realistic grout grid overlay */
+  box-shadow:
+    inset 0 -8px 18px -8px rgba(0,0,0,0.5),       /* shadow at floor junction */
+    inset 8px 0 16px -8px rgba(0,0,0,0.35);        /* shadow at left wall junction */
+}
+.cfg-wall-back::before {
+  /* Grout grid */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.18) 1px, transparent 1px);
+  background-size: 25% 25%;
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 .cfg-wall-back::after {
+  /* Soft directional light from top-right */
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(0,0,0,0.15) 100%);
+  background:
+    linear-gradient(135deg, rgba(255,235,200,0.18) 0%, transparent 45%, rgba(0,0,0,0.18) 100%),
+    radial-gradient(ellipse at 80% 0%, rgba(255,220,170,0.2), transparent 50%);
+  pointer-events: none;
 }
+
+/* ===== MUR LATÉRAL GAUCHE ===== */
 .cfg-wall-left {
   top: 0; bottom: 36%; left: 0;
   width: 30%;
@@ -218,11 +241,29 @@
   transform-origin: left center;
   clip-path: polygon(0 0, 100% 14%, 100% 86%, 0 100%);
 }
+.cfg-wall-left::before {
+  /* Grout grid (smaller because of perspective) */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.2) 1px, transparent 1px);
+  background-size: 50% 25%;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 .cfg-wall-left::after {
+  /* Deep shadow toward the back corner */
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 100%);
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 100%),
+    linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
 }
+
+/* ===== SOL ===== */
 .cfg-floor {
   bottom: 0;
   left: 0; right: 0;
@@ -231,53 +272,136 @@
   transform: perspective(700px) rotateX(56deg);
   transform-origin: bottom center;
 }
+.cfg-floor::before {
+  /* Grout grid for floor tiles */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.22) 1px, transparent 1px);
+  background-size: 15% 24%;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 .cfg-floor::after {
+  /* Wet/reflective floor + shadow from walls */
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 60%, rgba(255,255,255,0.06) 100%);
+  background:
+    linear-gradient(180deg,
+      rgba(0,0,0,0.5) 0%,
+      rgba(0,0,0,0.15) 30%,
+      rgba(255,255,255,0.12) 70%,
+      rgba(255,255,255,0.2) 100%),
+    radial-gradient(ellipse at 50% 80%, rgba(255,255,255,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+/* ===== JONCTION mur arrière / mur gauche (ligne d'ombre verticale) ===== */
+.cfg-wall-back {
+  position: absolute;
+}
+.cfg-wall-back::after { z-index: 1; }
+
+/* Vertical dark line at the wall-to-wall corner */
+.cfg-scene::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 36%;
+  left: 26%;
+  width: 8px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Horizontal dark line at the wall-to-floor junction */
+.cfg-scene::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 36%;
+  height: 10px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .cfg-drain {
   position: absolute;
-  bottom: 8%;
+  bottom: 7%;
   left: 50%;
   transform: translateX(-50%);
-  width: 30%;
-  height: 6px;
-  background: linear-gradient(180deg, #4a4a48, #6a6a66 50%, #2a2a28);
-  border-radius: 4px;
+  width: 32%;
+  height: 8px;
+  background:
+    linear-gradient(180deg, #1a1a1c 0%, #3a3a3c 30%, #5a5a5c 50%, #2a2a2c 80%, #0a0a0c 100%);
+  border-radius: 2px;
+  box-shadow:
+    0 -2px 4px rgba(0,0,0,0.5),
+    inset 0 1px 2px rgba(255,255,255,0.15);
   z-index: 3;
+}
+.cfg-drain::before {
+  /* Tiny grate stripes */
+  content: '';
+  position: absolute;
+  inset: 1px 2px 1px 2px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 2px, rgba(0,0,0,0.6) 2px 3px);
+  border-radius: 1px;
 }
 
 .cfg-shower-arm {
   position: absolute;
-  top: 12%;
+  top: 11%;
   left: 48%;
-  width: 4px;
-  height: 60px;
-  background: linear-gradient(90deg, #b8b8b6, #e8e8e6 50%, #707070);
+  width: 5px;
+  height: 64px;
+  background: linear-gradient(90deg, #6a6a6c 0%, #c8c8ca 30%, #f5f5f7 50%, #b8b8ba 70%, #5a5a5c 100%);
   border-radius: 2px;
+  box-shadow:
+    -2px 2px 6px rgba(0,0,0,0.4),
+    inset 0 0 1px rgba(255,255,255,0.5);
   z-index: 4;
 }
 .cfg-shower-head {
   position: absolute;
-  top: 9%;
+  top: 8%;
   left: 50%;
   transform: translateX(-50%);
-  width: 70px;
-  height: 14px;
-  background: radial-gradient(ellipse at 30% 30%, #f5f5f3, #b8b8b4 60%, #707070);
+  width: 84px;
+  height: 18px;
+  background:
+    radial-gradient(ellipse at 30% 25%, #fafafa 0%, #d0d0d2 30%, #888 70%, #4a4a4c 100%);
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.5),
+    inset 0 -3px 6px rgba(0,0,0,0.3),
+    inset 0 1px 2px rgba(255,255,255,0.6);
   z-index: 4;
+}
+.cfg-shower-head::after {
+  /* Holes pattern */
+  content: '';
+  position: absolute;
+  inset: 4px 8px 4px 8px;
+  background:
+    radial-gradient(circle, rgba(0,0,0,0.5) 1px, transparent 2px) 0 0 / 8px 6px;
+  border-radius: 50%;
+  opacity: 0.6;
 }
 
 .cfg-water {
   position: absolute;
-  top: 15%;
+  top: 14%;
   left: 42%;
-  width: 80px;
-  height: 45%;
+  width: 90px;
+  height: 50%;
   z-index: 3;
   pointer-events: none;
 }
@@ -286,47 +410,98 @@
   top: 0;
   width: 1.5px;
   height: 100%;
-  background: linear-gradient(180deg, rgba(180,220,235,0.95) 0%, rgba(180,220,235,0.4) 60%, transparent);
-  animation: cfgWaterFall 1s linear infinite;
-  opacity: 0.85;
+  background: linear-gradient(180deg,
+    rgba(200,230,240,0.95) 0%,
+    rgba(180,220,235,0.5) 50%,
+    transparent);
+  filter: blur(0.4px);
+  animation: cfgWaterFall 0.95s linear infinite;
+  opacity: 0.88;
 }
-.cfg-water span:nth-child(1) { left: 8px; animation-delay: 0s; }
+.cfg-water span:nth-child(1) { left: 6px;  animation-delay: 0s;    }
 .cfg-water span:nth-child(2) { left: 18px; animation-delay: 0.15s; }
-.cfg-water span:nth-child(3) { left: 28px; animation-delay: 0.3s; }
-.cfg-water span:nth-child(4) { left: 38px; animation-delay: 0.45s; }
-.cfg-water span:nth-child(5) { left: 48px; animation-delay: 0.1s; }
-.cfg-water span:nth-child(6) { left: 58px; animation-delay: 0.25s; }
-.cfg-water span:nth-child(7) { left: 68px; animation-delay: 0.4s; }
-.cfg-water span:nth-child(8) { left: 35px; animation-delay: 0.55s; }
+.cfg-water span:nth-child(3) { left: 32px; animation-delay: 0.3s;  }
+.cfg-water span:nth-child(4) { left: 44px; animation-delay: 0.45s; }
+.cfg-water span:nth-child(5) { left: 54px; animation-delay: 0.1s;  }
+.cfg-water span:nth-child(6) { left: 66px; animation-delay: 0.25s; }
+.cfg-water span:nth-child(7) { left: 78px; animation-delay: 0.4s;  }
+.cfg-water span:nth-child(8) { left: 38px; animation-delay: 0.55s; }
 @keyframes cfgWaterFall {
-  0% { transform: translateY(-30%); opacity: 0; }
-  10% { opacity: 0.85; }
-  90% { opacity: 0.6; }
-  100% { transform: translateY(80%); opacity: 0; }
+  0%   { transform: translateY(-25%); opacity: 0; }
+  10%  { opacity: 0.88; }
+  90%  { opacity: 0.55; }
+  100% { transform: translateY(85%); opacity: 0; }
 }
 
+/* ===== PAROI VITRÉE — verre réaliste ===== */
 .cfg-glass-edge {
   position: absolute;
-  top: 6%; bottom: 12%;
-  right: 14%;
-  width: 4px;
-  background: linear-gradient(180deg, #9aa3a8, #d5dadd 50%, #6e7378);
+  top: 4%; bottom: 14%;
+  right: 12%;
+  width: 28%;
   z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg,
+      rgba(220,235,240,0.04) 0%,
+      rgba(220,235,240,0.12) 25%,
+      rgba(255,255,255,0.18) 40%,
+      rgba(220,235,240,0.10) 60%,
+      rgba(180,210,225,0.16) 80%,
+      rgba(220,235,240,0.06) 100%);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.18),
+    0 14px 30px -10px rgba(0,0,0,0.4),
+    /* Right edge: metallic frame */
+    inset -3px 0 6px -2px rgba(150,160,170,0.6);
+  backdrop-filter: blur(1px);
+}
+.cfg-glass-edge::before {
+  /* Highlight reflection diagonal */
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 12%;
+  width: 30%;
+  height: 38%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent 70%);
+  border-radius: 100%;
+  filter: blur(8px);
+  opacity: 0.7;
+}
+.cfg-glass-edge::after {
+  /* Right metallic frame strip */
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #9aa3a8, #d5dadd 50%, #6e7378);
+  border-radius: 2px;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
 }
 
 .cfg-light {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 60% 20%, rgba(255, 220, 160, 0.2), transparent 50%),
-    radial-gradient(ellipse at 30% 80%, rgba(14, 124, 123, 0.1), transparent 60%);
+    /* Warm spot from ceiling */
+    radial-gradient(ellipse 50% 40% at 55% 0%, rgba(255, 220, 165, 0.32), transparent 70%),
+    /* Cool ambient from glass side */
+    radial-gradient(ellipse 35% 60% at 100% 50%, rgba(180, 220, 235, 0.1), transparent 70%);
+  mix-blend-mode: soft-light;
   z-index: 5;
   pointer-events: none;
 }
 .cfg-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 100%);
+  background:
+    radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.5) 100%),
+    /* Subtle steam at top */
+    radial-gradient(ellipse 40% 18% at 30% 6%, rgba(255,255,255,0.08), transparent 70%),
+    radial-gradient(ellipse 30% 14% at 65% 10%, rgba(255,255,255,0.05), transparent 70%);
   z-index: 6;
   pointer-events: none;
 }
