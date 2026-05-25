@@ -3853,3 +3853,200 @@ footer {
   .cur-dot, .cur-ring { display: none !important; }
   body, body a, body button, body input { cursor: auto !important; }
 }
+
+/* ============================================
+   HERO META — Floating trust badge (bottom-right)
+   ============================================ */
+.hero-meta {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 110px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
+  background: rgba(10, 24, 24, 0.5);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 18px 22px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px -16px rgba(0, 0, 0, 0.5);
+  animation: heroMetaIn 0.9s 0.4s var(--ease-out) backwards;
+}
+@keyframes heroMetaIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta-stars {
+  font-size: 13px;
+  color: var(--or);
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.5));
+}
+.hero-meta .num {
+  font-size: 38px;
+  font-weight: 200;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.hero-meta .num .small {
+  font-size: 18px;
+  color: var(--or);
+}
+.hero-meta .lbl {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ============================================
+   TRUST STRIP — réassurance entre hero et intro
+   ============================================ */
+.trust-strip {
+  background: #fff;
+  padding: 36px var(--gutter);
+  border-top: 1px solid var(--ligne);
+  border-bottom: 1px solid var(--ligne);
+  position: relative;
+}
+.trust-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+}
+.trust-row {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(16px, 2.5vw, 36px);
+  align-items: center;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+  min-width: 0;
+}
+.trust-ico {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(14, 124, 123, 0.08), rgba(201, 168, 76, 0.08));
+  border: 1px solid var(--ligne);
+  color: var(--turquoise);
+  transition: all 0.35s var(--ease-out);
+}
+.trust-ico svg { width: 20px; height: 20px; }
+.trust-item:hover .trust-ico {
+  background: linear-gradient(135deg, rgba(14, 124, 123, 0.18), rgba(201, 168, 76, 0.18));
+  border-color: var(--or);
+  color: var(--or);
+  transform: rotate(-6deg) scale(1.05);
+}
+.trust-text { min-width: 0; }
+.trust-h {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texte);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.trust-s {
+  font-size: 11px;
+  color: var(--texte-mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+  .trust-row { grid-template-columns: repeat(3, 1fr); row-gap: 22px; }
+  .trust-item:nth-child(4),
+  .trust-item:nth-child(5) { grid-column: span 1; }
+}
+@media (max-width: 600px) {
+  .trust-strip { padding: 28px var(--gutter); }
+  .trust-row { grid-template-columns: 1fr 1fr; row-gap: 18px; gap: 14px; }
+  .trust-item:nth-child(5) { grid-column: 1 / -1; justify-content: center; }
+  .trust-h { font-size: 12px; }
+  .trust-s { font-size: 10px; }
+  .trust-ico { width: 36px; height: 36px; }
+  .trust-ico svg { width: 17px; height: 17px; }
+
+  .hero-meta {
+    right: 14px;
+    bottom: 80px;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+  .hero-meta .num { font-size: 26px; }
+  .hero-meta .num .small { font-size: 14px; }
+  .hero-meta .lbl { font-size: 10px; }
+}
+
+/* ============================================
+   PACK FEATURED — animated gold ring "Best seller"
+   ============================================ */
+.pack-featured {
+  position: relative;
+}
+.pack-featured::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 4px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 124, 123, 0.5) 0%,
+    rgba(201, 168, 76, 0.7) 50%,
+    rgba(14, 124, 123, 0.5) 100%);
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s;
+  animation: packGoldShift 8s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+.pack-featured:hover::before { opacity: 1; }
+@keyframes packGoldShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle ribbon pulse on the "Le plus choisi" */
+.pack-featured .banner-ribbon {
+  animation: ribbonPulse 3.5s ease-in-out infinite;
+}
+@keyframes ribbonPulse {
+  0%, 100% { box-shadow: 0 4px 12px -2px rgba(14, 124, 123, 0.4); }
+  50%      { box-shadow: 0 6px 22px -2px rgba(14, 124, 123, 0.7); }
+}
