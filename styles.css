@@ -2274,8 +2274,17 @@ footer {
   transition: transform 1.2s var(--ease-out);
   z-index: 0;
 }
+/* PNG transparent — the card gradient shows through */
+.mat img.mat-bg[src$=".png"] {
+  object-fit: contain;
+  padding: 10% 12% 22% 12%;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.45)) drop-shadow(0 6px 14px rgba(0,0,0,0.3));
+}
 .mat:hover img.mat-bg {
   transform: scale(1.06);
+}
+.mat:hover img.mat-bg[src$=".png"] {
+  transform: scale(1.03);
 }
 .mat::before {
   display: none;
