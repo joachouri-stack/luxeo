@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a2a2a">
+<title>Configurateur — Carrelages | Luxeo</title>
+<meta name="description" content="Composez votre douche italienne — sélectionnez vos carrelages parmi 32 références premium. Devis gratuit avec vos références exactes en moins de 24h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="configurateur.css">
+<link rel="stylesheet" href="tweaks.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="logo"><span class="dot"></span>LUXEO</a>
+  <ul class="nav-links">
+    <li><a href="index.html#packs">Packs</a></li>
+    <li><a href="configurateur.html" style="color: var(--turquoise); font-weight: 500;">Composer</a></li>
+    <li><a href="index.html#realisations">Réalisations</a></li>
+    <li><a href="index.html#parrainage">Parrainage</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:" class="nav-phone">
+      <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      <span>Devis téléphone</span>
+    </a>
+    <a href="#devis" class="btn btn-gold">Mon devis <span class="arrow">→</span></a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="cfg-hero">
+  <div class="cfg-breadcrumb">
+    <a href="index.html">Accueil</a>
+    <span class="sep">/</span>
+    Configurateur
+  </div>
+  <span class="eyebrow">Configurateur · Carrelages</span>
+  <h1>Composez votre <em>douche italienne.</em></h1>
+  <p>Parcourez notre catalogue exclusif de 32 carrelages premium — chaque référence est directement associée à notre grossiste partenaire. Vos sélections sont automatiquement transmises avec votre demande de devis.</p>
+</header>
+
+<!-- TOOLBAR / FILTERS -->
+<div class="cfg-toolbar">
+  <div class="cfg-toolbar-inner">
+    <div class="cfg-filters" id="cfgFilters"></div>
+    <div class="cfg-count-display"><span id="cfgShown">32</span> carrelages affichés</div>
+  </div>
+</div>
+
+<!-- PREVIEW STAGE — Bathroom mockup -->
+<section class="cfg-preview-stage">
+  <div class="cfg-preview-inner">
+    <div class="cfg-preview-text">
+      <span class="eyebrow">Votre aperçu en direct</span>
+      <h2>Visualisez votre <em>future douche.</em></h2>
+      <p>Cliquez sur n'importe quel carrelage du catalogue ci-dessous pour le voir appliqué dans votre douche italienne. Chaque clic, une projection nouvelle.</p>
+      <div class="cfg-preview-info">
+        <span class="lbl">Carrelage sélectionné</span>
+        <div class="cfg-preview-ref" id="cfgPreviewRef">LUX-MOS-001</div>
+        <div class="cfg-preview-name" id="cfgPreviewName">Mosaïque Turquoise</div>
+        <div class="cfg-preview-meta" id="cfgPreviewMeta">30×30 cm · Brillant</div>
+      </div>
+    </div>
+
+    <div class="cfg-scene" id="cfgScene" style="--tile-img: url('assets/tiles/LUX-MOS-001.jpg');">
+      <div class="cfg-wall cfg-wall-back"></div>
+      <div class="cfg-wall cfg-wall-left"></div>
+      <div class="cfg-floor"></div>
+      <div class="cfg-drain"></div>
+      <div class="cfg-shower-arm"></div>
+      <div class="cfg-shower-head"></div>
+      <div class="cfg-water">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="cfg-glass-edge"></div>
+      <div class="cfg-light"></div>
+      <div class="cfg-vignette"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="cfg-catalog">
+  <div class="cfg-grid" id="cfgGrid"></div>
+</section>
+
+<!-- STICKY PANEL -->
+<div class="cfg-panel" id="cfgPanel">
+  <div class="count">
+    <span class="n" id="cfgCount">0</span>
+    <span class="lbl">Sélection</span>
+  </div>
+  <div class="selected-list" id="cfgChips"></div>
+  <a href="#devis" class="btn btn-gold">Continuer <span class="arrow">→</span></a>
+</div>
+
+<!-- DEVIS -->
+<section class="cfg-devis" id="devis">
+  <div class="cfg-devis-inner">
+    <div class="cfg-devis-head">
+      <span class="eyebrow">Demande de devis</span>
+      <h2>Vos carrelages.<br><em>Votre devis sur mesure.</em></h2>
+      <p>Vos références sélectionnées sont automatiquement jointes à votre demande. Réponse sous 24h ouvrées par un conseiller Luxeo.</p>
+    </div>
+
+    <div class="cfg-selection">
+      <div class="cfg-selection-head">
+        <h3>Vos carrelages sélectionnés</h3>
+        <button type="button" class="clear" id="cfgClear">Tout effacer</button>
+      </div>
+      <ul class="cfg-selection-list" id="cfgList"></ul>
+      <div class="cfg-empty" id="cfgEmpty">
+        — Aucun carrelage sélectionné pour l'instant —<br>
+        Parcourez le catalogue ci-dessus pour en choisir.
+      </div>
+    </div>
+
+    <form class="contact-form cfg-form" id="cfgForm" onsubmit="event.preventDefault(); cfgSubmit(this);">
+      <h3 style="color:#fff; font-size: 18px; font-weight: 400; margin-bottom: 24px;">Vos coordonnées</h3>
+
+      <div class="form-row">
+        <div class="field"><input type="text" id="cf-prenom" placeholder=" " required><label for="cf-prenom">Prénom</label></div>
+        <div class="field"><input type="text" id="cf-nom" placeholder=" " required><label for="cf-nom">Nom</label></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><input type="email" id="cf-email" placeholder=" " required><label for="cf-email">Email</label></div>
+        <div class="field"><input type="tel" id="cf-tel" placeholder=" " required><label for="cf-tel">Téléphone</label></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><input type="text" id="cf-ville" placeholder=" " required><label for="cf-ville">Ville</label></div>
+        <div class="field field-select">
+          <select id="cf-pack" required>
+            <option value="" disabled selected></option>
+            <option value="essentiel">Pack Essentiel — 2 700€</option>
+            <option value="confort">Pack Confort — 4 800€</option>
+            <option value="luxe">Pack Luxe — 7 900€</option>
+            <option value="conseil">Je veux être conseillé</option>
+          </select>
+          <label for="cf-pack">Pack souhaité</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field field-full"><textarea id="cf-msg" placeholder=" " rows="3"></textarea><label for="cf-msg">Votre projet (facultatif)</label></div>
+      </div>
+
+      <input type="hidden" id="cf-refs" name="references_carrelage" value="">
+
+      <button type="submit" class="btn btn-primary">Envoyer ma demande <span class="arrow">→</span></button>
+      <p class="consent">En envoyant ce formulaire, vous acceptez que Luxeo vous contacte concernant votre projet. Aucune donnée n'est transmise à des tiers.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-col foot-brand">
+      <a href="index.html" class="logo"><span class="dot"></span>LUXEO</a>
+      <p>Installation clé en main de douches italiennes premium dans le Sud de la France.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Nos packs</h5>
+      <ul>
+        <li><a href="index.html#pack-starter">Pack Essentiel</a></li>
+        <li><a href="index.html#pack-confort">Pack Confort</a></li>
+        <li><a href="index.html#pack-luxe">Pack Luxe</a></li>
+        <li><a href="configurateur.html">Configurateur</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Le site</h5>
+      <ul>
+        <li><a href="index.html#realisations">Réalisations</a></li>
+        <li><a href="index.html#parrainage">Parrainage</a></li>
+        <li><a href="index.html#zones">Zones</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Légal</h5>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+        <li><a href="confidentialite.html">RGPD</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Luxeo — Tous droits réservés · luxeo.pro</span>
+    <span>info@luxeo.pro</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/" class="wa-btn" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .396C7.164.396 0 7.561 0 16.396c0 2.788.728 5.515 2.111 7.917L.039 31.604l7.452-2.013c2.323 1.272 4.94 1.942 7.601 1.942h.005c8.829 0 16-7.164 16-16C31.097 7.561 23.929.396 16 .396zm7.31 20.327c-.4-.2-2.371-1.17-2.738-1.303-.366-.135-.633-.2-.9.2-.265.4-1.032 1.302-1.265 1.568-.234.267-.466.3-.866.1-.4-.2-1.689-.624-3.218-1.984-1.19-1.061-1.992-2.372-2.225-2.772-.234-.4-.025-.617.175-.816.18-.18.4-.467.6-.7.2-.234.267-.4.4-.668.135-.267.067-.5-.033-.7-.1-.2-.9-2.166-1.232-2.967-.325-.78-.654-.675-.9-.687-.234-.013-.5-.013-.767-.013s-.7.1-1.066.5c-.366.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.866 1.633 4.134.2.267 2.822 4.31 6.84 6.043 2.522 1.089 3.51 1.181 4.776 1 .77-.115 2.371-.967 2.704-1.9.333-.934.333-1.733.234-1.9-.1-.166-.366-.266-.766-.466z"/></svg>
+</a>
+
+<script src="catalog.js"></script>
+<script src="configurateur.js"></script>
+<script>
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+  if (burger) burger.addEventListener('click', () => nav.classList.toggle('nav-mobile-open'));
+</script>
+
+</body>
+</html>

@@ -6,108 +6,120 @@
 <meta name="theme-color" content="#0a2a2a">
 <title>Luxeo — Douche italienne clé en main | Vaucluse · Gard · PACA</title>
 <meta name="description" content="Luxeo installe votre douche italienne clé en main en 3 jours — Vaucluse, Gard, Bouches-du-Rhône, Hérault. Devis gratuit sans engagement.">
-<meta name="keywords" content="douche italienne, remplacement baignoire, douche italienne Avignon, Nîmes, Marseille, rénovation salle de bain PACA">
+<meta name="keywords" content="douche italienne, remplacement baignoire, douche italienne Avignon, douche italienne Nîmes, douche italienne Marseille, rénovation salle de bain PACA">
 <meta property="og:title" content="Luxeo — Votre douche italienne installée en 3 jours">
 <meta property="og:description" content="Installation clé en main de douches italiennes premium dans le Sud de la France — devis gratuit sous 24h.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"LocalBusiness",
-  "name":"Luxeo",
-  "image":"https://luxeo.pro/og.jpg",
-  "url":"https://luxeo.pro",
-  "telephone":"",
-  "email":"info@luxeo.pro",
-  "address":{"@type":"PostalAddress","addressRegion":"PACA","addressCountry":"FR"},
-  "areaServed":["Vaucluse","Gard","Bouches-du-Rhône","Hérault"],
-  "priceRange":"€€€"
-}
-</script>
+<link rel="stylesheet" href="tweaks.css">
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
 <nav class="nav" id="nav">
-  <a href="index.html" class="logo"><span class="dot"></span>LUXEO</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="composer.html" class="nav-composer">Composer</a></li>
+  <a href="#" class="logo">
+    <span class="dot"></span>
+    LUXEO
+  </a>
+  <ul class="nav-links">
     <li><a href="#packs">Packs</a></li>
+    <li><a href="configurateur.html">Composer</a></li>
     <li><a href="#realisations">Réalisations</a></li>
     <li><a href="#parrainage">Parrainage</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="tel:" class="nav-phone" aria-label="Téléphone">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <a href="tel:" class="nav-phone">
+      <span class="ico">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </span>
+      <span>Devis téléphone</span>
     </a>
     <a href="#contact" class="btn btn-gold">Devis gratuit <span class="arrow">→</span></a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ============================================
+     HERO
+     ============================================ -->
 <header class="hero">
   <div class="hero-bg" id="heroBg">
-    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=2000&q=80" alt="Douche italienne luxe — salle de bain premium">
-    <div class="hero-overlay"></div>
+    <img src="assets/hero-luxeo-v3.jpg" alt="Douche italienne luxe Luxeo — lumière dorée et eau" style="width:100%;height:100%;object-fit:cover;">
   </div>
+
   <div class="hero-shimmer"></div>
+  <div class="hero-orbs">
+    <span></span><span></span><span></span>
+  </div>
 
   <div class="hero-content">
     <span class="hero-eyebrow">Artisans certifiés · Sud de la France</span>
-    <h1>Votre douche italienne.<br><span class="accent">Installée en 3 jours.</span></h1>
+    <h1>Votre douche italienne. <br><span class="accent">Installée en 3 jours.</span></h1>
     <p class="hero-sub">Vaucluse <span class="sep">·</span> Gard <span class="sep">·</span> Bouches-du-Rhône <span class="sep">·</span> Hérault</p>
-    <span class="hero-badge">–50% grâce à notre partenaire exclusif</span>
 
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-gold">Demander un devis gratuit <span class="arrow">→</span></a>
       <a href="#realisations" class="btn btn-ghost">Voir nos réalisations</a>
     </div>
-
-    <a href="composer.html" class="hero-composer">
-      <span>Composer votre douche italienne</span>
-      <span class="arrow">→</span>
-    </a>
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <span></span>
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="line"></div>
   </div>
 </header>
 
-<!-- BANDEAU URGENCE -->
+<!-- ============================================
+     BANDEAU URGENCE
+     ============================================ -->
 <div class="urgence-band">
-  <div class="urgence-inner">
-    <span class="pulse-dot"></span>
-    <span>Plus que <strong>3 créneaux disponibles</strong> ce mois-ci en Vaucluse et dans le Gard — Ne tardez pas, nos créneaux partent en quelques jours</span>
-    <a href="#contact" class="btn btn-dark">Réserver mon créneau <span class="arrow">→</span></a>
-  </div>
+  <span class="pulse-dot">
+    Plus que <strong>3 créneaux disponibles</strong> ce mois-ci en Vaucluse et dans le Gard
+  </span>
+  <span style="color:rgba(255,255,255,0.5);">— Ne tardez pas, nos créneaux partent en quelques jours</span>
+  <a href="#contact" class="btn btn-gold">Réserver mon créneau <span class="arrow">→</span></a>
 </div>
 
-<!-- INTRO -->
+<!-- ============================================
+     INTRO / PROMESSE
+     ============================================ -->
 <section class="intro">
+  <span class="chapter">01</span>
   <div class="wrap">
     <div class="intro-grid">
       <div class="intro-text">
         <span class="eyebrow reveal">Pourquoi Luxeo</span>
-        <h2 class="reveal">Le luxe d'une douche italienne, <span class="italic">sans le stress du chantier.</span></h2>
-        <p class="lead reveal">Luxeo installe votre douche italienne clé en main — dépose de l'ancienne baignoire, étanchéité renforcée, pose finale. Tout est inclus, tout est livré, tout est fini en moins d'une semaine.</p>
-        <div class="intro-stats reveal">
-          <div class="stat"><div class="n">3<span>j</span></div><div class="lbl">Chantier moyen</div></div>
-          <div class="stat"><div class="n">24<span>h</span></div><div class="lbl">Devis sous 24h</div></div>
-          <div class="stat"><div class="n">5<span>ans</span></div><div class="lbl">Garantie Pack Luxe</div></div>
-          <div class="stat"><div class="n">4,9<span>/5</span></div><div class="lbl">47 clients satisfaits</div></div>
+        <h2 class="reveal reveal-delay-1">Le luxe d'une douche italienne, <span class="italic">sans le stress du chantier.</span></h2>
+        <p class="lead reveal reveal-delay-2">Luxeo installe votre douche italienne clé en main — dépose de l'ancienne baignoire, étanchéité renforcée, pose finale. Tout est inclus, tout est livré, tout est fini en moins d'une semaine. Vous repartez avec un espace spa et un prix réduit de moitié.</p>
+
+        <div class="intro-stats reveal reveal-delay-3">
+          <div class="stat">
+            <div class="n"><span class="counter" data-target="3">0</span><span class="u">j</span></div>
+            <div class="lbl">Chantier moyen</div>
+          </div>
+          <div class="stat">
+            <div class="n"><span class="counter" data-target="24">0</span><span class="u">h</span></div>
+            <div class="lbl">Devis sous 24h</div>
+          </div>
+          <div class="stat">
+            <div class="n"><span class="counter" data-target="5">0</span><span class="u">ans</span></div>
+            <div class="lbl">Garantie pack Luxe</div>
+          </div>
+          <div class="stat">
+            <div class="n"><span class="counter" data-target="4.9" data-decimal="1">0</span><span class="u">/5</span></div>
+            <div class="lbl">47 clients satisfaits</div>
+          </div>
         </div>
       </div>
-      <div class="intro-img reveal">
-        <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80" alt="Détail douche italienne — robinetterie or sur marbre">
+
+      <div class="intro-img reveal reveal-delay-2">
+        <img src="assets/intro-detail.jpg" alt="Détail douche italienne — robinetterie or sur marbre clair">
         <div class="quote">
-          <p>« Notre baignoire avait 25 ans. Luxeo l'a remplacée par une vraie douche italienne en 3 jours. Le résultat dépasse nos attentes. »</p>
+          <p>« On voulait remplacer notre baignoire depuis 10 ans. Luxeo l'a fait en 3 jours, on n'a touché à rien. Le résultat dépasse nos attentes. »</p>
           <div class="who">Pierre M. — Pack Luxe — Nîmes</div>
         </div>
       </div>
@@ -115,176 +127,410 @@
   </div>
 </section>
 
-<!-- 3 PACKS -->
-<section class="packs" id="packs">
+<!-- ============================================
+     SECTION 3 JOURS — TIMELINE
+     ============================================ -->
+<section class="timeline">
+  <span class="chapter">02</span>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow reveal">Trois packs · Une promesse</span>
-      <h2 class="reveal">Choisissez le niveau de luxe<br>qui vous correspond.</h2>
-      <p class="lead reveal">Tous nos packs comprennent dépose, fourniture, pose et livraison — vous ne payez qu'une seule fois.</p>
+      <span class="eyebrow reveal">Notre méthode</span>
+      <h2 class="reveal reveal-delay-1">3 jours. <span class="italic gold">3 étapes.</span><br>Un résultat clé en main.</h2>
+      <p class="lead reveal reveal-delay-2">Pas d'allers-retours, pas d'attente. Nos artisans restent sur place du premier coup de marteau au dernier joint.</p>
+    </div>
+
+    <div class="timeline-grid">
+      <div class="timeline-day reveal">
+        <div class="day-dot"></div>
+        <div class="day-num">Étape 01</div>
+        <div class="day-big">J<span class="lbl">our&nbsp;1</span></div>
+        <h3 class="day-title">Dépose &amp; <em>préparation</em></h3>
+        <p class="day-text">On retire l'ancien — propre, rapide, sans surprise. Vos sols et murs sont préparés pour accueillir la nouvelle installation.</p>
+        <ul class="day-points">
+          <li>Dépose baignoire ou ancienne douche</li>
+          <li>Évacuation des gravats</li>
+          <li>Préparation supports &amp; arrivées d'eau</li>
+        </ul>
+      </div>
+
+      <div class="timeline-day reveal reveal-delay-1">
+        <div class="day-dot"></div>
+        <div class="day-num">Étape 02</div>
+        <div class="day-big">J<span class="lbl">our&nbsp;2</span></div>
+        <h3 class="day-title">Pose &amp; <em>étanchéité</em></h3>
+        <p class="day-text">Le cœur du chantier. Receveur, étanchéité double couche, paroi vitrée et robinetterie installés avec précision.</p>
+        <ul class="day-points">
+          <li>Pose receveur extra-plat</li>
+          <li>Étanchéité &amp; raccordements</li>
+          <li>Paroi vitrée + robinetterie</li>
+        </ul>
+      </div>
+
+      <div class="timeline-day reveal reveal-delay-2">
+        <div class="day-dot"></div>
+        <div class="day-num">Étape 03</div>
+        <div class="day-big">J<span class="lbl">our&nbsp;3</span></div>
+        <h3 class="day-title">Finitions &amp; <em>remise des clés</em></h3>
+        <p class="day-text">Carrelage, joints, contrôle qualité, nettoyage complet. Vous récupérez une salle de bain prête à l'emploi le soir même.</p>
+        <ul class="day-points">
+          <li>Carrelage &amp; finitions</li>
+          <li>Contrôle qualité + test étanchéité</li>
+          <li>Nettoyage &amp; remise des clés</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PACKS LUXEO
+     ============================================ -->
+<section class="packs" id="packs">
+  <span class="chapter">03</span>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Trois packs · Une seule promesse</span>
+      <h2 class="reveal reveal-delay-1">Choisissez le niveau de luxe<br>qui vous correspond.</h2>
+      <p class="lead reveal reveal-delay-2">Tous nos packs comprennent dépose, fourniture, pose et livraison — vous ne payez qu'une seule fois.</p>
     </div>
 
     <div class="pack-grid">
-      <article class="pack reveal" id="pack-starter">
+
+      <!-- PACK ESSENTIEL -->
+      <div class="pack pack-essentiel reveal" id="pack-starter">
         <div class="pack-banner">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Pack Starter">
-          <div class="pack-tier">Niveau 01</div>
-          <div class="pack-badge">–50% partenaire</div>
+          <img src="assets/pack-essentiel.jpg" alt="Pack Essentiel">
+          <div class="banner-tier">
+            Niveau 01
+            <span class="bars"><span class="on"></span><span></span><span></span></span>
+          </div>
+          <div class="banner-title">
+            <h3 class="pack-name">Pack <em>Essentiel</em></h3>
+          </div>
         </div>
         <div class="pack-body">
-          <h3>Pack <em>Starter</em></h3>
           <p class="pack-cible">Pour démarrer la rénovation — budget maîtrisé.</p>
+
           <div class="pack-price">
-            <span class="old">2 500 €</span>
-            <span class="real">1 250 <span class="e">€</span></span>
-            <span class="price-note">TTC après remise partenaire</span>
+            <span class="real">2 700<span class="e">€</span></span>
+            <span class="price-note">TTC · pose &amp; matériaux compris</span>
           </div>
+
+          <div class="feat-head">Ce qui est inclus</div>
           <ul class="pack-feat">
-            <li>Dépose ancienne baignoire / douche</li>
-            <li>Receveur extra-plat</li>
-            <li>Robinetterie chrome entrée de gamme</li>
-            <li>Paroi vitrée basique</li>
-            <li>Étanchéité + évacuation</li>
+            <li>Dépose ancienne baignoire ou douche</li>
+            <li>Receveur extra-plat standard</li>
+            <li>Robinetterie chrome</li>
+            <li>Paroi vitrée fixe</li>
+            <li>Étanchéité &amp; évacuation</li>
             <li>Pose complète par artisan</li>
             <li>Livraison matériaux incluse</li>
           </ul>
-          <div class="pack-meta"><span>Chantier <b>2–3 j</b></span><span>Garantie <b>2 ans</b></span></div>
-          <a href="#contact" class="btn btn-outline">Choisir le Starter <span class="arrow">→</span></a>
-        </div>
-      </article>
 
-      <article class="pack pack-featured reveal" id="pack-confort">
+          <div class="pack-meta">
+            <span>Chantier <b>2–3 j</b></span>
+            <span>Garantie <b>2 ans</b></span>
+          </div>
+
+          <a href="#contact" class="btn btn-outline">Choisir l'Essentiel <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- PACK CONFORT -->
+      <div class="pack pack-featured reveal reveal-delay-1" id="pack-confort">
         <div class="pack-banner">
-          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80" alt="Pack Confort">
-          <div class="pack-tier">Niveau 02</div>
-          <div class="pack-ribbon">Le plus choisi</div>
+          <img src="assets/pack-confort.jpg" alt="Pack Confort">
+          <div class="banner-tier">
+            Niveau 02
+            <span class="bars"><span class="on"></span><span class="on"></span><span></span></span>
+          </div>
+          <div class="banner-ribbon">Le plus choisi</div>
+          <div class="banner-title">
+            <h3 class="pack-name">Pack <em>Confort</em></h3>
+          </div>
         </div>
         <div class="pack-body">
-          <h3>Pack <em>Confort</em></h3>
           <p class="pack-cible">L'équilibre idéal pour s'installer durablement.</p>
+
           <div class="pack-price">
-            <span class="old">4 600 €</span>
-            <span class="real">2 300 <span class="e">€</span></span>
-            <span class="price-note">TTC après remise partenaire</span>
+            <span class="real">4 800<span class="e">€</span></span>
+            <span class="price-note">TTC · pose &amp; matériaux compris</span>
           </div>
+
+          <div class="feat-head">Tout l'Essentiel, plus :</div>
           <ul class="pack-feat">
-            <li class="hi">Robinetterie Hansgrohe</li>
-            <li class="hi">Carrelage inclus catalogue</li>
+            <li class="signature">Robinetterie Hansgrohe</li>
+            <li class="signature">Carrelage inclus au catalogue</li>
             <li>Receveur extra-plat premium</li>
             <li>Paroi vitrée sécurit</li>
             <li>Barre d'appui incluse</li>
             <li>Étanchéité renforcée</li>
             <li>Artisan certifié Luxeo</li>
           </ul>
-          <div class="pack-meta"><span>Chantier <b>3–4 j</b></span><span>Garantie <b>3 ans</b></span></div>
+
+          <div class="pack-meta">
+            <span>Chantier <b>3–4 j</b></span>
+            <span>Garantie <b>3 ans</b></span>
+          </div>
+
           <a href="#contact" class="btn btn-primary">Choisir le Confort <span class="arrow">→</span></a>
         </div>
-      </article>
+      </div>
 
-      <article class="pack pack-luxe reveal" id="pack-luxe">
+      <!-- PACK LUXE -->
+      <div class="pack pack-luxe reveal reveal-delay-2" id="pack-luxe">
         <div class="pack-banner">
-          <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=900&q=80" alt="Pack Luxe">
-          <div class="pack-tier">Niveau 03</div>
-          <div class="pack-ribbon gold">Édition Signature</div>
+          <img src="assets/pack-luxe.jpg" alt="Pack Luxe">
+          <div class="banner-tier">
+            Niveau 03
+            <span class="bars"><span class="on"></span><span class="on"></span><span class="on"></span></span>
+          </div>
+          <div class="banner-ribbon">Édition Signature</div>
+          <div class="banner-title">
+            <h3 class="pack-name">Pack <em>Luxe</em></h3>
+          </div>
         </div>
         <div class="pack-body">
-          <h3>Pack <em>Luxe</em></h3>
-          <p class="pack-cible">L'expérience spa, dans votre salle de bain.</p>
+          <p class="pack-cible">L'expérience spa, dans votre salle de bain.<br><span style="color: var(--or); font-style: normal; letter-spacing: 0.12em; font-size: 11px; text-transform: uppercase; font-weight: 500;">Signature Luxeo</span></p>
+
           <div class="pack-price">
-            <span class="old">7 500 €</span>
-            <span class="real">3 750 <span class="e">€</span></span>
-            <span class="price-note">TTC après remise partenaire</span>
+            <span class="real">7 900<span class="e">€</span></span>
+            <span class="price-note">TTC · pose &amp; matériaux compris</span>
           </div>
+
+          <div class="feat-head">Tout le Confort, plus :</div>
           <ul class="pack-feat">
-            <li class="hi">Robinetterie thermostatique Grohe</li>
-            <li class="hi">Paroi 8 mm sécurit sur mesure</li>
-            <li class="hi">Carrelage grand format 60×120</li>
-            <li class="hi">Éclairage LED encastré</li>
-            <li class="hi">Niche murale intégrée</li>
+            <li class="signature">Robinetterie thermostatique Grohe</li>
+            <li class="signature">Paroi 8 mm sécurit sur mesure</li>
+            <li class="signature">Carrelage grand format 60×120</li>
+            <li class="signature">Éclairage LED encastré</li>
+            <li class="signature">Niche murale intégrée</li>
             <li>Siège de douche teck</li>
             <li>Étanchéité double couche</li>
             <li>Garantie Luxeo 5 ans</li>
           </ul>
-          <div class="pack-meta"><span>Chantier <b>4–5 j</b></span><span>Garantie <b>5 ans</b></span></div>
+
+          <div class="pack-meta">
+            <span>Chantier <b>4–5 j</b></span>
+            <span>Garantie <b>5 ans</b></span>
+          </div>
+
           <a href="#contact" class="btn btn-luxe">Accéder au Luxe <span class="arrow">→</span></a>
         </div>
-      </article>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- COMPOSER CTA SECTION — version enrichie avec aperçu visuel -->
-<section class="composer-cta" id="composer">
-  <div class="wrap">
-    <div class="composer-cta-inner reveal">
-      <span class="eyebrow">Nouveau · Outil interactif exclusif</span>
-      <h2>Et si vous la <span class="italic gold">dessiniez vous-même ?</span></h2>
-      <p>Notre outil de composition vous permet de visualiser en temps réel votre future douche italienne. Choisissez chaque matériau — voyez le rendu instantanément.</p>
-    </div>
-
-    <div class="composer-cta-preview reveal">
-      <div class="composer-cta-preview-img">
-        <span class="composer-cta-preview-badge">Aperçu live</span>
-        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=85" alt="Aperçu visualiseur Luxeo">
-      </div>
-      <div class="composer-cta-preview-side">
-        <h3 style="color:#fff; margin-bottom: 12px;">4 zones interactives</h3>
-        <p style="color: rgba(255,255,255,0.7); margin-bottom: 18px;">Cliquez sur n'importe quel carrelage ou modèle pour le voir appliqué dans votre douche italienne. Chaque clic, une projection nouvelle.</p>
-        <div class="composer-cta-zones-list">
-          <div class="composer-cta-zone">
-            <div class="ico">▦</div>
-            <div><div class="name">Sol</div><div class="desc">8 carrelages</div></div>
-          </div>
-          <div class="composer-cta-zone">
-            <div class="ico">⊞</div>
-            <div><div class="name">Murs</div><div class="desc">8 faïences</div></div>
-          </div>
-          <div class="composer-cta-zone">
-            <div class="ico">⇣</div>
-            <div><div class="name">Colonne</div><div class="desc">6 modèles</div></div>
-          </div>
-          <div class="composer-cta-zone">
-            <div class="ico">▮</div>
-            <div><div class="name">Paroi</div><div class="desc">6 finitions</div></div>
-          </div>
-        </div>
-        <a href="composer.html" class="btn btn-gold btn-lg">Composer ma douche italienne <span class="arrow">→</span></a>
-        <p style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 16px;">Vos sélections sont automatiquement transmises avec votre demande de devis.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PARTENAIRE -50% -->
-<section class="partenaire">
+<!-- ============================================
+     FINITIONS / MATIÈRES
+     ============================================ -->
+<section class="finitions">
+  <span class="chapter">04</span>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow reveal">Notre partenaire exclusif</span>
-      <h2 class="reveal">Comment économiser <span class="italic gold">50 % ?</span></h2>
-      <p class="lead reveal">Grâce à notre partenariat exclusif avec un grand fournisseur national, vous bénéficiez d'une remise de 50% sur le prix catalogue de chaque pack — sans rogner sur la qualité.</p>
+      <span class="eyebrow reveal">Matières &amp; finitions</span>
+      <h2 class="reveal reveal-delay-1">Le détail<br><em>fait la différence.</em></h2>
+      <p class="lead reveal reveal-delay-2">Robinetterie thermostatique, parois 8 mm sécurit, carrelage grand format, éclairage LED encastré — tout est pensé pour durer.</p>
     </div>
 
-    <div class="simu reveal">
-      <div class="simu-label">Faites glisser pour simuler votre devis</div>
-      <input type="range" id="simu" min="500" max="12000" value="4600" step="100">
-      <div class="simu-result">
-        <div class="simu-line"><span>Prix catalogue</span><span class="old"><span id="simuOld">4 600</span> €</span></div>
-        <div class="simu-line big"><span>Vous payez</span><span class="real"><span id="simuReal">2 300</span> €</span></div>
-        <div class="simu-savings">Économie : <strong><span id="simuSave">2 300</span> €</strong></div>
+    <div class="materiaux">
+      <div class="mat mat-1 reveal">
+        <img class="mat-bg" src="assets/mat-robinetterie.jpg" alt="Robinetterie thermostatique or brossé">
+        <div class="mat-info">
+          <div class="label">Robinetterie</div>
+          <div class="name">Thermostatique</div>
+          <div class="grade">Grohe · pack Luxe</div>
+        </div>
       </div>
-      <a href="#contact" class="btn btn-gold">Profiter de l'offre <span class="arrow">→</span></a>
+      <div class="mat mat-2 reveal reveal-delay-1">
+        <img class="mat-bg" src="assets/mat-verre.jpg" alt="Paroi vitrée 8 mm sécurit">
+        <div class="mat-info">
+          <div class="label">Verre</div>
+          <div class="name">Paroi 8 mm sécurit</div>
+          <div class="grade">Sur mesure · pack Luxe</div>
+        </div>
+      </div>
+      <div class="mat mat-3 reveal reveal-delay-2">
+        <img class="mat-bg" src="assets/mat-carrelage.jpg" alt="Carrelage grand format marbre clair 60x120">
+        <div class="mat-info">
+          <div class="label">Carrelage</div>
+          <div class="name">Grand format</div>
+          <div class="grade">60 × 120 cm · catalogue</div>
+        </div>
+      </div>
+      <div class="mat mat-4 reveal reveal-delay-3">
+        <img class="mat-bg" src="assets/mat-eclairage.jpg" alt="Niche murale éclairée par LED">
+        <div class="mat-info">
+          <div class="label">Éclairage</div>
+          <div class="name">LED intégré</div>
+          <div class="grade">Niche murale · pack Luxe</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- URGENCE CRÉNEAUX -->
+<!-- ============================================
+     SIMULATEUR AMBIANCES
+     ============================================ -->
+<section class="ambiance" id="configurateur">
+  <span class="chapter">05</span>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Simulateur visuel</span>
+      <h2 class="reveal reveal-delay-1">Choisissez votre <span class="italic gold">ambiance.</span></h2>
+      <p class="lead reveal reveal-delay-2">Visualisez votre future douche italienne en un clic — 6 ambiances exclusives, 6 visions de votre salle de bain.</p>
+    </div>
+
+    <div class="ambiance-stage reveal" id="ambianceStage">
+      <div class="amb-frame">
+        <img class="amb-img is-active" id="ambImg" src="assets/ambiance/blanc-moderne.jpg" alt="Ambiance blanc moderne" data-label="Blanc moderne">
+        <img class="amb-img amb-img-next" id="ambImgNext" src="assets/ambiance/blanc-moderne.jpg" alt="">
+        <div class="amb-overlay">
+          <span class="amb-tag" id="ambTag">Blanc moderne</span>
+        </div>
+        <div class="amb-counter">
+          <span id="ambIndex">01</span>
+          <span class="sep">/</span>
+          <span>06</span>
+        </div>
+        <button class="amb-arrow amb-prev" id="ambPrev" aria-label="Ambiance précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="amb-arrow amb-next" id="ambNext" aria-label="Ambiance suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="amb-options" id="ambOptions">
+        <button class="amb-opt is-active" data-amb="blanc-moderne" data-label="Blanc moderne" data-ref="LUX-BET-001">
+          <span class="amb-swatch sw-blanc"></span>
+          <span class="amb-name">Blanc moderne</span>
+        </button>
+        <button class="amb-opt" data-amb="gris-anthracite" data-label="Gris anthracite" data-ref="LUX-BET-004">
+          <span class="amb-swatch sw-gris"></span>
+          <span class="amb-name">Gris anthracite</span>
+        </button>
+        <button class="amb-opt" data-amb="marbre-beige" data-label="Marbre beige" data-ref="LUX-MAR-003">
+          <span class="amb-swatch sw-marbre"></span>
+          <span class="amb-name">Marbre beige</span>
+        </button>
+        <button class="amb-opt" data-amb="noir-mat" data-label="Noir mat" data-ref="LUX-MFO-002">
+          <span class="amb-swatch sw-noir"></span>
+          <span class="amb-name">Noir mat</span>
+        </button>
+        <button class="amb-opt" data-amb="travertin-naturel" data-label="Travertin naturel" data-ref="LUX-MAR-004">
+          <span class="amb-swatch sw-travertin"></span>
+          <span class="amb-name">Travertin naturel</span>
+        </button>
+        <button class="amb-opt" data-amb="bleu-ardoise" data-label="Bleu ardoise" data-ref="LUX-PIE-005">
+          <span class="amb-swatch sw-bleu"></span>
+          <span class="amb-name">Bleu ardoise</span>
+        </button>
+      </div>
+
+      <div class="amb-cta-wrap">
+        <a href="#contact" class="btn btn-gold amb-cta" id="ambCta">
+          Je choisis cette ambiance <span class="arrow">→</span>
+        </a>
+        <a href="configurateur.html" class="amb-link">
+          Voir tout le catalogue · 32 carrelages <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     GALERIE AVANT/APRÈS
+     ============================================ -->
+<section class="galerie" id="realisations">
+  <span class="chapter">06</span>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Réalisations</span>
+      <h2 class="reveal reveal-delay-1">Avant. Après.<br><span class="italic gold">La transformation Luxeo.</span></h2>
+      <p class="lead reveal reveal-delay-2">Glissez le curseur sur chaque image pour découvrir la métamorphose. 47 salles de bain transformées en moins de 18 mois.</p>
+    </div>
+
+    <div class="gal-grid">
+
+      <div class="gal-card reveal">
+        <div class="gal-slider" data-slider>
+          <div class="slot-layer"><img src="assets/before-avignon.jpg" alt="Avant rénovation — Avignon" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="slot-layer slot-after"><img src="assets/after-avignon.jpg" alt="Après installation Luxeo — Avignon" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="handle"><div class="grip">⇆</div></div>
+          <div class="label-tag lt-before">Avant</div>
+          <div class="label-tag lt-after">Après</div>
+        </div>
+        <div class="gal-meta">
+          <span class="place">Avignon · Centre-ville</span>
+          <span class="info">Pack <b>Confort</b> · chantier 3 jours</span>
+        </div>
+      </div>
+
+      <div class="gal-card reveal reveal-delay-1">
+        <div class="gal-slider" data-slider>
+          <div class="slot-layer"><img src="assets/before-nimes.jpg" alt="Avant rénovation — Nîmes" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="slot-layer slot-after"><img src="assets/after-nimes.jpg" alt="Après installation Luxeo — Nîmes" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="handle"><div class="grip">⇆</div></div>
+          <div class="label-tag lt-before">Avant</div>
+          <div class="label-tag lt-after">Après</div>
+        </div>
+        <div class="gal-meta">
+          <span class="place">Nîmes · Quartier Jean Jaurès</span>
+          <span class="info">Pack <b>Luxe</b> · chantier 5 jours</span>
+        </div>
+      </div>
+
+      <div class="gal-card reveal">
+        <div class="gal-slider" data-slider>
+          <div class="slot-layer"><img src="assets/before-marseille.jpg" alt="Avant rénovation — Marseille" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="slot-layer slot-after"><img src="assets/after-marseille.jpg" alt="Après installation Luxeo — Marseille" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="handle"><div class="grip">⇆</div></div>
+          <div class="label-tag lt-before">Avant</div>
+          <div class="label-tag lt-after">Après</div>
+        </div>
+        <div class="gal-meta">
+          <span class="place">Marseille · Le Camas</span>
+          <span class="info">Pack <b>Essentiel</b> · chantier 2 jours</span>
+        </div>
+      </div>
+
+      <div class="gal-card reveal reveal-delay-1">
+        <div class="gal-slider" data-slider>
+          <div class="slot-layer"><img src="assets/before-montpellier.jpg" alt="Avant rénovation — Montpellier" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="slot-layer slot-after"><img src="assets/after-montpellier.jpg" alt="Après installation Luxeo — Montpellier" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="handle"><div class="grip">⇆</div></div>
+          <div class="label-tag lt-before">Avant</div>
+          <div class="label-tag lt-after">Après</div>
+        </div>
+        <div class="gal-meta">
+          <span class="place">Montpellier · Beaux-Arts</span>
+          <span class="info">Pack <b>Confort</b> · chantier 4 jours</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gallery-cta reveal">
+      <a href="#contact" class="btn btn-outline">Voir toutes nos réalisations <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     URGENCE LARGE
+     ============================================ -->
 <section class="urgence-large">
   <div class="wrap">
     <span class="eyebrow reveal">⚡ Créneaux limités</span>
-    <h2 class="reveal">Plus que <em>3 créneaux</em> disponibles<br>ce mois-ci.</h2>
-    <p class="reveal">Nos artisans sont très demandés en Vaucluse et dans le Gard — réservez maintenant pour être prioritaire.</p>
+    <h2 class="reveal reveal-delay-1">Plus que <em>3 créneaux</em> disponibles<br>ce mois-ci.</h2>
+    <p class="reveal reveal-delay-2">Nos artisans sont très demandés en Vaucluse et dans le Gard — réservez maintenant pour être prioritaire sur le planning de mai et juin.</p>
 
-    <div class="creneaux-grid reveal">
+    <div class="creneaux-grid reveal reveal-delay-2">
       <div class="creneau taken"><div class="month">Mai</div><div class="day">12</div><div class="zone">Avignon</div></div>
       <div class="creneau taken"><div class="month">Mai</div><div class="day">19</div><div class="zone">Nîmes</div></div>
       <div class="creneau"><div class="month">Mai</div><div class="day">26</div><div class="zone">Vaucluse</div></div>
@@ -294,194 +540,230 @@
       <div class="creneau"><div class="month">Juin</div><div class="day">23</div><div class="zone">Avignon</div></div>
       <div class="creneau taken"><div class="month">Juin</div><div class="day">30</div><div class="zone">Aix</div></div>
     </div>
-    <a href="#contact" class="btn btn-gold reveal">Réserver mon créneau <span class="arrow">→</span></a>
+
+    <a href="#contact" class="btn btn-gold reveal reveal-delay-3">Réserver mon créneau <span class="arrow">→</span></a>
   </div>
 </section>
 
-<!-- GALERIE AVANT/APRES -->
-<section class="galerie" id="realisations">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow reveal">Réalisations</span>
-      <h2 class="reveal">Avant. Après.<br><span class="italic gold">La transformation Luxeo.</span></h2>
-      <p class="lead reveal">Glissez le curseur sur chaque image pour découvrir la métamorphose.</p>
-    </div>
-
-    <div class="gal-grid">
-      <div class="gal-card reveal">
-        <div class="gal-slider" data-slider>
-          <div class="slot-layer"><img src="https://images.unsplash.com/photo-1564540583246-934409427776?auto=format&fit=crop&w=1000&q=80" alt="Avant Avignon"></div>
-          <div class="slot-layer slot-after"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1000&q=80" alt="Après Avignon"></div>
-          <div class="handle"><div class="grip">⇆</div></div>
-          <div class="label-tag lt-before">Avant</div>
-          <div class="label-tag lt-after">Après</div>
-        </div>
-        <div class="gal-meta"><span class="place">Avignon · Centre-ville</span><span>Pack <b>Confort</b> · 3 j</span></div>
-      </div>
-
-      <div class="gal-card reveal">
-        <div class="gal-slider" data-slider>
-          <div class="slot-layer"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80" alt="Avant Nîmes"></div>
-          <div class="slot-layer slot-after"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1000&q=80" alt="Après Nîmes"></div>
-          <div class="handle"><div class="grip">⇆</div></div>
-          <div class="label-tag lt-before">Avant</div>
-          <div class="label-tag lt-after">Après</div>
-        </div>
-        <div class="gal-meta"><span class="place">Nîmes · Jean Jaurès</span><span>Pack <b>Luxe</b> · 5 j</span></div>
-      </div>
-
-      <div class="gal-card reveal">
-        <div class="gal-slider" data-slider>
-          <div class="slot-layer"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1000&q=80" alt="Avant Marseille"></div>
-          <div class="slot-layer slot-after"><img src="https://images.unsplash.com/photo-1584622781867-1c5fe959485b?auto=format&fit=crop&w=1000&q=80" alt="Après Marseille"></div>
-          <div class="handle"><div class="grip">⇆</div></div>
-          <div class="label-tag lt-before">Avant</div>
-          <div class="label-tag lt-after">Après</div>
-        </div>
-        <div class="gal-meta"><span class="place">Marseille · Le Camas</span><span>Pack <b>Starter</b> · 2 j</span></div>
-      </div>
-
-      <div class="gal-card reveal">
-        <div class="gal-slider" data-slider>
-          <div class="slot-layer"><img src="https://images.unsplash.com/photo-1600566753104-685f4f24cb4d?auto=format&fit=crop&w=1000&q=80" alt="Avant Montpellier"></div>
-          <div class="slot-layer slot-after"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1000&q=80" alt="Après Montpellier"></div>
-          <div class="handle"><div class="grip">⇆</div></div>
-          <div class="label-tag lt-before">Avant</div>
-          <div class="label-tag lt-after">Après</div>
-        </div>
-        <div class="gal-meta"><span class="place">Montpellier · Beaux-Arts</span><span>Pack <b>Confort</b> · 4 j</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PARRAINAGE -->
-<section class="parrainage" id="parrainage">
-  <div class="wrap">
-    <div class="parr-grid">
-      <div class="parr-text">
-        <span class="eyebrow reveal">💰 Programme parrainage</span>
-        <h2 class="reveal">Recommandez Luxeo<br>à un ami — <em>gagnez 200€</em>.</h2>
-        <p class="lead reveal">Vous avez aimé votre chantier ? Parlez-en autour de vous. Chaque ami qui devient client Luxeo vous rapporte <b>200 €</b>. Sans limite.</p>
-
-        <div class="parr-steps reveal">
-          <div class="parr-step"><span class="n">01</span><div><h4>Vous parlez de Luxeo</h4><p>Prénom + ville de votre proche.</p></div></div>
-          <div class="parr-step"><span class="n">02</span><div><h4>Il signe avec nous</h4><p>Devis gratuit puis chantier.</p></div></div>
-          <div class="parr-step"><span class="n">03</span><div><h4>Vous recevez 200 €</h4><p>Sous 7 jours, sans limite.</p></div></div>
-        </div>
-        <a href="#contact" class="btn btn-primary">En savoir plus <span class="arrow">→</span></a>
-      </div>
-
-      <div class="parr-visual reveal">
-        <span class="ring r1"></span>
-        <span class="ring r2"></span>
-        <span class="ring r3"></span>
-        <div class="amount">
-          <div class="big">200<span class="e">€</span></div>
-          <div class="lbl">Par parrainage validé</div>
-          <div class="sub">— sans limite —</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AVIS CLIENTS -->
+<!-- ============================================
+     AVIS CLIENTS
+     ============================================ -->
 <section class="avis">
+  <span class="chapter">07</span>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow reveal">Ils en parlent</span>
-      <h2 class="reveal">47 douches installées.<br><span class="italic turq">Zéro chantier oublié.</span></h2>
+      <span class="eyebrow reveal">Ce qu'ils en disent</span>
+      <h2 class="reveal reveal-delay-1">47 douches installées.<br><span class="italic turq">Zéro chantier oublié.</span></h2>
     </div>
 
     <div class="avis-grid">
       <div class="avis-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>« Équipe ponctuelle, propre, à l'écoute. La vieille baignoire a laissé place à une vraie douche italienne en 3 jours. Devis clair, sans surprise. »</p>
-        <div class="who"><div class="av">ML</div><div><div class="n">Marie L.</div><div class="s">Avignon · Pack Confort</div></div></div>
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Équipe ponctuelle, propre, à l'écoute. Notre vieille baignoire a laissé place à une vraie douche italienne en 3 jours. Le résultat est exactement comme sur leurs photos. Devis clair, sans surprise. »</p>
+        <div class="avis-who">
+          <div class="avis-avatar">ML</div>
+          <div class="avis-meta">
+            <div class="name">Marie L.</div>
+            <div class="sub">Avignon · Pack Confort</div>
+          </div>
+        </div>
       </div>
-      <div class="avis-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>« On voulait quelque chose de qualitatif pour notre âge — barre d'appui, siège, sol antidérapant. Luxeo a tout pensé. La garantie 5 ans est rassurante. »</p>
-        <div class="who"><div class="av">PM</div><div><div class="n">Pierre M.</div><div class="s">Nîmes · Pack Luxe</div></div></div>
+
+      <div class="avis-card reveal reveal-delay-1">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« On voulait quelque chose de très qualitatif pour notre âge — barre d'appui, siège, sol antidérapant. Luxeo a tout pensé. La garantie 5 ans est rassurante. On recommande sans hésiter, surtout pour les seniors. »</p>
+        <div class="avis-who">
+          <div class="avis-avatar">PM</div>
+          <div class="avis-meta">
+            <div class="name">Pierre M.</div>
+            <div class="sub">Nîmes · Pack Luxe</div>
+          </div>
+        </div>
       </div>
+
       <div class="avis-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>« Budget serré, mais envie de moderniser. Le pack Starter a tout changé. Les artisans m'ont prévenue à chaque étape, j'ai rien eu à gérer. »</p>
-        <div class="who"><div class="av">SR</div><div><div class="n">Sylvie R.</div><div class="s">Marseille · Pack Starter</div></div></div>
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Budget serré, mais envie de moderniser. Le pack Essentiel a tout changé. Les artisans m'ont prévenue à chaque étape, j'ai rien eu à gérer. Beaucoup plus pro que les autres devis que j'avais reçus. »</p>
+        <div class="avis-who">
+          <div class="avis-avatar">SR</div>
+          <div class="avis-meta">
+            <div class="name">Sylvie R.</div>
+            <div class="sub">Marseille · Pack Essentiel</div>
+          </div>
+        </div>
       </div>
-      <div class="avis-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>« Du premier RDV au dernier joint, sérieux à 100%. Le carrelage grand format et la robinetterie Hansgrohe font la différence. Au final, moitié prix du concurrent. »</p>
-        <div class="who"><div class="av">JD</div><div><div class="n">Jacques D.</div><div class="s">Montpellier · Pack Confort</div></div></div>
+
+      <div class="avis-card reveal reveal-delay-1">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Sérieux du premier rendez-vous au dernier coup de joint. Le carrelage grand format et la robinetterie Hansgrohe ont vraiment fait la différence. Et au final, on a payé la moitié de ce que demandait le concurrent. Bluffant. »</p>
+        <div class="avis-who">
+          <div class="avis-avatar">JD</div>
+          <div class="avis-meta">
+            <div class="name">Jacques D.</div>
+            <div class="sub">Montpellier · Pack Confort</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="avis-counter reveal">
-      <div class="big" id="counterNum">47</div>
+      <div class="big"><span class="counter" data-target="47">0</span></div>
       <div class="divider"></div>
       <div class="label">douches italiennes installées<br>dans la région Sud depuis 2024</div>
     </div>
   </div>
 </section>
 
-<!-- ZONES -->
+<!-- ============================================
+     PARRAINAGE
+     ============================================ -->
+<section class="parrainage" id="parrainage">
+  <span class="chapter">08</span>
+  <div class="wrap">
+    <div class="parr-grid">
+      <div class="parr-text">
+        <span class="eyebrow reveal">Programme parrainage</span>
+        <h2 class="reveal reveal-delay-1">Recommandez Luxeo<br>à un ami — <em>recevez une carte cadeau surprise</em>.</h2>
+        <p class="lead reveal reveal-delay-2">Vous avez aimé votre chantier ? Parlez-en autour de vous. Chaque ami qui devient client Luxeo vous rapporte une carte cadeau surprise d'une valeur de <b>200 €</b>. Sans limite — parrainez autant de personnes que vous voulez.</p>
+
+        <div class="parr-steps reveal reveal-delay-3">
+          <div class="parr-step">
+            <span class="n">01</span>
+            <div><h4>Vous nous parlez d'un proche</h4><p>Donnez-nous son prénom + ville lors de votre prochain contact.</p></div>
+          </div>
+          <div class="parr-step">
+            <span class="n">02</span>
+            <div><h4>Il signe avec Luxeo</h4><p>Devis gratuit, choix du pack, planification du chantier.</p></div>
+          </div>
+          <div class="parr-step">
+            <span class="n">03</span>
+            <div><h4>Chantier terminé</h4><p>Une fois la pose validée par le client.</p></div>
+          </div>
+          <div class="parr-step">
+            <span class="n">04</span>
+            <div><h4>Carte cadeau surprise reçue</h4><p>Carte cadeau valeur 200 € envoyée sous 7 jours, sans limite de parrainages.</p></div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary reveal">En savoir plus <span class="arrow">→</span></a>
+      </div>
+
+      <div class="parr-visual reveal reveal-delay-2">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+        <div class="amount">
+          <div class="big">200<span class="e">€</span></div>
+          <div class="lbl">Carte cadeau surprise</div>
+          <div class="sub">— sans limite, valeur garantie —</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ZONES D'INTERVENTION
+     ============================================ -->
 <section class="zones" id="zones">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow reveal">Zones d'intervention</span>
-      <h2 class="reveal">4 départements.<br><span class="italic turq">Une équipe locale.</span></h2>
+      <h2 class="reveal reveal-delay-1">4 départements.<br><span class="italic turq">Une équipe locale.</span></h2>
+      <p class="lead reveal reveal-delay-2">Nos artisans se déplacent dans tout le Sud — Vaucluse, Gard, Bouches-du-Rhône, Hérault.</p>
     </div>
 
     <div class="zones-grid">
-      <div class="zone-card reveal"><div class="dept">84</div><h3>Vaucluse</h3><ul><li>Avignon</li><li>Carpentras</li><li>Orange</li><li>Apt</li></ul></div>
-      <div class="zone-card reveal"><div class="dept">30</div><h3>Gard</h3><ul><li>Nîmes</li><li>Alès</li><li>Uzès</li><li>Grau-du-Roi</li></ul></div>
-      <div class="zone-card reveal"><div class="dept">13</div><h3>Bouches-du-Rhône</h3><ul><li>Marseille</li><li>Aix-en-Provence</li><li>Arles</li></ul></div>
-      <div class="zone-card reveal"><div class="dept">34</div><h3>Hérault</h3><ul><li>Montpellier</li><li>Béziers</li><li>Sète</li><li>Agde</li></ul></div>
+      <div class="zone-card reveal"><div class="dept">Département 84</div><h3>Vaucluse</h3><ul><li>Avignon</li><li>Carpentras</li><li>Orange</li><li>Apt</li></ul></div>
+      <div class="zone-card reveal reveal-delay-1"><div class="dept">Département 30</div><h3>Gard</h3><ul><li>Nîmes</li><li>Alès</li><li>Uzès</li><li>Le Grau-du-Roi</li></ul></div>
+      <div class="zone-card reveal reveal-delay-2"><div class="dept">Département 13</div><h3>Bouches-du-Rhône</h3><ul><li>Marseille</li><li>Aix-en-Provence</li><li>Arles</li></ul></div>
+      <div class="zone-card reveal reveal-delay-3"><div class="dept">Département 34</div><h3>Hérault</h3><ul><li>Montpellier</li><li>Béziers</li><li>Sète</li><li>Agde</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ============================================
+     FAQ
+     ============================================ -->
 <section class="faq" id="faq">
+  <span class="chapter">09</span>
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow reveal">Questions fréquentes</span>
-      <h2 class="reveal">Tout savoir<br><span class="italic turq">avant de réserver.</span></h2>
+      <h2 class="reveal reveal-delay-1">Tout savoir avant<br><span class="italic turq">de réserver.</span></h2>
     </div>
 
     <div class="faq-wrap">
-      <details class="faq-item reveal"><summary>Combien de temps durent les travaux ?</summary><div class="faq-a">2 à 3 jours pour le Starter, 3 à 4 pour le Confort, 4 à 5 pour le Luxe. Nos artisans ne quittent pas le chantier tant qu'il n'est pas terminé.</div></details>
-      <details class="faq-item reveal"><summary>Puis-je payer en plusieurs fois ?</summary><div class="faq-a">Oui — paiement en <b>3 fois sans frais</b> via notre partenaire financier, validé le jour du devis.</div></details>
-      <details class="faq-item reveal"><summary>Faut-il être propriétaire ?</summary><div class="faq-a">Non, locataires acceptés avec accord écrit du propriétaire. Nous fournissons le descriptif technique.</div></details>
-      <details class="faq-item reveal"><summary>Quelle différence entre les 3 packs ?</summary><div class="faq-a">Starter (1 250 €) : fondamentaux. Confort (2 300 €) : carrelage + Hansgrohe. Luxe (3 750 €) : thermostatique Grohe, paroi 8 mm, LED, niche, garantie 5 ans.</div></details>
-      <details class="faq-item reveal"><summary>Livrez-vous les matériaux ?</summary><div class="faq-a">Oui, livraison incluse dans chaque pack. Tout arrive en même temps que les artisans le jour J.</div></details>
-      <details class="faq-item reveal"><summary>Quelles garanties ?</summary><div class="faq-a">Garantie décennale obligatoire, étanchéité 10 ans, matériaux 2 à 5 ans. Pack Luxe : garantie globale 5 ans.</div></details>
-      <details class="faq-item reveal"><summary>Comment fonctionne le parrainage ?</summary><div class="faq-a">Vous donnez prénom + ville. S'il signe, vous recevez 200 € dès la fin de son chantier. Sans limite.</div></details>
-      <details class="faq-item reveal"><summary>Quelles zones couvrez-vous ?</summary><div class="faq-a">Vaucluse, Gard, Bouches-du-Rhône, Hérault. Pour les communes proches non listées, contactez-nous.</div></details>
+      <div class="faq-item reveal">
+        <button class="faq-q">Combien de temps durent les travaux ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Tout dépend du pack choisi : 2 à 3 jours pour l'Essentiel, 3 à 4 jours pour le Confort, 4 à 5 jours pour le Luxe. Nos artisans ne quittent pas le chantier tant qu'il n'est pas terminé.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Puis-je payer en plusieurs fois ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Oui — nos packs sont éligibles au <b>paiement en 3 fois sans frais</b>, directement géré par notre partenaire financier. Aucune banque à contacter.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Faut-il être propriétaire pour faire installer une douche Luxeo ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Non — locataires acceptés, à condition d'avoir l'accord écrit du propriétaire pour les travaux de plomberie et d'étanchéité.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Quelle différence entre les 3 packs Luxeo ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Le Pack Essentiel (2 700 €) couvre les fondamentaux. Le Pack Confort (4 800 €) ajoute carrelage, barre d'appui et robinetterie Hansgrohe. Le Pack Luxe (7 900 €) intègre robinetterie thermostatique Grohe, paroi 8 mm, LED, niche murale et garantie 5 ans.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Livrez-vous les matériaux ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Oui — la livraison de tous les matériaux est incluse dans chaque pack. Tout arrive en même temps que nos artisans le jour du chantier.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Quelles garanties propose Luxeo ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Pose : garantie décennale obligatoire. Étanchéité : 10 ans. Matériaux : 2 à 5 ans constructeur. Pack Luxe : garantie globale Luxeo 5 ans.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Comment fonctionne le parrainage ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Vous nous donnez le prénom et la ville d'une personne intéressée. Si elle signe avec nous, vous recevez une <b>carte cadeau surprise d'une valeur de 200 €</b> dès la fin de son chantier.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Quelles zones couvrez-vous ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Vaucluse (Avignon, Carpentras, Orange, Apt), Gard (Nîmes, Alès, Uzès, Le Grau-du-Roi), Bouches-du-Rhône (Marseille, Aix-en-Provence, Arles) et Hérault (Montpellier, Béziers, Sète, Agde).</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ============================================
+     CONTACT — DEVIS COMPLET
+     ============================================ -->
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-info">
         <span class="eyebrow reveal">Demande de devis</span>
-        <h2 class="reveal">Parlons de votre<br><em>future douche.</em></h2>
-        <p class="reveal">Un conseiller Luxeo vous rappelle sous 24h pour valider votre projet — sans engagement.</p>
+        <h2 class="reveal reveal-delay-1">Parlons de votre<br><em>future douche.</em></h2>
+        <p class="reveal reveal-delay-2">Un conseiller Luxeo vous rappelle sous 24h pour valider votre projet, programmer une visite technique et lancer votre devis personnalisé — sans engagement.</p>
 
-        <div class="contact-rows reveal">
-          <div class="contact-row"><div class="ico">📞</div><div><div class="lbl">Téléphone</div><div class="val">— à remplir —</div></div></div>
-          <div class="contact-row"><div class="ico">✉</div><div><div class="lbl">Email</div><div class="val">info@luxeo.pro</div></div></div>
-          <div class="contact-row"><div class="ico">📍</div><div><div class="lbl">Zones</div><div class="val">Vaucluse · Gard · 13 · 34</div></div></div>
-          <div class="contact-row"><div class="ico">⏱</div><div><div class="lbl">Réponse</div><div class="val">sous 24h ouvrées</div></div></div>
+        <div class="reveal reveal-delay-3">
+          <div class="contact-row">
+            <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><div class="lbl">Téléphone</div><div class="val">— à remplir —</div></div>
+          </div>
+          <div class="contact-row">
+            <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <div><div class="lbl">Email</div><div class="val">info@luxeo.pro</div></div>
+          </div>
+          <div class="contact-row">
+            <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="lbl">Zones</div><div class="val">Vaucluse · Gard · 13 · 34</div></div>
+          </div>
+          <div class="contact-row">
+            <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></span>
+            <div><div class="lbl">Réponse</div><div class="val">sous 24h ouvrées</div></div>
+          </div>
         </div>
       </div>
 
-      <form class="contact-form reveal" id="contactForm">
+      <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Demande envoyée ✓';">
         <h3>Devis gratuit · sans engagement</h3>
+
         <div class="form-row">
           <div class="field"><input type="text" id="f-prenom" placeholder=" " required><label for="f-prenom">Prénom</label></div>
           <div class="field"><input type="text" id="f-nom" placeholder=" " required><label for="f-nom">Nom</label></div>
@@ -495,9 +777,9 @@
           <div class="field field-select">
             <select id="f-pack" required>
               <option value="" disabled selected></option>
-              <option value="starter">Pack Starter — 1 250 €</option>
-              <option value="confort">Pack Confort — 2 300 €</option>
-              <option value="luxe">Pack Luxe — 3 750 €</option>
+              <option value="essentiel">Pack Essentiel — 2 700€</option>
+              <option value="confort">Pack Confort — 4 800€</option>
+              <option value="luxe">Pack Luxe — 7 900€</option>
               <option value="conseil">Je veux être conseillé</option>
             </select>
             <label for="f-pack">Pack souhaité</label>
@@ -507,34 +789,52 @@
           <div class="field field-full"><textarea id="f-msg" placeholder=" " rows="3"></textarea><label for="f-msg">Votre projet (facultatif)</label></div>
         </div>
         <div class="form-row">
-          <div class="field field-full"><input type="text" id="f-parr" placeholder=" "><label for="f-parr">Recommandé par un client Luxeo ? (prénom + nom)</label></div>
+          <div class="field field-full"><input type="text" id="f-parr" placeholder=" "><label for="f-parr">Avez-vous été recommandé par un client Luxeo ? (prénom + nom)</label></div>
         </div>
+
         <button type="submit" class="btn btn-primary">Envoyer ma demande <span class="arrow">→</span></button>
-        <p class="consent">En envoyant ce formulaire, vous acceptez d'être contacté par Luxeo. Aucune donnée transmise à des tiers.</p>
+        <p class="consent">En envoyant ce formulaire, vous acceptez que Luxeo vous contacte concernant votre projet. Aucune donnée n'est transmise à des tiers.</p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================================
+     FOOTER
+     ============================================ -->
 <footer>
   <div class="foot-grid">
     <div class="foot-col foot-brand">
-      <a href="index.html" class="logo"><span class="dot"></span>LUXEO</a>
-      <p>Installation clé en main de douches italiennes premium dans le Sud de la France.</p>
-      <p class="small">SIRET — à compléter</p>
+      <a href="#" class="logo"><span class="dot"></span>LUXEO</a>
+      <p>Installation clé en main de douches italiennes premium dans le Sud de la France — Vaucluse, Gard, Bouches-du-Rhône, Hérault.</p>
+      <p style="color:rgba(255,255,255,0.4); font-size:12px;">SIRET — à compléter</p>
     </div>
     <div class="foot-col">
       <h5>Nos packs</h5>
-      <ul><li><a href="#pack-starter">Pack Starter</a></li><li><a href="#pack-confort">Pack Confort</a></li><li><a href="#pack-luxe">Pack Luxe</a></li><li><a href="composer.html">Composer</a></li></ul>
+      <ul>
+        <li><a href="#pack-starter">Pack Essentiel</a></li>
+        <li><a href="#pack-confort">Pack Confort</a></li>
+        <li><a href="#pack-luxe">Pack Luxe</a></li>
+        <li><a href="configurateur.html">Composer</a></li>
+      </ul>
     </div>
     <div class="foot-col">
       <h5>Le site</h5>
-      <ul><li><a href="#realisations">Réalisations</a></li><li><a href="#parrainage">Parrainage</a></li><li><a href="#zones">Zones</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul>
+      <ul>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#parrainage">Parrainage</a></li>
+        <li><a href="#zones">Zones</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
     <div class="foot-col">
       <h5>Légal</h5>
-      <ul><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="cgv.html">CGV</a></li><li><a href="confidentialite.html">Confidentialité</a></li></ul>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+      </ul>
     </div>
   </div>
   <div class="foot-bottom">
@@ -543,11 +843,36 @@
   </div>
 </footer>
 
+<!-- ============================================
+     STICKY CTA (apparaît après le hero)
+     ============================================ -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="scta-pulse"></span>
+  <span class="scta-text"><strong>3 créneaux</strong> dispo ce mois — devis en 2 min</span>
+  <a href="#contact" class="btn btn-gold">Réserver <span class="arrow">→</span></a>
+  <span class="close" id="stickyClose" aria-label="Fermer">×</span>
+</div>
+
+<!-- CURSEUR PERSONNALISÉ -->
+<div class="cur-ring" id="curRing"></div>
+<div class="cur-dot" id="curDot"></div>
+
 <!-- WHATSAPP -->
-<a href="https://wa.me/" class="wa-btn" aria-label="WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .396C7.164.396 0 7.561 0 16.396c0 2.788.728 5.515 2.111 7.917L.039 31.604l7.452-2.013c2.323 1.272 4.94 1.942 7.601 1.942h.005c8.829 0 16-7.164 16-16C31.097 7.561 23.929.396 16 .396zm7.31 20.327c-.4-.2-2.371-1.17-2.738-1.303-.366-.135-.633-.2-.9.2-.265.4-1.032 1.302-1.265 1.568-.234.267-.466.3-.866.1-.4-.2-1.689-.624-3.218-1.984-1.19-1.061-1.992-2.372-2.225-2.772-.234-.4-.025-.617.175-.816.18-.18.4-.467.6-.7.2-.234.267-.4.4-.668.135-.267.067-.5-.033-.7-.1-.2-.9-2.166-1.232-2.967-.325-.78-.654-.675-.9-.687-.234-.013-.5-.013-.767-.013s-.7.1-1.066.5c-.366.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.866 1.633 4.134.2.267 2.822 4.31 6.84 6.043 2.522 1.089 3.51 1.181 4.776 1 .77-.115 2.371-.967 2.704-1.9.333-.934.333-1.733.234-1.9-.1-.166-.366-.266-.766-.466z"/></svg>
+<a href="https://wa.me/" class="wa-btn" aria-label="Contactez-nous sur WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .396C7.164.396 0 7.561 0 16.396c0 2.788.728 5.515 2.111 7.917L.039 31.604l7.452-2.013c2.323 1.272 4.94 1.942 7.601 1.942h.005c8.829 0 16-7.164 16-16C31.097 7.561 23.929.396 16 .396zm0 29.292h-.005c-2.374 0-4.7-.638-6.733-1.847l-.484-.288-5.004 1.351 1.376-4.881-.316-.5C3.493 21.34 2.6 18.901 2.6 16.396 2.6 8.998 8.602 3 16 3c3.581 0 6.946 1.397 9.471 3.928a13.293 13.293 0 0 1 3.929 9.469c-.003 7.4-6.003 13.291-13.4 13.291zm7.31-9.973c-.4-.2-2.371-1.17-2.738-1.303-.366-.135-.633-.2-.9.2-.265.4-1.032 1.302-1.265 1.568-.234.267-.466.3-.866.1-.4-.2-1.689-.624-3.218-1.984-1.19-1.061-1.992-2.372-2.225-2.772-.234-.4-.025-.617.175-.816.18-.18.4-.467.6-.7.2-.234.267-.4.4-.668.135-.267.067-.5-.033-.7-.1-.2-.9-2.166-1.232-2.967-.325-.78-.654-.675-.9-.687-.234-.013-.5-.013-.767-.013s-.7.1-1.066.5c-.366.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.866 1.633 4.134.2.267 2.822 4.31 6.84 6.043 2.522 1.089 3.51 1.181 4.776 1 .77-.115 2.371-.967 2.704-1.9.333-.934.333-1.733.234-1.9-.1-.166-.366-.266-.766-.466z"/></svg>
 </a>
 
+<!-- JS -->
 <script src="main.js"></script>
+<script>
+  // Luxeo Tweaks defaults
+  window.LUXEO_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "mood": "spa",
+    "atmo": "naturel",
+    "dens": "magazine"
+  }/*EDITMODE-END*/;
+</script>
+<script src="tweaks.js"></script>
+
 </body>
 </html>
