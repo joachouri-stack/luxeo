@@ -4458,6 +4458,13 @@ footer {
   color: rgba(255, 255, 255, 0.75);
 }
 
+/* Hero ★ badge — hidden on tablet + mobile so it never overlaps
+   the h1. This must come AFTER the .hero-meta definition above to
+   win the cascade (same specificity, last one wins). */
+@media (max-width: 1024px) {
+  .hero-meta { display: none !important; }
+}
+
 
 /* ============================================
    PACK FEATURED — animated gold ring "Best seller"
