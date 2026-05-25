@@ -2994,17 +2994,51 @@ footer {
 
 .amb-frame {
   position: relative;
-  aspect-ratio: 3/2;
-  border-radius: 4px;
+  aspect-ratio: 16/10;
+  border-radius: 14px;
   overflow: hidden;
   background: #0a1212;
-  box-shadow: 0 40px 90px -30px rgba(10, 42, 42, 0.4),
-              0 0 0 1px var(--ligne);
+  box-shadow:
+    0 50px 110px -30px rgba(10, 24, 24, 0.55),
+    0 18px 40px -16px rgba(10, 24, 24, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: pan-y;
+  isolation: isolate;
 }
+
+/* ===== Realistic photo treatment: warm window light from top-right ===== */
+.amb-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    /* Warm natural light from top-right (like sunlit window) */
+    radial-gradient(ellipse 80% 60% at 75% 0%, rgba(255, 220, 165, 0.22), transparent 60%),
+    /* Cool ambient bounce from bottom-left */
+    radial-gradient(ellipse 60% 50% at 20% 100%, rgba(180, 220, 230, 0.08), transparent 65%);
+  mix-blend-mode: soft-light;
+}
+
+/* ===== Vignette + soft steam veil for depth & atmosphere ===== */
+.amb-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    /* Faint steam wisp at top */
+    radial-gradient(ellipse 50% 22% at 30% 8%, rgba(255, 255, 255, 0.07), transparent 70%),
+    radial-gradient(ellipse 40% 18% at 70% 14%, rgba(255, 255, 255, 0.05), transparent 70%),
+    /* Soft outer vignette so the eye is drawn to the center */
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.28) 100%);
+}
+
 .amb-img {
   position: absolute;
   inset: 0;
@@ -3013,9 +3047,13 @@ footer {
   object-fit: cover;
   opacity: 0;
   transform: scale(1.05);
-  transition: opacity 0.7s var(--ease-out),
-              transform 8s var(--ease-out);
+  transition: opacity 0.9s var(--ease-out),
+              transform 10s var(--ease-out),
+              filter 0.9s var(--ease-out);
   pointer-events: none;
+  /* Subtle photo grading: warmer skin tones, slightly punchier */
+  filter: saturate(1.08) contrast(1.04) brightness(1.02);
+  z-index: 1;
 }
 .amb-img.is-active {
   opacity: 1;
@@ -3024,12 +3062,13 @@ footer {
 .amb-img.is-entering {
   opacity: 1;
   transform: scale(1);
-  z-index: 2;
-  animation: ambKenBurns 8s var(--ease-out) forwards;
+  z-index: 1;
+  animation: ambKenBurns 10s var(--ease-out) forwards;
 }
 @keyframes ambKenBurns {
-  0% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+  0%   { transform: scale(1.06) translate(0, 0); }
+  50%  { transform: scale(1.03) translate(-0.4%, -0.3%); }
+  100% { transform: scale(1) translate(0, 0); }
 }
 
 .amb-overlay {
@@ -3218,7 +3257,7 @@ footer {
   .amb-options { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 }
 @media (max-width: 600px) {
-  .amb-frame { aspect-ratio: 4/5; }
+  .amb-frame { aspect-ratio: 4/3; border-radius: 12px; }
   .amb-arrow { width: 40px; height: 40px; }
   .amb-prev { left: 10px; }
   .amb-next { right: 10px; }
