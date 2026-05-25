@@ -4125,6 +4125,9 @@ footer {
   .intro-grid, .partenaire-grid, .parr-grid, .contact-grid {
     grid-template-columns: 1fr;
   }
+  /* Hero ★ badge — hidden on tablet + mobile (overlaps the h1 when
+     hero stacks vertically; only safe to show on real desktop) */
+  .hero-meta { display: none; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .materiaux { grid-template-columns: 1fr 1fr; }
   .timeline-grid { grid-template-columns: 1fr; }
@@ -4143,9 +4146,6 @@ footer {
     --gutter: 20px;
   }
   body { font-size: 15px; }
-
-  /* Hero meta badge: hidden on small screens to keep hero CTAs uncluttered */
-  .hero-meta { display: none; }
 
   /* Section heads */
   .section-head { margin-bottom: 40px; }
