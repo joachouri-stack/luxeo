@@ -1806,7 +1806,8 @@ image-slot::part(frame) {
 }
 
 /* ============================================
-   ZONES D'INTERVENTION — premium dark cards
+   ZONES D'INTERVENTION — editorial service-area card
+   (replaces the 4 weather-like dept cards)
    ============================================ */
 .zones {
   background: linear-gradient(180deg, var(--fond-sombre) 0%, var(--fond-sombre-2) 100%);
@@ -1819,204 +1820,157 @@ image-slot::part(frame) {
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 12% 15%, rgba(201, 168, 76, 0.18), transparent 45%),
-    radial-gradient(circle at 88% 80%, rgba(14, 124, 123, 0.32), transparent 50%);
-}
-.zones-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    radial-gradient(circle at 12% 15%, rgba(201, 168, 76, 0.16), transparent 45%),
+    radial-gradient(circle at 88% 80%, rgba(14, 124, 123, 0.28), transparent 50%);
 }
 .zones > .wrap { position: relative; z-index: 1; }
-.zones .section-head h2 { color: #fff; }
-.zones .section-head h2 .italic { color: var(--or); font-style: italic; font-weight: 200; }
-.zones .section-head .lead { color: rgba(255,255,255,0.7); }
-.zones .section-head .eyebrow { color: var(--or); }
-.zones .section-head .eyebrow::before, .zones .section-head .eyebrow::after { background: var(--or); }
 
-.zones-grid {
+/* Single big card with 2 columns */
+.zones-card {
+  max-width: 1180px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
 }
 
-.zone-card {
-  position: relative;
-  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 6px;
-  padding: 32px 28px 24px;
-  transition: all 0.5s var(--ease-out);
-  overflow: hidden;
-  isolation: isolate;
+/* LEFT — Lead pitch */
+.zones-lead .eyebrow {
+  color: var(--or);
+  margin-bottom: 18px;
 }
-.zone-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 6px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(201,168,76,0.5), rgba(14,124,123,0.3) 50%, transparent 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-  z-index: 2;
+.zones-lead .eyebrow::before { background: var(--or); }
+.zones-lead h2 {
+  color: #fff;
+  font-size: clamp(28px, 3.6vw, 44px);
+  margin-bottom: 18px;
+  letter-spacing: -0.015em;
 }
-.zone-card:hover {
-  transform: translateY(-8px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
-  box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5),
-              0 0 50px -10px rgba(201,168,76,0.25);
+.zones-lead h2 .italic.gold {
+  font-style: italic;
+  color: var(--or);
+  font-weight: 200;
 }
-.zone-card:hover::before { opacity: 1; }
+.zones-lead p {
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 42ch;
+}
 
-.zone-num {
+/* Stats inline */
+.zones-stats {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
-.zone-num .num {
-  font-size: clamp(48px, 5vw, 64px);
+.zs-block { display: flex; flex-direction: column; }
+.zs-n {
+  font-size: clamp(32px, 3vw, 42px);
   font-weight: 200;
   color: var(--or);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1;
-  text-shadow: 0 0 24px rgba(201,168,76,0.3);
+  font-feature-settings: "tnum";
 }
-.zone-num .num-lbl {
-  font-size: 10px;
-  letter-spacing: 0.28em;
+.zs-l {
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  margin-top: 10px;
+  line-height: 1.4;
 }
 
-.zone-pin {
-  position: absolute;
-  top: 28px;
-  right: 24px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(201,168,76,0.12);
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--or);
-  display: grid;
-  place-items: center;
-  transition: all 0.4s var(--ease-out);
+/* RIGHT — 4 row list (no weather-card feel) */
+.zones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.zone-pin svg { width: 18px; height: 18px; }
-.zone-card:hover .zone-pin {
-  background: var(--or);
-  color: var(--fond-sombre);
-  transform: rotate(-8deg) scale(1.1);
-}
-
-.zone-card h3 {
-  color: #fff;
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  margin: 14px 0 4px;
-}
-.zone-tagline {
-  font-size: 12px;
-  color: rgba(255,255,255,0.55);
-  font-style: italic;
-  margin-bottom: 22px;
-}
-
-.zone-cities {
-  list-style: none;
-  margin: 0 0 22px;
-  padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+.zrow {
+  padding: 22px 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: padding 0.3s var(--ease-out);
+}
+.zrow:first-child { padding-top: 0; }
+.zrow:hover {
+  padding-left: 8px;
+}
+.zr-head {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 6px;
 }
-.zone-cities li {
-  font-size: 11.5px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.92);
-  padding: 6px 12px;
-  background: rgba(201, 168, 76, 0.08);
-  border: 1px solid rgba(201, 168, 76, 0.22);
-  border-radius: 100px;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  transition: all 0.25s var(--ease-out);
-}
-.zone-cities li:hover {
-  background: rgba(201, 168, 76, 0.18);
-  border-color: rgba(201, 168, 76, 0.45);
-  transform: translateY(-1px);
-}
-
-.zone-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-.zone-stat {
+.zr-code {
   font-size: 11px;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: 0.04em;
-}
-.zone-stat b {
-  color: var(--or);
+  letter-spacing: 0.24em;
   font-weight: 600;
-  font-size: 15px;
-  margin-right: 2px;
-}
-.zone-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--or);
-  padding: 7px 14px;
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 999px;
-  transition: all 0.3s;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-feature-settings: "tnum";
+  white-space: nowrap;
 }
-.zone-cta:hover {
-  background: var(--or);
-  color: var(--fond-sombre);
-  border-color: var(--or);
+.zr-name {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.zr-cities {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: 0.01em;
 }
 
+/* Soft note at bottom of list */
 .zones-note {
-  margin: 48px auto 0;
-  max-width: 720px;
-  text-align: center;
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed rgba(201,168,76,0.25);
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
-  padding: 16px 22px;
-  background: rgba(255,255,255,0.04);
-  border: 1px dashed rgba(201,168,76,0.3);
-  border-radius: 999px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.75);
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+.zones-note svg { color: var(--or); flex-shrink: 0; }
+.zones-note a {
+  color: var(--or);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.zones-note a:hover { opacity: 0.75; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .zones-card { grid-template-columns: 1fr; gap: 40px; }
+  .zones-stats { gap: 24px; }
+}
+@media (max-width: 600px) {
+  .zones-lead h2 { font-size: 26px; }
+  .zones-lead p { font-size: 14px; }
+  .zones-stats { gap: 18px; flex-wrap: wrap; }
+  .zs-n { font-size: 28px; }
+  .zs-l { font-size: 10px; }
+  .zrow { padding: 16px 0; }
+  .zr-name { font-size: 17px; }
+  .zr-cities { font-size: 12.5px; }
+  .zones-note { font-size: 12px; }
 }
 .zones-note svg { color: var(--or); flex-shrink: 0; }
 
