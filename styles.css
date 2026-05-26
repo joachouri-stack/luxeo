@@ -1665,16 +1665,41 @@ image-slot::part(frame) {
   border-top: 1px solid var(--ligne);
 }
 .avis-avatar {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--turquoise), var(--turquoise-deep));
   color: #fff;
   display: grid;
   place-items: center;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 15px;
   letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px -4px rgba(14, 124, 123, 0.4),
+              0 0 0 2px #fff,
+              0 0 0 3px rgba(201, 168, 76, 0.2);
+}
+/* Initials shown as fallback via data-init */
+.avis-avatar::before {
+  content: attr(data-init);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+/* Photo (if uploaded) covers the initials */
+.avis-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
 }
 .avis-meta .name {
   font-weight: 500;
