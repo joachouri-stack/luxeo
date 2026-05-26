@@ -1449,6 +1449,16 @@ image-slot::part(frame) {
   grid-template-columns: 1fr 1fr;
   gap: 36px;
 }
+/* Home galerie: 3 cards in a row from tablet up (tighter editorial feel) */
+@media (min-width: 900px) {
+  .galerie:not(.galerie-page) .gal-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .galerie:not(.galerie-page) .gal-slider {
+    aspect-ratio: 4/3;
+  }
+}
 .gal-card {
   position: relative;
 }
