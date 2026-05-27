@@ -521,24 +521,36 @@ image-slot::part(frame) {
   font-weight: 300;
 }
 .hero-sub .sep { color: var(--or); margin-inline: 12px; }
+/* .dept has no styling on desktop — renders as plain inline text
+   identical to before (so the desktop layout stays untouched) */
 
-/* Mobile only: prevent the long 'Bouches-du-Rhône' from causing
-   '· Hérault' to drop alone on a 2nd line. Tighter spacing fits all
-   4 départements on a single line. Desktop is UNCHANGED. */
+/* Mobile only (≤600px): transform the 4 départements into elegant
+   gold-tinted glass pills that wrap naturally. Desktop UNCHANGED. */
 @media (max-width: 600px) {
   .hero-sub {
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0 var(--gutter);
-    margin-left: calc(-1 * var(--gutter));
-    margin-right: calc(-1 * var(--gutter));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+    padding: 0;
   }
-  .hero-sub::-webkit-scrollbar { display: none; }
-  .hero-sub .sep { margin-inline: 6px; }
+  .hero-sub .sep { display: none; }
+  .hero-sub .dept {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    border-radius: 100px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: 400;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 .hero-badge {
