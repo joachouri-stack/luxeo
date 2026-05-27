@@ -843,10 +843,35 @@ image-slot::part(frame) {
   .intro-features li { padding: 12px 14px; gap: 12px; font-size: 13px; }
   .if-ico { width: 24px; height: 24px; }
   .if-ico svg { width: 12px; height: 12px; }
+
+  /* Mobile : la citation sort de la photo et passe en dessous
+     pour que l'image reste pleinement visible */
+  .intro-img {
+    aspect-ratio: auto;
+    overflow: visible;
+    box-shadow: none;
+    isolation: auto;
+  }
+  .intro-img img {
+    display: block;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 24px 60px -24px rgba(10, 42, 42, 0.4);
+  }
   .intro-corner { width: 38px; height: 38px; }
   .intro-corner-tl { top: 10px; left: 10px; }
-  .intro-corner-br { bottom: 10px; right: 10px; }
-  .intro-img .quote { left: 14px; right: 14px; bottom: 14px; padding: 18px 18px 16px; }
+  /* Le coin BR sortirait sous la photo (overflow visible) — on le cache */
+  .intro-corner-br { display: none; }
+  .intro-img .quote {
+    position: relative;
+    left: auto; right: auto; bottom: auto;
+    margin-top: 28px;
+    padding: 18px 18px 16px;
+    background: #fff;
+    border: 1px solid var(--ligne);
+    box-shadow: 0 12px 30px -16px rgba(10, 42, 42, 0.18);
+  }
   .intro-img .quote-mark { width: 36px; height: 36px; font-size: 30px; top: -18px; }
   .intro-img .quote .who { flex-direction: column; align-items: flex-start; gap: 6px; }
   .intro-img .quote .who-name { text-align: left; }
