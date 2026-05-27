@@ -523,35 +523,7 @@ image-slot::part(frame) {
 .hero-sub .sep { color: var(--or); margin-inline: 12px; }
 /* .dept has no styling on desktop — renders as plain inline text
    identical to before (so the desktop layout stays untouched) */
-
-/* Mobile only (≤600px): transform the 4 départements into elegant
-   gold-tinted glass pills that wrap naturally. Desktop UNCHANGED. */
-@media (max-width: 600px) {
-  .hero-sub {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    margin-bottom: 32px;
-    padding: 0;
-  }
-  .hero-sub .sep { display: none; }
-  .hero-sub .dept {
-    display: inline-block;
-    padding: 5px 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(201, 168, 76, 0.35);
-    border-radius: 100px;
-    white-space: nowrap;
-    color: #fff;
-    font-weight: 400;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-}
+/* (Mobile-specific .hero-sub rules are in the @media 768px block below) */
 
 .hero-badge {
   display: inline-flex;
@@ -4200,8 +4172,32 @@ footer {
   .hero-content { padding: 110px var(--gutter) 60px; }
   .hero h1 { font-size: clamp(34px, 9vw, 50px); line-height: 1.05; margin-bottom: 24px; }
   .hero-eyebrow { font-size: 11px; letter-spacing: 0.24em; margin-bottom: 22px; }
-  .hero-sub { font-size: 13px; letter-spacing: 0.14em; margin-bottom: 32px; }
-  .hero-sub .sep { margin-inline: 6px; }
+  /* Mobile: transform 4 départements into elegant glass pills that
+     wrap properly (no more orphan 'Hérault') */
+  .hero-sub {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+    padding: 0;
+  }
+  .hero-sub .sep { display: none !important; }
+  .hero-sub .dept {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    border-radius: 100px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: 400;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
   .hero-ctas { flex-direction: column; width: 100%; gap: 10px; }
   .hero-ctas .btn { width: 100%; justify-content: center; padding: 16px 22px; }
   .urgence-band {
