@@ -2644,25 +2644,6 @@ footer {
 .timeline-day:nth-child(2):hover .day-card { border-color: var(--or); box-shadow: 0 30px 60px -22px rgba(201, 168, 76, 0.35); }
 .timeline-day:nth-child(3):hover .day-card { border-color: var(--turquoise-deep); box-shadow: 0 30px 60px -22px rgba(9, 89, 88, 0.35); }
 
-/* Subtle big watermark number behind card content */
-.day-watermark {
-  position: absolute;
-  top: -22px;
-  right: -8px;
-  font-size: 160px;
-  font-weight: 200;
-  color: var(--turquoise);
-  opacity: 0.05;
-  letter-spacing: -0.06em;
-  line-height: 1;
-  pointer-events: none;
-  font-feature-settings: "tnum";
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-.timeline-day:nth-child(2) .day-watermark { color: var(--or); opacity: 0.07; }
-.timeline-day:nth-child(3) .day-watermark { color: var(--turquoise-deep); opacity: 0.06; }
-.timeline-day:hover .day-watermark { opacity: 0.09; transform: scale(1.04); }
-
 /* Head row: icon + duration chip */
 .day-head {
   display: flex;
@@ -2839,7 +2820,6 @@ footer {
   .day-card { padding: 22px 20px 20px; }
   .day-title { font-size: 19px; }
   .day-text { font-size: 13.5px; }
-  .day-watermark { font-size: 130px; top: -18px; right: -6px; }
   .day-chip { font-size: 11px; padding: 5px 10px; }
   .day-promise { font-size: 12.5px; padding: 12px 13px; gap: 10px; }
   .day-promise-ico { width: 20px; height: 20px; }
