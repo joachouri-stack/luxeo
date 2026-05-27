@@ -514,38 +514,31 @@ image-slot::part(frame) {
 }
 
 .hero-sub {
-  font-size: clamp(13px, 1.2vw, 18px);
-  letter-spacing: 0.16em;
+  font-size: clamp(15px, 1.2vw, 18px);
+  letter-spacing: 0.18em;
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 44px;
   font-weight: 300;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-  padding: 0;
 }
-/* Each région is a non-breakable unit; gold dot separator on the right */
-.hero-sub .zone-tag {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  padding: 4px 0;
-}
-.hero-sub .zone-tag:not(:last-child)::after {
-  content: '·';
-  color: var(--or);
-  margin: 0 12px;
-  font-weight: 500;
-}
-/* Legacy fallback if .sep markup is still used somewhere */
 .hero-sub .sep { color: var(--or); margin-inline: 12px; }
 
-/* Mobile: smaller letter-spacing + compact separator */
-@media (max-width: 480px) {
-  .hero-sub { letter-spacing: 0.12em; gap: 0; }
-  .hero-sub .zone-tag:not(:last-child)::after { margin: 0 8px; }
+/* Mobile only: prevent the long 'Bouches-du-Rhône' from causing
+   '· Hérault' to drop alone on a 2nd line. Tighter spacing fits all
+   4 départements on a single line. Desktop is UNCHANGED. */
+@media (max-width: 600px) {
+  .hero-sub {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 var(--gutter);
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+  }
+  .hero-sub::-webkit-scrollbar { display: none; }
+  .hero-sub .sep { margin-inline: 6px; }
 }
 
 .hero-badge {
