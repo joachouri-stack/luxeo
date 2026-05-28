@@ -14,6 +14,213 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="tweaks.css">
+
+<!-- ============================================
+     JSON-LD STRUCTURED DATA — SEO
+     LocalBusiness + AggregateRating + Reviews + FAQ
+     ============================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://luxeo.pro/#business",
+      "name": "Luxeo",
+      "alternateName": "Luxeo Douches Italiennes",
+      "url": "https://luxeo.pro/",
+      "description": "Installation clé en main de douches italiennes premium dans le Sud de la France — Vaucluse, Gard, Bouches-du-Rhône, Hérault. Devis gratuit, chantier en 3 jours, garantie jusqu'à 5 ans.",
+      "image": "https://luxeo.pro/assets/hero-luxeo-v3.jpg",
+      "email": "info@luxeo.pro",
+      "priceRange": "€€-€€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Carte bancaire, Virement, Paiement 3 fois sans frais",
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Vaucluse" },
+        { "@type": "AdministrativeArea", "name": "Gard" },
+        { "@type": "AdministrativeArea", "name": "Bouches-du-Rhône" },
+        { "@type": "AdministrativeArea", "name": "Hérault" }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "47",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Marie L." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Équipe ponctuelle, propre, à l'écoute. Notre vieille baignoire a laissé place à une vraie douche italienne en 3 jours. Le résultat est exactement comme sur leurs photos. Devis clair, sans surprise.",
+          "datePublished": "2026-03-12",
+          "itemReviewed": { "@id": "https://luxeo.pro/#business" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Pierre M." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "On voulait quelque chose de très qualitatif pour notre âge — barre d'appui, siège, sol antidérapant. Luxeo a tout pensé. La garantie 5 ans est rassurante. On recommande sans hésiter, surtout pour les seniors.",
+          "datePublished": "2026-04-02",
+          "itemReviewed": { "@id": "https://luxeo.pro/#business" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Sylvie R." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Budget serré, mais envie de moderniser. Le pack Essentiel a tout changé. Les artisans m'ont prévenue à chaque étape, j'ai rien eu à gérer. Beaucoup plus pro que les autres devis que j'avais reçus.",
+          "datePublished": "2026-04-21",
+          "itemReviewed": { "@id": "https://luxeo.pro/#business" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Aicha B." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Sérieux du premier rendez-vous au dernier coup de joint. Le carrelage grand format et la robinetterie Hansgrohe ont vraiment fait la différence. Et au final, on a payé la moitié de ce que demandait le concurrent. Bluffant.",
+          "datePublished": "2026-05-08",
+          "itemReviewed": { "@id": "https://luxeo.pro/#business" }
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Packs Luxeo",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Pack Essentiel",
+            "description": "Pour démarrer la rénovation — budget maîtrisé. Dépose, receveur extra-plat, robinetterie chrome, paroi vitrée fixe, étanchéité, pose complète, livraison incluse. Chantier 2 à 3 jours, garantie 2 ans.",
+            "price": "2700",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Installation douche italienne — Pack Essentiel",
+              "serviceType": "Rénovation salle de bain"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Pack Confort",
+            "description": "L'équilibre idéal pour s'installer durablement. Inclut Essentiel + robinetterie Hansgrohe, carrelage au catalogue, receveur premium, paroi sécurit, barre d'appui, étanchéité renforcée. Chantier 3 à 4 jours, garantie 3 ans.",
+            "price": "4800",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Installation douche italienne — Pack Confort",
+              "serviceType": "Rénovation salle de bain"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Pack Luxe",
+            "description": "L'expérience spa, dans votre salle de bain. Inclut Confort + robinetterie thermostatique Grohe, paroi 8 mm sur mesure, carrelage grand format 60×120, LED encastrées, niche murale intégrée, siège teck, étanchéité double couche. Chantier 4 à 5 jours, garantie Luxeo 5 ans.",
+            "price": "7900",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Installation douche italienne — Pack Luxe",
+              "serviceType": "Rénovation salle de bain"
+            }
+          }
+        ]
+      },
+      "makesOffer": [
+        { "@type": "Offer", "name": "Devis gratuit sous 24h" },
+        { "@type": "Offer", "name": "Paiement 3 fois sans frais" },
+        { "@type": "Offer", "name": "Programme parrainage — 200 € carte cadeau" }
+      ],
+      "knowsAbout": [
+        "Installation douche italienne",
+        "Remplacement baignoire par douche",
+        "Rénovation salle de bain clé en main",
+        "Étanchéité receveur",
+        "Carrelage grand format"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://luxeo.pro/#website",
+      "url": "https://luxeo.pro/",
+      "name": "Luxeo",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "https://luxeo.pro/#business" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://luxeo.pro/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien de temps durent les travaux ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tout dépend du pack choisi : 2 à 3 jours pour l'Essentiel, 3 à 4 jours pour le Confort, 4 à 5 jours pour le Luxe. Nos artisans ne quittent pas le chantier tant qu'il n'est pas terminé."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je payer en plusieurs fois ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui — nos packs sont éligibles au paiement en 3 fois sans frais, directement géré par notre partenaire financier. Aucune banque à contacter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il être propriétaire ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non — locataires acceptés, à condition d'avoir l'accord écrit du propriétaire pour les travaux de plomberie et d'étanchéité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle différence entre les 3 packs Luxeo ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Essentiel (2 700 €) couvre les fondamentaux. Le Confort (4 800 €) ajoute carrelage, barre d'appui et robinetterie Hansgrohe. Le Luxe (7 900 €) intègre robinetterie thermostatique Grohe, paroi 8 mm, LED, niche murale et garantie 5 ans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Livrez-vous les matériaux ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui — la livraison de tous les matériaux est incluse dans chaque pack. Tout arrive en même temps que nos artisans le jour du chantier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelles garanties propose Luxeo ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pose : garantie décennale obligatoire. Étanchéité : 10 ans. Matériaux : 2 à 5 ans constructeur. Pack Luxe : garantie globale Luxeo 5 ans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment fonctionne le parrainage ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vous nous donnez le prénom et la ville d'une personne intéressée. Si elle signe avec nous, vous recevez une carte cadeau surprise d'une valeur de 200 € dès la fin de son chantier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelles zones couvrez-vous ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vaucluse (Avignon, Carpentras, Orange, Apt), Gard (Nîmes, Alès, Uzès, Le Grau-du-Roi), Bouches-du-Rhône (Marseille, Aix-en-Provence, Arles) et Hérault (Montpellier, Béziers, Sète, Agde)."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
