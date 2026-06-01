@@ -161,7 +161,7 @@
     function render(cat) {
       const list = cat === 'all' ? LUXEO_CATALOG : LUXEO_CATALOG.filter(p => p.cat === cat);
       grid.innerHTML = list.map(p => `
-        <article class="bq-card">
+        <a class="bq-card" href="produit.html?ref=${p.ref}" aria-label="Voir ${p.name}">
           <div class="bq-card-img">
             <img src="assets/tiles/${p.ref}.jpg" alt="${p.name} — carrelage ${p.dims}" loading="lazy">
             <span class="bq-card-price">${p.price}</span>
@@ -169,15 +169,13 @@
           <div class="bq-card-body">
             <h3 class="bq-card-name">${p.name}</h3>
             <div class="bq-card-meta">
-              <span class="bqm-ref">${p.ref}</span>
-              <span class="bqm-dot">·</span>
               <span class="bqm-dim">${p.dims}</span>
               <span class="bqm-dot">·</span>
               <span class="bqm-fin">${p.finish}</span>
             </div>
-            <a href="index.html?ref=${p.ref}#contact" class="bq-card-cta">Demander ce carrelage <span class="arrow">→</span></a>
+            <span class="bq-card-link">Voir le produit <span class="arrow">→</span></span>
           </div>
-        </article>
+        </a>
       `).join('');
     }
     render('all');

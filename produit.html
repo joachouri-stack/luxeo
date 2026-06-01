@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a2a2a">
+<title>Carrelage — Luxeo</title>
+<meta name="description" content="Carrelage importé directement de Turquie et d'Espagne — tarif partenaire, livraison Sud de la France.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tweaks.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="logo">LUXEO</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="configurateur.html">Composer</a></li>
+    <li><a href="realisations.html">Réalisations</a></li>
+    <li><a href="boutique.html" style="color: var(--turquoise); font-weight: 500;">Boutique</a></li>
+    <li><a href="index.html#parrainage">Parrainage</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:+33769010202" class="nav-phone">
+      <span class="ico">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </span>
+      <span>Devis téléphone</span>
+    </a>
+    <a href="index.html#contact" class="btn btn-gold">Devis gratuit <span class="arrow">→</span></a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- PRODUCT PAGE -->
+<main class="pp">
+  <div class="wrap">
+
+    <nav class="pp-breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <a href="boutique.html">Boutique</a>
+      <span class="sep">/</span>
+      <span id="pp-bcCat">Carrelage</span>
+    </nav>
+
+    <div class="pp-grid" id="pp-grid">
+      <!-- Product rendered here by JS -->
+      <div class="pp-loading">Chargement du produit…</div>
+    </div>
+
+  </div>
+</main>
+
+<!-- DETAILS / SPECS SECTION -->
+<section class="pp-details" id="pp-details" hidden>
+  <div class="wrap">
+    <div class="pp-d-grid">
+      <div class="pp-d-block">
+        <h3>Description</h3>
+        <p id="pp-d-desc"></p>
+      </div>
+      <div class="pp-d-block">
+        <h3>Spécifications</h3>
+        <ul class="pp-specs" id="pp-d-specs"></ul>
+      </div>
+      <div class="pp-d-block">
+        <h3>Livraison & retours</h3>
+        <ul class="pp-specs">
+          <li><span class="pp-k">Délai</span><span class="pp-v">7 à 10 jours ouvrés</span></li>
+          <li><span class="pp-k">Zone</span><span class="pp-v">Sud de la France</span></li>
+          <li><span class="pp-k">Frais</span><span class="pp-v">Inclus dès 25 m²</span></li>
+          <li><span class="pp-k">Échantillon</span><span class="pp-v">Sur demande</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="pp-related" id="pp-related" hidden>
+  <div class="wrap">
+    <div class="pp-related-head">
+      <span class="eyebrow">Dans la même gamme</span>
+      <h2 id="pp-rel-title">Carrelages similaires</h2>
+    </div>
+    <div class="bq-grid" id="pp-rel-grid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-col foot-brand">
+      <a href="index.html" class="logo">LUXEO</a>
+      <p>Installation clé en main de douches italiennes premium dans le Sud de la France — Vaucluse, Gard, Bouches-du-Rhône, Hérault.</p>
+      <p style="color:rgba(255,255,255,0.4); font-size:12px;">SIRET — à compléter</p>
+    </div>
+    <div class="foot-col">
+      <h5>Nos packs</h5>
+      <ul>
+        <li><a href="index.html#pack-starter">Pack Essentiel</a></li>
+        <li><a href="index.html#pack-confort">Pack Confort</a></li>
+        <li><a href="index.html#pack-luxe">Pack Luxe</a></li>
+        <li><a href="configurateur.html">Composer</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Le site</h5>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="index.html#parrainage">Parrainage</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Légal</h5>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Luxeo — Tous droits réservés · luxeo.pro</span>
+    <span><a href="mailto:info@luxeo.pro" style="color:inherit;text-decoration:none;">info@luxeo.pro</a></span>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/33769010202" class="wa-btn" aria-label="Contactez-nous sur WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .396C7.164.396 0 7.561 0 16.396c0 2.788.728 5.515 2.111 7.917L.039 31.604l7.452-2.013c2.323 1.272 4.94 1.942 7.601 1.942h.005c8.829 0 16-7.164 16-16C31.097 7.561 23.929.396 16 .396zm0 29.292h-.005c-2.374 0-4.7-.638-6.733-1.847l-.484-.288-5.004 1.351 1.376-4.881-.316-.5C3.493 21.34 2.6 18.901 2.6 16.396 2.6 8.998 8.602 3 16 3c3.581 0 6.946 1.397 9.471 3.928a13.293 13.293 0 0 1 3.929 9.469c-.003 7.4-6.003 13.291-13.4 13.291zm7.31-9.973c-.4-.2-2.371-1.17-2.738-1.303-.366-.135-.633-.2-.9.2-.265.4-1.032 1.302-1.265 1.568-.234.267-.466.3-.866.1-.4-.2-1.689-.624-3.218-1.984-1.19-1.061-1.992-2.372-2.225-2.772-.234-.4-.025-.617.175-.816.18-.18.4-.467.6-.7.2-.234.267-.4.4-.668.135-.267.067-.5-.033-.7-.1-.2-.9-2.166-1.232-2.967-.325-.78-.654-.675-.9-.687-.234-.013-.5-.013-.767-.013s-.7.1-1.066.5c-.366.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.866 1.633 4.134.2.267 2.822 4.31 6.84 6.043 2.522 1.089 3.51 1.181 4.776 1 .77-.115 2.371-.967 2.704-1.9.333-.934.333-1.733.234-1.9-.1-.166-.366-.266-.766-.466z"/></svg>
+</a>
+
+<!-- TOAST (panier bientôt) -->
+<div class="pp-toast" id="ppToast" role="status" aria-live="polite" hidden>
+  <span class="pp-toast-ico" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+  </span>
+  <span class="pp-toast-text"><b>Panier bientôt disponible</b><br>En attendant, demandez un devis groupé — réponse sous 24h.</span>
+</div>
+
+<script src="catalog.js"></script>
+<script src="main.js"></script>
+<script>
+  (function () {
+    const grid = document.getElementById('pp-grid');
+    const detailsSection = document.getElementById('pp-details');
+    const relatedSection = document.getElementById('pp-related');
+    if (!grid || typeof LUXEO_CATALOG === 'undefined') return;
+
+    const params = new URLSearchParams(location.search);
+    const ref = params.get('ref');
+    const product = LUXEO_CATALOG.find(p => p.ref === ref);
+
+    if (!product) {
+      grid.innerHTML = `
+        <div class="pp-notfound">
+          <h2>Produit introuvable</h2>
+          <p>Le carrelage demandé n'existe pas ou n'est plus disponible.</p>
+          <a href="boutique.html" class="btn btn-gold">Retour à la boutique <span class="arrow">→</span></a>
+        </div>`;
+      return;
+    }
+
+    // Category labels & descriptions
+    const CAT_LABEL = {
+      beton: 'Béton ciré',
+      bois: 'Effet bois',
+      marbre: 'Marbre',
+      grandformat: 'Grand format',
+      mosaique: 'Mosaïque',
+      pierre: 'Pierre naturelle',
+      terrazzo: 'Terrazzo'
+    };
+    const CAT_DESC = {
+      beton: "Le minéral brut, sans poussière. Effet béton ciré authentique pour une salle de bain contemporaine et apaisante. Surface mate, douce au toucher.",
+      bois: "La chaleur du bois, l'invincibilité du grès. Aucun entretien, aucune dilatation en zone humide — idéal pour douche italienne et sol salle de bain.",
+      marbre: "Pur, lumineux, intemporel. Le grès cérame reproduit fidèlement les veinages naturels du marbre véritable, sans la fragilité ni le prix.",
+      grandformat: "Grandeur visuelle, joints minimisés. Le format 120 cm fait paraître les espaces plus vastes, plus aérés — référence des projets haut de gamme.",
+      mosaique: "La touche d'éclat ponctuelle. Idéale en bandeau, en niche murale ou en crédence pour signer votre salle de bain avec un détail mémorable.",
+      pierre: "Authenticité brute. Texture vivante, irrégularités naturelles, caractère minéral — pour une atmosphère méditerranéenne ou naturelle.",
+      terrazzo: "Effet vénitien moucheté, intemporel. Style années 50 revisité — vivant, lumineux, très tendance dans les projets premium contemporains."
+    };
+    const ORIGIN = {
+      beton: 'Espagne',
+      bois: 'Espagne',
+      marbre: 'Italie / Turquie',
+      grandformat: 'Italie',
+      mosaique: 'Turquie',
+      pierre: 'Turquie',
+      terrazzo: 'Espagne'
+    };
+
+    const catLabel = CAT_LABEL[product.cat] || 'Carrelage';
+    const catDesc = CAT_DESC[product.cat] || '';
+    const origin = ORIGIN[product.cat] || 'Méditerranée';
+
+    // Set title & breadcrumb & meta
+    document.title = `${product.name} — ${catLabel} ${product.dims} | Luxeo`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = `${product.name} — ${catLabel} ${product.dims} ${product.finish}. ${product.price}. Tarif partenaire Luxeo, livraison Sud de la France.`;
+    const bcCat = document.getElementById('pp-bcCat');
+    if (bcCat) bcCat.textContent = catLabel;
+
+    // Render product main block
+    grid.innerHTML = `
+      <div class="pp-media">
+        <div class="pp-img">
+          <img src="assets/tiles/${product.ref}.jpg" alt="${product.name} — carrelage ${product.dims}" />
+        </div>
+        <div class="pp-img-meta">
+          <span class="pp-ref">Réf. ${product.ref}</span>
+          <span class="pp-origin">★ Sélection ${origin}</span>
+        </div>
+      </div>
+
+      <div class="pp-info">
+        <span class="pp-eyebrow">${catLabel}</span>
+        <h1 class="pp-name">${product.name}</h1>
+
+        <div class="pp-chips">
+          <span class="pp-chip">${product.dims}</span>
+          <span class="pp-chip">${product.finish}</span>
+          <span class="pp-chip">Import ${origin}</span>
+        </div>
+
+        <p class="pp-lede">${catDesc}</p>
+
+        <div class="pp-price">
+          <span class="pp-price-n">${product.price}</span>
+          <span class="pp-price-note">TTC · livraison incluse dès 25 m²</span>
+        </div>
+
+        <div class="pp-qty">
+          <label for="pp-q">Quantité (m²)</label>
+          <div class="pp-qty-box">
+            <button type="button" class="pp-qty-btn" data-step="-1" aria-label="Diminuer">−</button>
+            <input id="pp-q" type="number" min="1" value="10" inputmode="numeric">
+            <button type="button" class="pp-qty-btn" data-step="1" aria-label="Augmenter">+</button>
+          </div>
+        </div>
+
+        <div class="pp-ctas">
+          <button type="button" class="btn btn-gold pp-cart" id="ppAddCart">
+            <span class="pp-cart-ico" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+            </span>
+            Ajouter au panier
+          </button>
+          <a href="index.html?ref=${product.ref}#contact" class="btn btn-outline pp-quote">Demander un devis</a>
+        </div>
+
+        <p class="pp-soon">🛒 Paiement en ligne bientôt disponible. En attendant, le devis groupé reste la voie la plus rapide.</p>
+
+        <div class="pp-trust">
+          <div class="ppt-item">
+            <span class="ppt-ico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <span>Import direct · sans intermédiaire</span>
+          </div>
+          <div class="ppt-item">
+            <span class="ppt-ico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </span>
+            <span>Livraison Sud France · 7 à 10 j</span>
+          </div>
+          <div class="ppt-item">
+            <span class="ppt-ico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </span>
+            <span>Conseil expert · échantillon possible</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Quantity buttons
+    const qInput = document.getElementById('pp-q');
+    grid.querySelectorAll('.pp-qty-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = parseInt(btn.dataset.step, 10);
+        const cur = Math.max(1, (parseInt(qInput.value, 10) || 1) + step);
+        qInput.value = cur;
+      });
+    });
+
+    // Add-to-cart → show toast
+    const toast = document.getElementById('ppToast');
+    document.getElementById('ppAddCart').addEventListener('click', () => {
+      if (!toast) return;
+      toast.hidden = false;
+      requestAnimationFrame(() => toast.classList.add('pp-toast-show'));
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => {
+        toast.classList.remove('pp-toast-show');
+        setTimeout(() => { toast.hidden = true; }, 350);
+      }, 4500);
+    });
+
+    // Render details / specs
+    document.getElementById('pp-d-desc').textContent = catDesc + ' Importé directement de ' + origin + ' — qualité grès cérame premium pour usage salle de bain (sol et murs).';
+    document.getElementById('pp-d-specs').innerHTML = `
+      <li><span class="pp-k">Référence</span><span class="pp-v">${product.ref}</span></li>
+      <li><span class="pp-k">Famille</span><span class="pp-v">${catLabel}</span></li>
+      <li><span class="pp-k">Dimensions</span><span class="pp-v">${product.dims}</span></li>
+      <li><span class="pp-k">Finition</span><span class="pp-v">${product.finish}</span></li>
+      <li><span class="pp-k">Matière</span><span class="pp-v">Grès cérame</span></li>
+      <li><span class="pp-k">Usage</span><span class="pp-v">Sol &amp; murs salle de bain</span></li>
+      <li><span class="pp-k">Origine</span><span class="pp-v">${origin}</span></li>
+      <li><span class="pp-k">Prix</span><span class="pp-v">${product.price} TTC</span></li>
+    `;
+    detailsSection.hidden = false;
+
+    // Related products (same category, exclude self, max 4)
+    const related = LUXEO_CATALOG.filter(p => p.cat === product.cat && p.ref !== product.ref).slice(0, 4);
+    if (related.length) {
+      document.getElementById('pp-rel-grid').innerHTML = related.map(p => `
+        <a class="bq-card" href="produit.html?ref=${p.ref}" aria-label="Voir ${p.name}">
+          <div class="bq-card-img">
+            <img src="assets/tiles/${p.ref}.jpg" alt="${p.name}" loading="lazy">
+            <span class="bq-card-price">${p.price}</span>
+          </div>
+          <div class="bq-card-body">
+            <h3 class="bq-card-name">${p.name}</h3>
+            <div class="bq-card-meta">
+              <span class="bqm-dim">${p.dims}</span>
+              <span class="bqm-dot">·</span>
+              <span class="bqm-fin">${p.finish}</span>
+            </div>
+            <span class="bq-card-link">Voir le produit <span class="arrow">→</span></span>
+          </div>
+        </a>
+      `).join('');
+      relatedSection.hidden = false;
+    }
+  })();
+</script>
+
+</body>
+</html>
