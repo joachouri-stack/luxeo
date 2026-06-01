@@ -4978,16 +4978,19 @@ footer {
 /* ============================================
    BOUTIQUE — Carrelage & faïence catalogue
    ============================================ */
-.bq-hero { background: linear-gradient(180deg, #fff 0%, var(--fond-bleu) 100%); }
+/* Boutique hero — reprend le dark turquoise gradient de .page-hero */
+.bq-hero {
+  /* hérite background dark de .page-hero, on ne le surcharge plus */
+}
 
-/* Trust strip under hero */
+/* Trust strip under hero (dark bg) */
 .bq-trust {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   margin-top: 32px;
   padding-top: 26px;
-  border-top: 1px solid var(--ligne);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 .bqt-item {
   display: flex;
@@ -4999,7 +5002,7 @@ footer {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(201,168,76,0.14), rgba(201,168,76,0.04));
+  background: linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.06));
   color: var(--or);
   display: grid;
   place-items: center;
@@ -5013,7 +5016,7 @@ footer {
 .bqt-t {
   font-size: 13px;
   font-weight: 500;
-  color: var(--texte);
+  color: #fff;
   letter-spacing: -0.01em;
   line-height: 1.25;
 }
@@ -5021,7 +5024,7 @@ footer {
   font-size: 10.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--texte-mute);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 3px;
   line-height: 1.25;
 }
