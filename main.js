@@ -381,3 +381,35 @@
   }
 
 })();
+
+/* ============================================
+   BOUTIQUE — Pré-remplissage form depuis ?ref=
+   ============================================ */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (!ref) return;
+
+  // Wait DOM ready
+  const fill = () => {
+    const msg = document.getElementById('f-msg');
+    const pack = document.getElementById('f-pack');
+    if (msg) {
+      const prefill = `Demande de devis pour le carrelage ${ref}.`;
+      if (!msg.value.includes(ref)) {
+        msg.value = prefill + (msg.value ? '\n' + msg.value : '');
+        msg.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+    if (pack) {
+      const conseil = Array.from(pack.options).find(o => o.value === 'conseil');
+      if (conseil) pack.value = 'conseil';
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fill);
+  } else {
+    fill();
+  }
+})();

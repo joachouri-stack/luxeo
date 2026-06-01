@@ -4973,3 +4973,277 @@ footer {
   .cp-preview { gap: 6px; }
 }
 
+
+/* ============================================
+   BOUTIQUE — Carrelage & faïence catalogue
+   ============================================ */
+.bq-hero { background: linear-gradient(180deg, #fff 0%, var(--fond-clair) 100%); }
+
+/* Trust strip under hero */
+.bq-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--ligne);
+}
+.bqt-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.bqt-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.14), rgba(201,168,76,0.04));
+  color: var(--or);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.bqt-ico svg { width: 18px; height: 18px; }
+.bqt-t {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texte);
+  letter-spacing: -0.01em;
+}
+.bqt-s {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--texte-mute);
+  margin-top: 2px;
+}
+
+/* Catalogue section */
+.bq-cat {
+  padding: clamp(50px, 7vw, 90px) var(--pad-x);
+  background: #fff;
+}
+.bq-cat .wrap { max-width: 1320px; }
+
+/* Filter chips */
+.bq-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 42px;
+  justify-content: center;
+}
+.bq-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: #fff;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texte-mute);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  letter-spacing: 0.01em;
+}
+.bq-filter i {
+  font-style: normal;
+  font-size: 10.5px;
+  color: var(--texte-mute);
+  background: var(--fond-clair);
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.bq-filter:hover {
+  border-color: var(--turquoise);
+  color: var(--turquoise);
+  transform: translateY(-1px);
+}
+.bq-filter.active {
+  background: var(--fond-sombre);
+  border-color: var(--fond-sombre);
+  color: #fff;
+}
+.bq-filter.active i {
+  background: rgba(255,255,255,0.12);
+  color: var(--or);
+}
+
+/* Product grid */
+.bq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.bq-card {
+  background: #fff;
+  border: 1px solid var(--ligne);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+.bq-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--turquoise);
+  box-shadow: 0 20px 50px -20px rgba(14, 124, 123, 0.25);
+}
+
+.bq-card-img {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--fond-clair);
+}
+.bq-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+.bq-card:hover .bq-card-img img { transform: scale(1.05); }
+
+.bq-card-price {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--texte);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.bq-card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.bq-card-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+  color: var(--texte);
+  line-height: 1.3;
+}
+.bq-card-meta {
+  font-size: 11.5px;
+  color: var(--texte-mute);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.bqm-ref {
+  font-weight: 600;
+  color: var(--turquoise);
+  font-feature-settings: "tnum";
+}
+.bqm-dot { color: var(--ligne); }
+.bq-card-cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 14px;
+  background: transparent;
+  border: 1px solid var(--ligne);
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--texte);
+  text-decoration: none;
+  justify-content: center;
+  transition: all 0.3s var(--ease-out);
+  letter-spacing: 0.01em;
+}
+.bq-card-cta:hover {
+  background: var(--fond-sombre);
+  border-color: var(--fond-sombre);
+  color: #fff;
+}
+.bq-card-cta .arrow { transition: transform 0.3s; }
+.bq-card-cta:hover .arrow { transform: translateX(3px); }
+
+/* Bottom CTA block */
+.bq-end {
+  margin-top: 70px;
+  padding: 50px clamp(28px, 5vw, 56px);
+  background: linear-gradient(135deg, var(--fond-sombre) 0%, var(--fond-sombre-2) 100%);
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.bq-end::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(201,168,76,0.18), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(14,124,123,0.22), transparent 55%);
+  pointer-events: none;
+}
+.bq-end > * { position: relative; z-index: 1; }
+.bq-end h3 {
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  color: #fff;
+}
+.bq-end p {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+.bq-end-note {
+  margin-top: 18px !important;
+  font-size: 11.5px !important;
+  color: rgba(255,255,255,0.5) !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .bq-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+  .bq-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .bq-trust { gap: 12px; padding-top: 22px; margin-top: 28px; }
+  .bqt-item { flex: 1 1 calc(50% - 6px); }
+}
+@media (max-width: 520px) {
+  .bq-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .bq-card-name { font-size: 14.5px; }
+  .bq-card-body { padding: 14px 14px 16px; }
+  .bq-card-meta { font-size: 11px; margin-bottom: 12px; }
+  .bq-card-cta { font-size: 12px; padding: 10px 10px; }
+  .bq-card-price { font-size: 11.5px; padding: 5px 10px; top: 8px; right: 8px; }
+  .bq-filters { gap: 6px; margin-bottom: 28px; }
+  .bq-filter { padding: 7px 13px; font-size: 12px; }
+  .bq-filter i { font-size: 10px; padding: 2px 6px; }
+  .bqt-item { flex: 1 1 100%; }
+  .bq-end { margin-top: 50px; padding: 36px 22px; }
+}
