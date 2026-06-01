@@ -5377,13 +5377,9 @@ footer {
 
 /* ---------- BOUTIQUE — Responsive breakpoints ---------- */
 
-/* 5 colonnes maintenues jusqu'à 1000px (laptop standard) */
-@media (max-width: 1000px) {
-  .bq-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-}
-/* Tablette : 3 colonnes */
-@media (max-width: 880px) {
-  .bq-grid { grid-template-columns: repeat(3, 1fr); }
+/* WEB : 5 colonnes maintenues jusqu'à 820px (couvre 99 % des laptops) */
+@media (max-width: 820px) {
+  .bq-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .bq-trust {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -5391,12 +5387,7 @@ footer {
     padding-top: 22px;
   }
 }
-/* Mobile large : 2 colonnes */
-@media (max-width: 680px) {
-  .bq-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .bq-filters { gap: 7px; margin-bottom: 32px; }
-}
-/* Mobile : compact + filtres horizontaux */
+/* Mobile : 2 colonnes */
 @media (max-width: 600px) {
   .bq-trust { gap: 10px; }
   .bqt-ico { width: 30px; height: 30px; border-radius: 7px; }
@@ -5404,7 +5395,7 @@ footer {
   .bqt-t { font-size: 12.5px; }
   .bqt-s { font-size: 10px; letter-spacing: 0.12em; }
 
-  .bq-grid { gap: 10px; }
+  .bq-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .bq-card { border-radius: 9px; }
   .bq-card-img { border-radius: 9px 9px 0 0; }
   .bq-card-body { padding: 11px 12px 12px; gap: 3px; }
@@ -5437,7 +5428,7 @@ footer {
 /* iPhone SE / petit mobile */
 @media (max-width: 420px) {
   .bq-trust { grid-template-columns: 1fr; gap: 10px; }
-  .bq-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .bq-grid { gap: 8px; }
   .bq-card-body { padding: 10px 11px 11px; }
   .bq-card-name { font-size: 12.5px; }
   .bq-card-meta { font-size: 8.5px; }
