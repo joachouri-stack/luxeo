@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a2a2a">
 <title>Carrelage — Luxeo</title>
-<meta name="description" content="Carrelage importé directement de Turquie et d'Espagne — tarif partenaire, livraison Sud de la France.">
+<meta name="description" content="Carrelage premium pour salle de bain — sélection Luxeo, tarif partenaire.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -70,12 +70,12 @@
         <ul class="pp-specs" id="pp-d-specs"></ul>
       </div>
       <div class="pp-d-block">
-        <h3>Livraison & retours</h3>
+        <h3>Conseil &amp; échantillon</h3>
         <ul class="pp-specs">
-          <li><span class="pp-k">Délai</span><span class="pp-v">7 à 10 jours ouvrés</span></li>
-          <li><span class="pp-k">Zone</span><span class="pp-v">Sud de la France</span></li>
-          <li><span class="pp-k">Frais</span><span class="pp-v">Inclus dès 25 m²</span></li>
           <li><span class="pp-k">Échantillon</span><span class="pp-v">Sur demande</span></li>
+          <li><span class="pp-k">Conseil pose</span><span class="pp-v">Artisan Luxeo</span></li>
+          <li><span class="pp-k">Visite</span><span class="pp-v">Gratuite avec devis</span></li>
+          <li><span class="pp-k">Garantie</span><span class="pp-v">Décennale (avec pose)</span></li>
         </ul>
       </div>
     </div>
@@ -198,27 +198,17 @@
       marbre: "Pur, lumineux, intemporel. Le grès cérame reproduit fidèlement les veinages naturels du marbre véritable, sans la fragilité ni le prix.",
       grandformat: "Grandeur visuelle, joints minimisés. Le format 120 cm fait paraître les espaces plus vastes, plus aérés — référence des projets haut de gamme.",
       mosaique: "La touche d'éclat ponctuelle. Idéale en bandeau, en niche murale ou en crédence pour signer votre salle de bain avec un détail mémorable.",
-      pierre: "Authenticité brute. Texture vivante, irrégularités naturelles, caractère minéral — pour une atmosphère méditerranéenne ou naturelle.",
+      pierre: "Authenticité brute. Texture vivante, irrégularités naturelles, caractère minéral — pour une atmosphère naturelle et apaisante.",
       terrazzo: "Effet vénitien moucheté, intemporel. Style années 50 revisité — vivant, lumineux, très tendance dans les projets premium contemporains."
-    };
-    const ORIGIN = {
-      beton: 'Espagne',
-      bois: 'Espagne',
-      marbre: 'Italie / Turquie',
-      grandformat: 'Italie',
-      mosaique: 'Turquie',
-      pierre: 'Turquie',
-      terrazzo: 'Espagne'
     };
 
     const catLabel = CAT_LABEL[product.cat] || 'Carrelage';
     const catDesc = CAT_DESC[product.cat] || '';
-    const origin = ORIGIN[product.cat] || 'Méditerranée';
 
     // Set title & breadcrumb & meta
     document.title = `${product.name} — ${catLabel} ${product.dims} | Luxeo`;
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = `${product.name} — ${catLabel} ${product.dims} ${product.finish}. ${product.price}. Tarif partenaire Luxeo, livraison Sud de la France.`;
+    if (metaDesc) metaDesc.content = `${product.name} — ${catLabel} ${product.dims} ${product.finish}. ${product.price}. Sélection Luxeo, tarif partenaire.`;
     const bcCat = document.getElementById('pp-bcCat');
     if (bcCat) bcCat.textContent = catLabel;
 
@@ -230,7 +220,7 @@
         </div>
         <div class="pp-img-meta">
           <span class="pp-ref">Réf. ${product.ref}</span>
-          <span class="pp-origin">★ Sélection ${origin}</span>
+          <span class="pp-origin">★ Sélection Luxeo</span>
         </div>
       </div>
 
@@ -241,14 +231,14 @@
         <div class="pp-chips">
           <span class="pp-chip">${product.dims}</span>
           <span class="pp-chip">${product.finish}</span>
-          <span class="pp-chip">Import ${origin}</span>
+          <span class="pp-chip">Grès cérame</span>
         </div>
 
         <p class="pp-lede">${catDesc}</p>
 
         <div class="pp-price">
           <span class="pp-price-n">${product.price}</span>
-          <span class="pp-price-note">TTC · livraison incluse dès 25 m²</span>
+          <span class="pp-price-note">TTC · prix au m²</span>
         </div>
 
         <div class="pp-qty">
@@ -274,15 +264,15 @@
         <div class="pp-trust">
           <div class="ppt-item">
             <span class="ppt-ico" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
             </span>
-            <span>Import direct · sans intermédiaire</span>
+            <span>Sélection premium Luxeo</span>
           </div>
           <div class="ppt-item">
             <span class="ppt-ico" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </span>
-            <span>Livraison Sud France · 7 à 10 j</span>
+            <span>Tarif partenaire · sans intermédiaire</span>
           </div>
           <div class="ppt-item">
             <span class="ppt-ico" aria-hidden="true">
@@ -322,7 +312,7 @@
     });
 
     // Render details / specs
-    document.getElementById('pp-d-desc').textContent = catDesc + ' Importé directement de ' + origin + ' — qualité grès cérame premium pour usage salle de bain (sol et murs).';
+    document.getElementById('pp-d-desc').textContent = catDesc + ' Grès cérame premium pour usage salle de bain — sol et murs, intérieur.';
     document.getElementById('pp-d-specs').innerHTML = `
       <li><span class="pp-k">Référence</span><span class="pp-v">${product.ref}</span></li>
       <li><span class="pp-k">Famille</span><span class="pp-v">${catLabel}</span></li>
@@ -330,7 +320,7 @@
       <li><span class="pp-k">Finition</span><span class="pp-v">${product.finish}</span></li>
       <li><span class="pp-k">Matière</span><span class="pp-v">Grès cérame</span></li>
       <li><span class="pp-k">Usage</span><span class="pp-v">Sol &amp; murs salle de bain</span></li>
-      <li><span class="pp-k">Origine</span><span class="pp-v">${origin}</span></li>
+      <li><span class="pp-k">Pose</span><span class="pp-v">Sur chape ou colle</span></li>
       <li><span class="pp-k">Prix</span><span class="pp-v">${product.price} TTC</span></li>
     `;
     detailsSection.hidden = false;
