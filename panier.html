@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a2a2a">
+<title>Mon panier — Luxeo</title>
+<meta name="description" content="Votre sélection de carrelages — récapitulatif avant commande.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tweaks.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="logo">LUXEO</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="configurateur.html">Composer</a></li>
+    <li><a href="realisations.html">Réalisations</a></li>
+    <li><a href="boutique.html">Boutique</a></li>
+    <li><a href="panier.html" style="color: var(--turquoise); font-weight: 500;">Panier</a></li>
+    <li><a href="index.html#parrainage">Parrainage</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:+33769010202" class="nav-phone">
+      <span class="ico">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </span>
+      <span>Devis téléphone</span>
+    </a>
+    <a href="index.html#contact" class="btn btn-gold">Devis gratuit <span class="arrow">→</span></a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<main class="cart-page">
+  <div class="wrap">
+
+    <nav class="pp-breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <a href="boutique.html">Boutique</a>
+      <span class="sep">/</span>
+      Panier
+    </nav>
+
+    <header class="cart-head">
+      <span class="eyebrow">Mon panier</span>
+      <h1>Récapitulatif de <span class="italic gold">votre sélection</span></h1>
+      <p class="cart-sub" id="cartSub">Vérifiez vos quantités avant de finaliser votre demande.</p>
+    </header>
+
+    <div class="cart-layout" id="cartLayout" hidden>
+      <div class="cart-items" id="cartItems"></div>
+
+      <aside class="cart-summary">
+        <h3>Récapitulatif</h3>
+        <div class="cs-row"><span>Articles</span><span id="csCount">0</span></div>
+        <div class="cs-row"><span>Total surface</span><span id="csM2">0 m²</span></div>
+        <div class="cs-row cs-row-total"><span>Total estimé</span><span id="csTotal">0 €</span></div>
+        <p class="cs-note">Estimation TTC, hors pose. Livraison incluse dès 25 m² en Sud de la France.</p>
+        <button type="button" class="btn btn-gold cart-checkout" id="cartCheckout">
+          <span class="cart-checkout-ico" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+          Finaliser ma commande
+        </button>
+        <a href="index.html?refs=cart#contact" class="btn btn-outline cart-quote" id="cartQuote">Demander un devis pour cette sélection</a>
+        <p class="cs-soon">🔒 Paiement en ligne sécurisé bientôt disponible. En attendant, terminez via le devis — réponse sous 24h.</p>
+      </aside>
+    </div>
+
+    <div class="cart-empty" id="cartEmpty" hidden>
+      <div class="ce-ico" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      </div>
+      <h2>Votre panier est vide</h2>
+      <p>Découvrez notre sélection de 32 carrelages premium importés directement de Turquie et d'Espagne.</p>
+      <a href="boutique.html" class="btn btn-gold">Découvrir la boutique <span class="arrow">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-col foot-brand">
+      <a href="index.html" class="logo">LUXEO</a>
+      <p>Installation clé en main de douches italiennes premium dans le Sud de la France — Vaucluse, Gard, Bouches-du-Rhône, Hérault.</p>
+      <p style="color:rgba(255,255,255,0.4); font-size:12px;">SIRET — à compléter</p>
+    </div>
+    <div class="foot-col">
+      <h5>Nos packs</h5>
+      <ul>
+        <li><a href="index.html#pack-starter">Pack Essentiel</a></li>
+        <li><a href="index.html#pack-confort">Pack Confort</a></li>
+        <li><a href="index.html#pack-luxe">Pack Luxe</a></li>
+        <li><a href="configurateur.html">Composer</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Le site</h5>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="index.html#parrainage">Parrainage</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Légal</h5>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Luxeo — Tous droits réservés · luxeo.pro</span>
+    <span><a href="mailto:info@luxeo.pro" style="color:inherit;text-decoration:none;">info@luxeo.pro</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/33769010202" class="wa-btn" aria-label="Contactez-nous sur WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .396C7.164.396 0 7.561 0 16.396c0 2.788.728 5.515 2.111 7.917L.039 31.604l7.452-2.013c2.323 1.272 4.94 1.942 7.601 1.942h.005c8.829 0 16-7.164 16-16C31.097 7.561 23.929.396 16 .396zm0 29.292h-.005c-2.374 0-4.7-.638-6.733-1.847l-.484-.288-5.004 1.351 1.376-4.881-.316-.5C3.493 21.34 2.6 18.901 2.6 16.396 2.6 8.998 8.602 3 16 3c3.581 0 6.946 1.397 9.471 3.928a13.293 13.293 0 0 1 3.929 9.469c-.003 7.4-6.003 13.291-13.4 13.291zm7.31-9.973c-.4-.2-2.371-1.17-2.738-1.303-.366-.135-.633-.2-.9.2-.265.4-1.032 1.302-1.265 1.568-.234.267-.466.3-.866.1-.4-.2-1.689-.624-3.218-1.984-1.19-1.061-1.992-2.372-2.225-2.772-.234-.4-.025-.617.175-.816.18-.18.4-.467.6-.7.2-.234.267-.4.4-.668.135-.267.067-.5-.033-.7-.1-.2-.9-2.166-1.232-2.967-.325-.78-.654-.675-.9-.687-.234-.013-.5-.013-.767-.013s-.7.1-1.066.5c-.366.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.866 1.633 4.134.2.267 2.822 4.31 6.84 6.043 2.522 1.089 3.51 1.181 4.776 1 .77-.115 2.371-.967 2.704-1.9.333-.934.333-1.733.234-1.9-.1-.166-.366-.266-.766-.466z"/></svg>
+</a>
+
+<div class="bq-toast" id="bqToast" role="status" aria-live="polite" hidden>
+  <span class="bq-toast-ico" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </span>
+  <span class="bq-toast-text" id="bqToastText"></span>
+</div>
+
+<script src="catalog.js"></script>
+<script src="luxeo-cart.js"></script>
+<script src="main.js"></script>
+<script>
+  (function () {
+    const layout = document.getElementById('cartLayout');
+    const empty = document.getElementById('cartEmpty');
+    const itemsEl = document.getElementById('cartItems');
+    const csCount = document.getElementById('csCount');
+    const csM2 = document.getElementById('csM2');
+    const csTotal = document.getElementById('csTotal');
+    if (typeof LUXEO_CATALOG === 'undefined' || !window.LuxeoCart) return;
+
+    function parsePrice(s) {
+      const m = (s || '').match(/(\d+(?:[.,]\d+)?)/);
+      return m ? parseFloat(m[1].replace(',', '.')) : 0;
+    }
+
+    function render() {
+      const items = LuxeoCart.items();
+      if (!items.length) {
+        layout.hidden = true;
+        empty.hidden = false;
+        return;
+      }
+      layout.hidden = false;
+      empty.hidden = true;
+
+      let total = 0, totalM2 = 0, count = 0;
+      itemsEl.innerHTML = items.map(it => {
+        const p = LUXEO_CATALOG.find(x => x.ref === it.ref);
+        if (!p) return '';
+        const unit = parsePrice(p.price);
+        const sub = unit * it.qty;
+        total += sub;
+        totalM2 += it.qty;
+        count += 1;
+        return `
+          <article class="cart-item" data-ref="${p.ref}">
+            <a class="ci-img" href="produit.html?ref=${p.ref}">
+              <img src="assets/tiles/${p.ref}.jpg" alt="${p.name}">
+            </a>
+            <div class="ci-info">
+              <div class="ci-head">
+                <div>
+                  <a class="ci-name" href="produit.html?ref=${p.ref}">${p.name}</a>
+                  <div class="ci-meta">${p.ref} · ${p.dims} · ${p.finish}</div>
+                </div>
+                <button class="ci-remove" type="button" data-ref="${p.ref}" aria-label="Retirer ${p.name}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <div class="ci-foot">
+                <div class="ci-qty">
+                  <button type="button" class="ci-qty-btn" data-step="-1" data-ref="${p.ref}" aria-label="Diminuer">−</button>
+                  <span class="ci-qty-v">${it.qty}</span>
+                  <button type="button" class="ci-qty-btn" data-step="1" data-ref="${p.ref}" aria-label="Augmenter">+</button>
+                  <span class="ci-qty-unit">m²</span>
+                </div>
+                <div class="ci-prices">
+                  <span class="ci-unit">${p.price}</span>
+                  <span class="ci-sub">${sub.toFixed(0)} €</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      csCount.textContent = count;
+      csM2.textContent = totalM2 + ' m²';
+      csTotal.textContent = total.toFixed(0) + ' €';
+    }
+
+    itemsEl.addEventListener('click', e => {
+      const qBtn = e.target.closest('.ci-qty-btn');
+      const rmBtn = e.target.closest('.ci-remove');
+      if (qBtn) {
+        const ref = qBtn.dataset.ref;
+        const step = parseInt(qBtn.dataset.step, 10);
+        const cur = LuxeoCart.items().find(i => i.ref === ref);
+        if (cur) LuxeoCart.setQty(ref, cur.qty + step);
+        render();
+      } else if (rmBtn) {
+        LuxeoCart.remove(rmBtn.dataset.ref);
+        render();
+      }
+    });
+
+    document.getElementById('cartCheckout').addEventListener('click', () => {
+      const toast = document.getElementById('bqToast');
+      const txt = document.getElementById('bqToastText');
+      if (!toast) return;
+      txt.textContent = 'Paiement en ligne bientôt disponible — utilisez le devis groupé';
+      toast.hidden = false;
+      requestAnimationFrame(() => toast.classList.add('bq-toast-show'));
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => {
+        toast.classList.remove('bq-toast-show');
+        setTimeout(() => { toast.hidden = true; }, 350);
+      }, 3500);
+    });
+
+    // Quote button : carries refs+qty as URL param for prefill
+    document.getElementById('cartQuote').addEventListener('click', e => {
+      const items = LuxeoCart.items();
+      if (!items.length) return;
+      const refs = items.map(i => `${i.ref}:${i.qty}`).join(',');
+      e.currentTarget.href = `index.html?cart=${encodeURIComponent(refs)}#contact`;
+    });
+
+    render();
+  })();
+</script>
+
+</body>
+</html>

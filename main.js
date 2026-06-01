@@ -383,23 +383,37 @@
 })();
 
 /* ============================================
-   BOUTIQUE — Pré-remplissage form depuis ?ref=
+   BOUTIQUE — Pré-remplissage form depuis ?ref= ou ?cart=
    ============================================ */
 (function () {
   const params = new URLSearchParams(window.location.search);
   const ref = params.get('ref');
-  if (!ref) return;
+  const cart = params.get('cart');
+  if (!ref && !cart) return;
 
-  // Wait DOM ready
   const fill = () => {
     const msg = document.getElementById('f-msg');
     const pack = document.getElementById('f-pack');
-    if (msg) {
-      const prefill = `Demande de devis pour le carrelage ${ref}.`;
-      if (!msg.value.includes(ref)) {
-        msg.value = prefill + (msg.value ? '\n' + msg.value : '');
-        msg.dispatchEvent(new Event('input', { bubbles: true }));
+    if (!msg) return;
+
+    let prefill = '';
+    if (cart) {
+      // cart param format: REF:QTY,REF:QTY,...
+      const items = cart.split(',').map(s => {
+        const [r, q] = s.split(':');
+        return { ref: r, qty: parseInt(q, 10) || 1 };
+      }).filter(i => i.ref);
+      if (items.length) {
+        prefill = "Demande de devis pour ma sélection :\n" +
+          items.map(i => `  • ${i.ref} — ${i.qty} m²`).join('\n');
       }
+    } else if (ref) {
+      prefill = `Demande de devis pour le carrelage ${ref}.`;
+    }
+
+    if (prefill && !msg.value.includes('Demande de devis')) {
+      msg.value = prefill + (msg.value ? '\n' + msg.value : '');
+      msg.dispatchEvent(new Event('input', { bubbles: true }));
     }
     if (pack) {
       const conseil = Array.from(pack.options).find(o => o.value === 'conseil');
