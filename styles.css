@@ -10,6 +10,7 @@
   --or: #c9a84c;
   --or-deep: #a78a35;
   --fond-clair: #f0fafa;
+  --fond-bleu: #e6f2f2;
   --fond-sombre: #0a2a2a;
   --fond-sombre-2: #0f3938;
   --texte: #1a1a2e;
@@ -4977,7 +4978,7 @@ footer {
 /* ============================================
    BOUTIQUE — Carrelage & faïence catalogue
    ============================================ */
-.bq-hero { background: linear-gradient(180deg, #fff 0%, var(--fond-clair) 100%); }
+.bq-hero { background: linear-gradient(180deg, #fff 0%, var(--fond-bleu) 100%); }
 
 /* Trust strip under hero */
 .bq-trust {
@@ -5028,7 +5029,7 @@ footer {
 /* Catalogue section */
 .bq-cat {
   padding: clamp(50px, 7vw, 90px) var(--pad-x);
-  background: #fff;
+  background: var(--fond-bleu);
 }
 .bq-cat .wrap { max-width: 1320px; }
 
@@ -5437,7 +5438,7 @@ footer {
 /* ============================================
    FICHE PRODUIT — Boutique > Produit
    ============================================ */
-.pp { padding: 110px var(--pad-x) clamp(40px, 5vw, 60px); background: #fff; }
+.pp { padding: 110px var(--pad-x) clamp(40px, 5vw, 60px); background: var(--fond-bleu); }
 .pp .wrap { max-width: 1280px; }
 
 .pp-breadcrumb {
@@ -5707,7 +5708,7 @@ footer {
 /* Related */
 .pp-related {
   padding: clamp(50px, 7vw, 80px) var(--pad-x);
-  background: #fff;
+  background: var(--fond-bleu);
 }
 .pp-related .wrap { max-width: 1280px; }
 .pp-related-head { text-align: center; margin-bottom: 38px; }
@@ -5739,7 +5740,7 @@ footer {
 /* ============================================
    PANIER — cart.html
    ============================================ */
-.cart-page { padding: 110px var(--pad-x) clamp(50px, 6vw, 80px); background: #fff; }
+.cart-page { padding: 110px var(--pad-x) clamp(50px, 6vw, 80px); background: var(--fond-bleu); }
 .cart-page .wrap { max-width: 1180px; }
 
 .cart-head { text-align: center; margin-bottom: 40px; }
