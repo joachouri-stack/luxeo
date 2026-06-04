@@ -6548,73 +6548,36 @@ footer {
 }
 
 /* =========================================
-   SÉPARATEUR « Autre projet »
-   Marque clairement le changement d'offre
+   RÉNOVATION COMPLÈTE — ligne discrète sous la carte Clé en Main
+   Pas une carte, pas un encadré : juste une mention texte.
    ========================================= */
-.km-divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: clamp(60px, 8vw, 100px) auto clamp(28px, 4vw, 40px);
-  max-width: 460px;
-}
-.km-divider-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(14, 124, 123, 0.3), transparent);
-}
-.km-divider-label {
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--texte-mute);
-  white-space: nowrap;
-}
-
-/* =========================================
-   EXTRA — Rénovation complète = offre DIFFÉRENTE
-   Vraie séparation, fond distinct, identité propre
-   ========================================= */
-.km-extra {
-  padding: clamp(28px, 4vw, 40px) clamp(28px, 4vw, 44px);
-  background: #fff;
-  border-radius: 14px;
-  border-left: 4px solid var(--turquoise);
-  box-shadow:
-    0 0 0 1px var(--ligne),
-    0 14px 36px -18px rgba(10, 42, 42, 0.12);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 32px;
-  align-items: center;
-  transition:
-    box-shadow 0.28s var(--ease-out),
-    transform 0.28s var(--ease-out);
-}
-@media (hover: hover) {
-  .km-extra:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      0 0 0 1px rgba(14, 124, 123, 0.25),
-      0 22px 50px -18px rgba(14, 124, 123, 0.22);
-  }
-}
-.km-extra-text h4 {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--texte);
-  margin: 0 0 8px;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-}
-.km-extra-text p {
-  font-size: 14.5px;
+.km-renovation-link {
+  margin: clamp(28px, 4vw, 40px) auto 0;
+  text-align: center;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--texte-mute);
-  margin: 0;
+  max-width: 640px;
+  padding: 0 var(--gutter);
 }
-.km-extra .btn { white-space: nowrap; }
+.km-renovation-link a {
+  color: var(--turquoise);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.km-renovation-link a:hover {
+  color: var(--turquoise-deep);
+  border-bottom-color: var(--turquoise-deep);
+}
+.km-renovation-link a .arrow {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.25s var(--ease-out);
+}
+.km-renovation-link a:hover .arrow { transform: translateX(3px); }
 
 /* Responsive */
 @media (max-width: 700px) {
@@ -6641,20 +6604,12 @@ footer {
   .km-details { margin-top: 18px; padding: 0 4px; }
   .km-details > summary { font-size: 13px; padding: 14px 0; }
 
-  /* Séparateur Autre projet : plus serré sur mobile mais toujours présent */
-  .km-divider { margin: 44px auto 28px; gap: 12px; }
-  .km-divider-label { font-size: 10.5px; letter-spacing: 0.22em; }
-
-  /* Extra : reste en card propre, empilé proprement */
-  .km-extra {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    text-align: left;
-    padding: 24px 22px;
-    border-left-width: 4px;
+  /* Rénovation complète : ligne discrète mobile */
+  .km-renovation-link {
+    margin-top: 28px;
+    font-size: 13.5px;
+    line-height: 1.7;
   }
-  .km-extra-text h4 { font-size: 17px; }
-  .km-extra .btn { width: 100%; justify-content: center; }
 }
 @media (max-width: 420px) {
   .km-amount { font-size: 38px; }
