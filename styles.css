@@ -6144,17 +6144,196 @@ footer {
   max-width: 64ch;
 }
 
-/* Soft block (Personnaliser) — visuellement distinct du bloc Inclus */
-.km-block-soft {
-  background: var(--fond-bleu);
-  border: 1px solid rgba(14, 124, 123, 0.18);
-  border-radius: 10px;
-  padding: clamp(22px, 3vw, 32px) clamp(20px, 3vw, 32px);
-  margin: clamp(20px, 3vw, 28px) 0;
+/* =========================================
+   PERSONNALISEZ VOTRE DOUCHE — 4 categories
+   ========================================= */
+.km-perso {
+  padding: clamp(28px, 3.5vw, 40px) 0 clamp(20px, 3vw, 28px);
+  border-bottom: 1px solid var(--ligne);
 }
-.km-block-soft .km-block-title {
-  font-size: 19px;
-  color: var(--turquoise-deep);
+.km-perso .km-block-title {
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+/* 3 envies — grid responsive */
+.km-perso-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.km-perso-card {
+  background: var(--fond-bleu);
+  border: 1px solid rgba(14, 124, 123, 0.16);
+  border-radius: 12px;
+  padding: clamp(18px, 2.5vw, 24px);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.km-perso-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(14, 124, 123, 0.32);
+  box-shadow: 0 18px 36px -18px rgba(14, 124, 123, 0.28);
+}
+
+.km-perso-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed rgba(14, 124, 123, 0.22);
+}
+.km-perso-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--or) 0%, var(--or-deep) 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px -5px rgba(201, 168, 76, 0.5);
+}
+.km-perso-card.km-cat-securite .km-perso-ico {
+  background: linear-gradient(135deg, var(--turquoise) 0%, var(--turquoise-deep) 100%);
+  box-shadow: 0 6px 14px -5px rgba(14, 124, 123, 0.5);
+}
+.km-perso-card.km-cat-finition .km-perso-ico {
+  background: linear-gradient(135deg, var(--turquoise-deep) 0%, #052a29 100%);
+  box-shadow: 0 6px 14px -5px rgba(9, 89, 88, 0.5);
+}
+.km-perso-head h4 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--texte);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.km-perso-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.km-perso-list li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texte);
+  padding-left: 16px;
+  position: relative;
+}
+.km-perso-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--or);
+}
+.km-perso-card.km-cat-securite .km-perso-list li::before { background: var(--turquoise); }
+.km-perso-card.km-cat-finition .km-perso-list li::before { background: var(--turquoise-deep); }
+.km-perso-list li em {
+  font-style: normal;
+  color: var(--texte-mute);
+  font-weight: 400;
+}
+
+/* Technical block — sober, transparent */
+.km-perso-tech {
+  margin-top: clamp(22px, 3vw, 28px);
+  padding: clamp(18px, 2.5vw, 24px) clamp(20px, 3vw, 26px);
+  background: transparent;
+  border: 1px solid var(--ligne);
+  border-radius: 10px;
+}
+.km-tech-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.km-tech-ico {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--fond-clair);
+  color: var(--texte-mute);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.km-tech-head h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texte-mute);
+  margin: 0;
+}
+.km-tech-intro {
+  font-size: 13.5px;
+  color: var(--texte-mute);
+  line-height: 1.55;
+  margin: 0 0 12px;
+  font-style: italic;
+}
+.km-tech-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 24px;
+}
+.km-tech-list li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--texte);
+  padding-left: 14px;
+  position: relative;
+}
+.km-tech-list li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: var(--texte-mute);
+  font-weight: 700;
+}
+.km-tech-list li em {
+  font-style: normal;
+  color: var(--texte-mute);
+}
+
+.km-perso-foot {
+  margin: clamp(20px, 3vw, 26px) 0 0;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--texte-mute);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive perso */
+@media (max-width: 900px) {
+  .km-perso-grid { grid-template-columns: repeat(2, 1fr); }
+  .km-tech-list { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (max-width: 600px) {
+  .km-perso-grid { grid-template-columns: 1fr; gap: 12px; }
+  .km-perso-card { padding: 18px; }
+  .km-perso-head h4 { font-size: 14.5px; }
+  .km-perso-list li { font-size: 13.5px; }
+  .km-perso-tech { padding: 16px 18px; }
+  .km-tech-list li { font-size: 12.5px; }
 }
 
 /* List with checks */
@@ -6191,30 +6370,6 @@ footer {
   box-shadow: 0 4px 10px -3px rgba(201, 168, 76, 0.5);
 }
 .km-check svg { width: 14px; height: 14px; }
-
-/* Arrow variant (Personnaliser) */
-.km-list-arrow {
-  gap: 10px;
-}
-.km-list-arrow li {
-  font-size: 15px;
-  align-items: baseline;
-  color: var(--texte);
-}
-.km-arrow {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(14, 124, 123, 0.1);
-  color: var(--turquoise-deep);
-  display: inline-grid;
-  place-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
-  flex-shrink: 0;
-  transform: translateY(2px);
-}
 
 /* Details accordion */
 .km-details {
@@ -6323,7 +6478,6 @@ footer {
   .km-list li { font-size: 15px; gap: 12px; }
   .km-check { width: 24px; height: 24px; }
   .km-check svg { width: 13px; height: 13px; }
-  .km-list-arrow li { font-size: 14px; }
   .km-extra {
     grid-template-columns: 1fr;
     gap: 16px;
