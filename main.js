@@ -438,7 +438,7 @@
 
 /* ============================================
    FORMULAIRE DEVIS — Soumission AJAX Formspree
-   Reste sur le site, affiche un message in-form
+   Affiche la VRAIE erreur Formspree pour debug
    ============================================ */
 (function () {
   const form = document.getElementById('devisForm');
@@ -446,9 +446,20 @@
   const btn = document.getElementById('devisSubmit');
   const ok = document.getElementById('devisSuccess');
   const ko = document.getElementById('devisError');
+  const errMsgEl = document.getElementById('devisErrorMsg');
   if (!btn || !ok || !ko) return;
 
+  const defaultErrorHTML = errMsgEl ? errMsgEl.innerHTML : '';
   const btnOriginalHTML = btn.innerHTML;
+
+  function showError(detailHTML) {
+    if (errMsgEl) {
+      errMsgEl.innerHTML = (detailHTML || defaultErrorHTML) +
+        '<br><br>Ou appelez-nous au <a href="tel:+33769010202">07 69 01 02 02</a> · <a href="mailto:info@luxeo.pro">info@luxeo.pro</a>';
+    }
+    ko.hidden = false;
+    ko.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -459,26 +470,37 @@
     btn.innerHTML = 'Envoi en cours…';
 
     try {
+      const fd = new FormData(form);
       const res = await fetch(form.action, {
-        method: form.method || 'POST',
-        body: new FormData(form),
+        method: 'POST',
+        body: fd,
         headers: { Accept: 'application/json' },
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (res.ok) {
         form.reset();
-        // Re-flotter les labels après reset
         form.querySelectorAll('input, textarea, select').forEach(i => i.dispatchEvent(new Event('input')));
         ok.hidden = false;
         ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } else {
-        const data = await res.json().catch(() => ({}));
-        console.error('Formspree error', data);
-        ko.hidden = false;
+        console.error('Formspree responded', res.status, data);
+        // Extrait un message lisible des erreurs Formspree
+        let detail = '';
+        if (Array.isArray(data.errors) && data.errors.length) {
+          detail = '<b>Formspree refuse l\'envoi :</b><br>' +
+            data.errors.map(er => '• ' + (er.message || JSON.stringify(er))).join('<br>');
+        } else if (data.error) {
+          detail = '<b>Formspree refuse l\'envoi :</b> ' + data.error;
+        } else {
+          detail = '<b>Erreur HTTP ' + res.status + '</b> sans détail.';
+        }
+        showError(detail);
       }
     } catch (err) {
       console.error('Network error', err);
-      ko.hidden = false;
+      showError('<b>Erreur réseau :</b> ' + (err && err.message ? err.message : 'connexion impossible à Formspree.'));
     } finally {
       btn.disabled = false;
       btn.innerHTML = btnOriginalHTML;

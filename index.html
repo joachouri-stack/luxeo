@@ -1103,17 +1103,17 @@
         <h3>Devis gratuit · sans engagement</h3>
 
         <div class="form-row">
-          <div class="field"><input type="text" id="f-prenom" name="Prénom" placeholder=" " required><label for="f-prenom">Prénom</label></div>
-          <div class="field"><input type="text" id="f-nom" name="Nom" placeholder=" " required><label for="f-nom">Nom</label></div>
+          <div class="field"><input type="text" id="f-prenom" name="prenom" placeholder=" " required><label for="f-prenom">Prénom</label></div>
+          <div class="field"><input type="text" id="f-nom" name="nom" placeholder=" " required><label for="f-nom">Nom</label></div>
         </div>
         <div class="form-row">
-          <div class="field"><input type="email" id="f-email" name="Email" placeholder=" " required><label for="f-email">Email</label></div>
-          <div class="field"><input type="tel" id="f-tel" name="Téléphone" placeholder=" " required><label for="f-tel">Téléphone</label></div>
+          <div class="field"><input type="email" id="f-email" name="email" placeholder=" " required><label for="f-email">Email</label></div>
+          <div class="field"><input type="tel" id="f-tel" name="telephone" placeholder=" " required><label for="f-tel">Téléphone</label></div>
         </div>
         <div class="form-row">
-          <div class="field"><input type="text" id="f-ville" name="Ville" placeholder=" " required><label for="f-ville">Ville</label></div>
+          <div class="field"><input type="text" id="f-ville" name="ville" placeholder=" " required><label for="f-ville">Ville</label></div>
           <div class="field field-select">
-            <select id="f-pack" name="Type de projet" required>
+            <select id="f-pack" name="type_projet" required>
               <option value="" disabled selected></option>
               <option value="Clé en Main — à partir de 5 700 €">Clé en Main — à partir de 5 700 €</option>
               <option value="Rénovation complète — sur devis">Rénovation complète — sur devis</option>
@@ -1123,17 +1123,14 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="field field-full"><textarea id="f-msg" name="Projet" placeholder=" " rows="3"></textarea><label for="f-msg">Votre projet (facultatif)</label></div>
+          <div class="field field-full"><textarea id="f-msg" name="message" placeholder=" " rows="3"></textarea><label for="f-msg">Votre projet (facultatif)</label></div>
         </div>
         <div class="form-row">
-          <div class="field field-full"><input type="text" id="f-parr" name="Parrainage" placeholder=" "><label for="f-parr">Avez-vous été recommandé par un client Luxeo ? (prénom + nom)</label></div>
+          <div class="field field-full"><input type="text" id="f-parr" name="parrainage" placeholder=" "><label for="f-parr">Avez-vous été recommandé par un client Luxeo ? (prénom + nom)</label></div>
         </div>
 
-        <!-- Honeypot anti-spam (invisible aux humains) -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
         <!-- Métadonnées Formspree -->
         <input type="hidden" name="_subject" value="Nouvelle demande de devis Luxeo">
-        <input type="hidden" name="_language" value="fr">
 
         <button type="submit" class="btn btn-primary" id="devisSubmit">Envoyer ma demande <span class="arrow">→</span></button>
         <p class="consent">En envoyant ce formulaire, vous acceptez que Luxeo vous contacte concernant votre projet. Aucune donnée n'est transmise à des tiers.</p>
@@ -1154,7 +1151,7 @@
           </span>
           <div>
             <div class="fs-title">Envoi impossible</div>
-            <p>Un problème est survenu. Vous pouvez réessayer dans quelques instants, nous appeler au <a href="tel:+33769010202">07 69 01 02 02</a> ou écrire à <a href="mailto:info@luxeo.pro">info@luxeo.pro</a>.</p>
+            <p id="devisErrorMsg">Un problème est survenu. Vous pouvez réessayer dans quelques instants, nous appeler au <a href="tel:+33769010202">07 69 01 02 02</a> ou écrire à <a href="mailto:info@luxeo.pro">info@luxeo.pro</a>.</p>
           </div>
         </div>
       </form>
