@@ -4,6 +4,7 @@
 
 (function () {
   'use strict';
+console.log('Luxeo v.1780579225 — form handler ready');
 
   /* ---------- NAV — Scroll state + mobile menu ---------- */
   const nav = document.getElementById('nav');
