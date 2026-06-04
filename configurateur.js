@@ -1,112 +1,89 @@
 /* ============================================
-   LUXEO — Composer V2
-   Frontend complet (Phase 1A — sans backend IA)
-   Mocked AI : utilise des photos "after" pré-existantes
+   LUXEO — Composer V2 (Phase 2)
+   Appel réel au backend /api/generate-image (fal.ai)
+   Pas de localStorage ni sessionStorage — état en mémoire uniquement
    ============================================ */
 
 (function () {
   'use strict';
+
+  // Endpoint du backend (configurable via window.LUXEO_API_BASE)
+  const API_BASE = (window.LUXEO_API_BASE || '').replace(/\/$/, '');
+  const API_GENERATE = API_BASE + '/api/generate-image';
 
   const SVG_COL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><line x1="12" y1="6" x2="12" y2="14"/><circle cx="12" cy="14" r="3.2"/><line x1="9" y1="17" x2="8.5" y2="20.5"/><line x1="12" y1="17" x2="12" y2="20.5"/><line x1="15" y1="17" x2="15.5" y2="20.5"/></svg>';
   const SVG_PAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="4" y1="9" x2="20" y2="9" opacity="0.4"/><line x1="4" y1="15" x2="20" y2="15" opacity="0.4"/></svg>';
 
   const CATALOG = {
     sol: [
-      { ref: 'LUXEO-SOL-01', name: 'Marbre Calacatta', desc: 'blanc veiné gris', img: '/assets/tiles/LUX-MAR-001.jpg' },
-      { ref: 'LUXEO-SOL-02', name: 'Travertin clair',  desc: 'beige naturel',    img: '/assets/tiles/LUX-MAR-004.jpg' },
-      { ref: 'LUXEO-SOL-03', name: 'Béton ciré',       desc: 'gris moyen',       img: '/assets/tiles/LUX-BET-005.jpg' },
-      { ref: 'LUXEO-SOL-04', name: 'Anthracite mat',   desc: '60×60 cm',         img: '/assets/tiles/LUX-BET-004.jpg' },
-      { ref: 'LUXEO-SOL-05', name: 'Effet bois chêne', desc: 'lasuré clair',     img: '/assets/tiles/LUX-BOI-001.jpg' },
-      { ref: 'LUXEO-SOL-06', name: 'Ardoise noire',    desc: 'mate texturée',    img: '/assets/tiles/LUX-PIE-003.jpg' },
+      { ref: 'LUXEO-SOL-01', name: 'Marbre Calacatta', desc: 'blanc veiné gris',  img: '/assets/tiles/LUX-MAR-001.jpg', en: 'white veined Calacatta marble' },
+      { ref: 'LUXEO-SOL-02', name: 'Travertin clair',  desc: 'beige naturel',      img: '/assets/tiles/LUX-MAR-004.jpg', en: 'light travertine stone, warm beige' },
+      { ref: 'LUXEO-SOL-03', name: 'Béton ciré',       desc: 'gris moyen',         img: '/assets/tiles/LUX-BET-005.jpg', en: 'polished concrete, medium grey, matte' },
+      { ref: 'LUXEO-SOL-04', name: 'Anthracite mat',   desc: '60×60 cm',           img: '/assets/tiles/LUX-BET-004.jpg', en: 'matte anthracite large-format tiles 60x60cm' },
+      { ref: 'LUXEO-SOL-05', name: 'Effet bois chêne', desc: 'lasuré clair',       img: '/assets/tiles/LUX-BOI-001.jpg', en: 'light oak wood-effect porcelain tiles, plank format' },
+      { ref: 'LUXEO-SOL-06', name: 'Ardoise noire',    desc: 'mate texturée',      img: '/assets/tiles/LUX-PIE-003.jpg', en: 'matte black slate, textured, anti-slip' },
     ],
     murs: [
-      { ref: 'LUXEO-MUR-01', name: 'Grand format blanc',     desc: 'mat 60×120',  img: '/assets/tiles/LUX-MAR-003.jpg' },
-      { ref: 'LUXEO-MUR-02', name: 'Grand format anthracite', desc: 'mat 60×120', img: '/assets/tiles/LUX-MFO-002.jpg' },
-      { ref: 'LUXEO-MUR-03', name: 'Mosaïque verticale',     desc: 'beige & blanc', img: '/assets/tiles/LUX-MOS-003.jpg' },
-      { ref: 'LUXEO-MUR-04', name: 'Béton ciré clair',       desc: 'mat',         img: '/assets/tiles/LUX-BET-001.jpg' },
-      { ref: 'LUXEO-MUR-05', name: 'Pierre naturelle',       desc: 'beige',       img: '/assets/tiles/LUX-PIE-001.jpg' },
-      { ref: 'LUXEO-MUR-06', name: 'Lambris teck',           desc: 'vertical',    img: '/assets/tiles/LUX-BOI-002.jpg' },
+      { ref: 'LUXEO-MUR-01', name: 'Grand format blanc',     desc: 'mat 60×120',     img: '/assets/tiles/LUX-MAR-003.jpg', en: 'large-format matte white tiles 60x120cm' },
+      { ref: 'LUXEO-MUR-02', name: 'Grand format anthracite', desc: 'mat 60×120',    img: '/assets/tiles/LUX-MFO-002.jpg', en: 'large-format matte anthracite tiles 60x120cm' },
+      { ref: 'LUXEO-MUR-03', name: 'Mosaïque verticale',     desc: 'beige & blanc',   img: '/assets/tiles/LUX-MOS-003.jpg', en: 'vertical mosaic strips, beige and white' },
+      { ref: 'LUXEO-MUR-04', name: 'Béton ciré clair',       desc: 'mat',             img: '/assets/tiles/LUX-BET-001.jpg', en: 'light polished concrete, matte' },
+      { ref: 'LUXEO-MUR-05', name: 'Pierre naturelle',       desc: 'beige',           img: '/assets/tiles/LUX-PIE-001.jpg', en: 'natural beige stone wall' },
+      { ref: 'LUXEO-MUR-06', name: 'Lambris teck',           desc: 'vertical',        img: '/assets/tiles/LUX-BOI-002.jpg', en: 'vertical teak wood paneling, warm tone' },
     ],
     colonne: [
-      { ref: 'LUXEO-COL-01', name: 'Inox brossé',     desc: 'thermostatique', gradient: 'linear-gradient(135deg,#9ca3a8,#5a6166)' },
-      { ref: 'LUXEO-COL-02', name: 'Noir mat',        desc: 'thermostatique', gradient: 'linear-gradient(135deg,#2a2a2a,#0a0a0a)' },
-      { ref: 'LUXEO-COL-03', name: 'Or brossé',       desc: 'thermostatique', gradient: 'linear-gradient(135deg,#d4b265,#9e7d3b)' },
-      { ref: 'LUXEO-COL-04', name: 'Chromé classique', desc: 'brillant',      gradient: 'linear-gradient(135deg,#e8edf0,#a8b0b6)' },
+      { ref: 'LUXEO-COL-01', name: 'Inox brossé',     desc: 'thermostatique', gradient: 'linear-gradient(135deg,#9ca3a8,#5a6166)', en: 'brushed stainless steel thermostatic shower column' },
+      { ref: 'LUXEO-COL-02', name: 'Noir mat',        desc: 'thermostatique', gradient: 'linear-gradient(135deg,#2a2a2a,#0a0a0a)', en: 'matte black thermostatic shower column' },
+      { ref: 'LUXEO-COL-03', name: 'Or brossé',       desc: 'thermostatique', gradient: 'linear-gradient(135deg,#d4b265,#9e7d3b)', en: 'brushed gold thermostatic shower column' },
+      { ref: 'LUXEO-COL-04', name: 'Chromé classique', desc: 'brillant',      gradient: 'linear-gradient(135deg,#e8edf0,#a8b0b6)', en: 'polished chrome classic shower column' },
     ],
     paroi: [
-      { ref: 'LUXEO-PAR-01', name: 'Verre clair',         desc: '8 mm sécurit',  gradient: 'linear-gradient(135deg,#e8f4f5,#bcd9dc)' },
-      { ref: 'LUXEO-PAR-02', name: 'Verre sablé',         desc: '8 mm opaque',   gradient: 'linear-gradient(135deg,#f4f7f7,#d0d8d8)' },
-      { ref: 'LUXEO-PAR-03', name: 'Profilé noir + verre', desc: 'cadre noir mat', gradient: 'linear-gradient(135deg,#1a1a1a 0%,#1a1a1a 14%,#e8f4f5 14%,#bcd9dc 100%)' },
+      { ref: 'LUXEO-PAR-01', name: 'Verre clair',         desc: '8 mm sécurit',   gradient: 'linear-gradient(135deg,#e8f4f5,#bcd9dc)', en: 'clear 8mm tempered glass walk-in panel, frameless' },
+      { ref: 'LUXEO-PAR-02', name: 'Verre sablé',         desc: '8 mm opaque',    gradient: 'linear-gradient(135deg,#f4f7f7,#d0d8d8)', en: 'sandblasted frosted 8mm glass walk-in panel' },
+      { ref: 'LUXEO-PAR-03', name: 'Profilé noir + verre', desc: 'cadre noir mat', gradient: 'linear-gradient(135deg,#1a1a1a 0%,#1a1a1a 14%,#e8f4f5 14%,#bcd9dc 100%)', en: 'matte black framed walk-in panel with clear glass' },
     ],
   };
 
   const PACKS = {
     'suite-marbre': {
       label: 'Suite Marbre',
-      sol:     { ref: 'LUXEO-SOL-01', name: 'Marbre Calacatta' },
-      murs:    { ref: 'LUXEO-MUR-01', name: 'Grand format blanc mat' },
-      colonne: { ref: 'LUXEO-COL-03', name: 'Or brossé thermostatique' },
-      paroi:   { ref: 'LUXEO-PAR-01', name: 'Verre clair 8 mm' },
-      mockImage: '/assets/after-marseille.jpg',
-      altMockImage: '/assets/intro-detail.jpg',
+      sol:     { ref: 'LUXEO-SOL-01', name: 'Marbre Calacatta',            en: 'white veined Calacatta marble' },
+      murs:    { ref: 'LUXEO-MUR-01', name: 'Grand format blanc mat',      en: 'large-format matte white tiles 60x120cm' },
+      colonne: { ref: 'LUXEO-COL-03', name: 'Or brossé thermostatique',    en: 'brushed gold thermostatic shower column' },
+      paroi:   { ref: 'LUXEO-PAR-01', name: 'Verre clair 8 mm',            en: 'clear 8mm tempered glass walk-in panel, frameless' },
     },
     'spa-zen': {
       label: 'Spa Zen',
-      sol:     { ref: 'LUXEO-SOL-06', name: 'Ardoise noire mate' },
-      murs:    { ref: 'LUXEO-MUR-06', name: 'Lambris teck vertical' },
-      colonne: { ref: 'LUXEO-COL-02', name: 'Noir mat thermostatique' },
-      paroi:   { ref: 'LUXEO-PAR-03', name: 'Profilé noir + verre clair' },
-      mockImage: '/assets/after-nimes.jpg',
-      altMockImage: '/assets/after-montpellier.jpg',
+      sol:     { ref: 'LUXEO-SOL-06', name: 'Ardoise noire mate',          en: 'matte black slate, textured, anti-slip' },
+      murs:    { ref: 'LUXEO-MUR-06', name: 'Lambris teck vertical',       en: 'vertical teak wood paneling, warm tone' },
+      colonne: { ref: 'LUXEO-COL-02', name: 'Noir mat thermostatique',     en: 'matte black thermostatic shower column' },
+      paroi:   { ref: 'LUXEO-PAR-03', name: 'Profilé noir + verre clair',  en: 'matte black framed walk-in panel with clear glass' },
     },
     'provence': {
       label: 'Provence',
-      sol:     { ref: 'LUXEO-SOL-02', name: 'Pierre travertin beige' },
-      murs:    { ref: 'LUXEO-MUR-05', name: 'Pierre naturelle beige' },
-      colonne: { ref: 'LUXEO-COL-03', name: 'Or brossé thermostatique' },
-      paroi:   { ref: 'LUXEO-PAR-01', name: 'Verre clair (profilé bronze)' },
-      mockImage: '/assets/after-avignon.jpg',
-      altMockImage: '/assets/intro-detail.jpg',
-    },
-    'libre': {
-      label: 'Composition libre',
-      mockImages: [
-        '/assets/after-avignon.jpg',
-        '/assets/after-marseille.jpg',
-        '/assets/after-nimes.jpg',
-        '/assets/after-montpellier.jpg',
-        '/assets/intro-detail.jpg',
-      ],
+      sol:     { ref: 'LUXEO-SOL-02', name: 'Pierre travertin beige',      en: 'light travertine stone, warm beige' },
+      murs:    { ref: 'LUXEO-MUR-05', name: 'Pierre naturelle beige',      en: 'natural beige stone wall' },
+      colonne: { ref: 'LUXEO-COL-03', name: 'Or brossé thermostatique',    en: 'brushed gold thermostatic shower column' },
+      paroi:   { ref: 'LUXEO-PAR-01', name: 'Verre clair (profilé bronze)', en: 'clear glass walk-in panel with bronze profile' },
     },
   };
 
+  // État en mémoire — pas de localStorage
   const state = {
-    photo: null,
+    photo: null,            // { file: File, dataUrl: string, name: string }
     pack: null,
     libreSelections: { sol: null, murs: null, colonne: null, paroi: null },
-    lastResultImg: null,
+    lastResultUrl: null,
+    lastPromptUsed: null,
+    essaisUsed: 0,          // compteur en mémoire (reset au reload — backend rate-limit prend le relais)
   };
 
   const ESSAIS_MAX = 2;
-  const KEY_USED = 'luxeo_essais_used';
-  const KEY_DATE = 'luxeo_essais_date';
 
-  function getEssaisUsed() { return parseInt(localStorage.getItem(KEY_USED) || '0', 10) || 0; }
-  function getEssaisRestants() { return Math.max(0, ESSAIS_MAX - getEssaisUsed()); }
+  function getEssaisRestants() { return Math.max(0, ESSAIS_MAX - state.essaisUsed); }
   function incrementEssais() {
-    const used = getEssaisUsed() + 1;
-    localStorage.setItem(KEY_USED, String(used));
-    localStorage.setItem(KEY_DATE, new Date().toISOString());
+    state.essaisUsed += 1;
     updateEssaisUI();
-  }
-  function checkResetEssais() {
-    const lastDate = localStorage.getItem(KEY_DATE);
-    if (!lastDate) return;
-    const diffDays = (Date.now() - new Date(lastDate).getTime()) / (1000 * 60 * 60 * 24);
-    if (diffDays > 30) {
-      localStorage.removeItem(KEY_USED);
-      localStorage.removeItem(KEY_DATE);
-    }
   }
   function updateEssaisUI() {
     const restants = getEssaisRestants();
@@ -125,13 +102,15 @@
       if (emptyMsg) emptyMsg.hidden = true;
     }
     const inp = document.getElementById('cf-composer-essais');
-    if (inp) inp.value = getEssaisUsed();
+    if (inp) inp.value = state.essaisUsed;
   }
 
+  // ============================================
   // ÉTAPE 01 — UPLOAD
+  // ============================================
   function initUpload() {
     const drop = document.getElementById('cpDrop');
-    const file = document.getElementById('cpFile');
+    const fileInput = document.getElementById('cpFile');
     const empty = document.getElementById('cpDropEmpty');
     const preview = document.getElementById('cpDropPreview');
     const previewImg = document.getElementById('cpPreviewImg');
@@ -150,17 +129,17 @@
     }
     function clearError() { errorBox.hidden = true; }
 
-    function setPreview(dataUrl, name) {
+    function setPreviewFromFile(file, dataUrl) {
       previewImg.src = dataUrl;
-      previewName.textContent = name || 'photo';
+      previewName.textContent = file.name || 'photo';
       empty.hidden = true;
       preview.hidden = false;
       actions.hidden = false;
-      state.photo = { dataUrl, name };
+      state.photo = { file, dataUrl, name: file.name };
     }
 
     function resetUpload() {
-      file.value = '';
+      fileInput.value = '';
       empty.hidden = false;
       preview.hidden = true;
       actions.hidden = true;
@@ -171,23 +150,23 @@
     function handleFile(f) {
       clearError();
       if (!f) return;
-      const okType = /image\/(jpeg|jpg|png|heic|webp)/i.test(f.type) || /\.(jpe?g|png|heic|webp)$/i.test(f.name);
+      const okType = /image\/(jpeg|jpg|png|heic|heif|webp)/i.test(f.type) || /\.(jpe?g|png|heic|heif|webp)$/i.test(f.name);
       if (!okType) { showError('Format non supporté. Utilisez JPG, PNG, HEIC ou WEBP.'); return; }
       if (f.size > 10 * 1024 * 1024) { showError('Le fichier dépasse 10 Mo. Réduisez la taille.'); return; }
       const reader = new FileReader();
-      reader.onload = (e) => setPreview(e.target.result, f.name);
+      reader.onload = (e) => setPreviewFromFile(f, e.target.result);
       reader.onerror = () => showError('Impossible de lire le fichier.');
       reader.readAsDataURL(f);
     }
 
     drop.addEventListener('click', (e) => {
       if (e.target.closest('.cp-drop-preview')) return;
-      file.click();
+      fileInput.click();
     });
     drop.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); file.click(); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
     });
-    file.addEventListener('change', (e) => handleFile(e.target.files[0]));
+    fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
     ['dragenter', 'dragover'].forEach(ev => {
       drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('cp-drop-dragover'); });
     });
@@ -203,18 +182,25 @@
       if (!state.photo) return;
       showStep('cpStep2', true);
     });
-    demoLink.addEventListener('click', () => {
-      const demoSrc = '/assets/before-avignon.jpg';
-      previewImg.src = demoSrc;
-      previewName.textContent = 'photo-de-demo.jpg';
-      empty.hidden = true;
-      preview.hidden = false;
-      actions.hidden = false;
-      state.photo = { dataUrl: demoSrc, name: 'photo-de-demo.jpg' };
+
+    // Démo : charge before-avignon.jpg comme File
+    demoLink.addEventListener('click', async () => {
+      try {
+        const res = await fetch('/assets/before-avignon.jpg');
+        const blob = await res.blob();
+        const file = new File([blob], 'photo-de-demo.jpg', { type: 'image/jpeg' });
+        const reader = new FileReader();
+        reader.onload = (e) => setPreviewFromFile(file, e.target.result);
+        reader.readAsDataURL(file);
+      } catch {
+        showError('Impossible de charger la photo de démo.');
+      }
     });
   }
 
-  // ÉTAPE 02
+  // ============================================
+  // ÉTAPE 02 — STYLE
+  // ============================================
   function renderLibreGrids() {
     Object.keys(CATALOG).forEach(cat => {
       const grid = document.querySelector(`.cp-libre-grid[data-grid="${cat}"]`);
@@ -244,11 +230,15 @@
       btn.addEventListener('click', () => {
         const packId = btn.getAttribute('data-pack');
         if (!packId || getEssaisRestants() <= 0) return;
+        if (!state.photo) {
+          showStep('cpStep1', true);
+          return;
+        }
         state.pack = packId;
         document.querySelectorAll('.cp-pack').forEach(p => p.classList.remove('cp-pack-selected'));
         const card = btn.closest('.cp-pack');
         if (card) card.classList.add('cp-pack-selected');
-        runGeneration(packId);
+        runGeneration();
       });
     });
 
@@ -258,9 +248,7 @@
       const open = libreBlock.hidden;
       libreBlock.hidden = !open;
       libreToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        libreBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (open) libreBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     renderLibreGrids();
@@ -284,8 +272,9 @@
 
     document.getElementById('cpGenerateLibre').addEventListener('click', () => {
       if (!isLibreComplete() || getEssaisRestants() <= 0) return;
+      if (!state.photo) { showStep('cpStep1', true); return; }
       state.pack = 'libre';
-      runGeneration('libre');
+      runGeneration();
     });
   }
 
@@ -305,7 +294,9 @@
     }
   }
 
-  // LOADER
+  // ============================================
+  // LOADER (animation pendant l'appel API)
+  // ============================================
   const LOADER_STEPS = [
     'Analyse de votre photo…',
     'Application des matériaux sélectionnés…',
@@ -313,6 +304,7 @@
     'Réglage de l\'ambiance lumière…',
     'Touches finales…',
   ];
+  let loaderTimers = null;
 
   function showLoader() {
     const loader = document.getElementById('cpLoader');
@@ -330,24 +322,24 @@
       stepEl.textContent = LOADER_STEPS[idx];
     }, 2500);
 
-    const totalDuration = 9000;
+    const totalDuration = 20000; // ~20s (vraie latence IA)
     const start = Date.now();
     const progressTimer = setInterval(() => {
       const elapsed = Date.now() - start;
-      const pct = Math.min(95, (elapsed / totalDuration) * 95 + 5);
+      const pct = Math.min(92, (elapsed / totalDuration) * 92 + 5);
       bar.style.width = pct + '%';
-      if (elapsed >= totalDuration) clearInterval(progressTimer);
-    }, 120);
+    }, 200);
 
-    return { stepTimer, progressTimer };
+    loaderTimers = { stepTimer, progressTimer };
   }
 
-  function hideLoader(timers) {
+  function hideLoader() {
     const loader = document.getElementById('cpLoader');
     const bar = document.getElementById('cpLoaderBar');
-    if (timers) {
-      clearInterval(timers.stepTimer);
-      clearInterval(timers.progressTimer);
+    if (loaderTimers) {
+      clearInterval(loaderTimers.stepTimer);
+      clearInterval(loaderTimers.progressTimer);
+      loaderTimers = null;
     }
     bar.style.width = '100%';
     setTimeout(() => {
@@ -357,56 +349,116 @@
     }, 400);
   }
 
-  function runGeneration(packId) {
-    const timers = showLoader();
-    setTimeout(() => {
-      hideLoader(timers);
-      showResult(packId);
+  // ============================================
+  // GÉNÉRATION — appel réel au backend
+  // ============================================
+  async function runGeneration() {
+    if (!state.photo || !state.pack) return;
+
+    showLoader();
+
+    try {
+      const sel = state.pack === 'libre' ? state.libreSelections : PACKS[state.pack];
+
+      const fd = new FormData();
+      // Photo : envoie le File (multipart/form-data)
+      fd.append('image', state.photo.file, state.photo.name || 'photo.jpg');
+      // Options en anglais pour le modèle IA (clearer prompt)
+      fd.append('pack', state.pack);
+      if (sel.sol)     fd.append('sol',     sel.sol.en || sel.sol.name || '');
+      if (sel.murs)    fd.append('murs',    sel.murs.en || sel.murs.name || '');
+      if (sel.colonne) fd.append('colonne', sel.colonne.en || sel.colonne.name || '');
+      if (sel.paroi)   fd.append('paroi',   sel.paroi.en || sel.paroi.name || '');
+
+      const res = await fetch(API_GENERATE, {
+        method: 'POST',
+        body: fd,
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        const errMsg = data.error || `Erreur HTTP ${res.status}`;
+        throw new Error(errMsg);
+      }
+      if (!data.image_url) {
+        throw new Error('Réponse incomplète du serveur.');
+      }
+
+      // Précharge l'image avant de cacher le loader (évite un flash blanc)
+      await preloadImage(data.image_url);
+
+      state.lastResultUrl = data.image_url;
+      state.lastPromptUsed = data.prompt_used || '';
       incrementEssais();
-    }, 8500);
-  }
-
-  // RESULT
-  function pickResultImage(packId) {
-    if (packId === 'libre') {
-      const list = PACKS.libre.mockImages;
-      return list[getEssaisUsed() % list.length];
+      hideLoader();
+      showResult();
+    } catch (err) {
+      console.error('[Composer] generation failed:', err);
+      hideLoader();
+      showGenerationError(err.message || 'La génération a échoué.');
     }
-    const p = PACKS[packId];
-    if (!p) return PACKS.libre.mockImages[0];
-    return (getEssaisUsed() % 2 === 0) ? p.mockImage : (p.altMockImage || p.mockImage);
   }
 
-  function getRecapDetails(packId) {
-    if (packId === 'libre') {
+  function preloadImage(url) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve();
+      img.onerror = () => resolve(); // continue quand même
+      img.src = url;
+    });
+  }
+
+  function showGenerationError(message) {
+    // Affiche un toast d'erreur en revenant à l'étape 2
+    const step2 = document.getElementById('cpStep2');
+    let toast = document.getElementById('cpGenError');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'cpGenError';
+      toast.className = 'cp-drop-error';
+      toast.style.maxWidth = '720px';
+      toast.style.margin = '24px auto 0';
+      step2.querySelector('.wrap').appendChild(toast);
+    }
+    toast.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span><b>Génération impossible :</b> ${escapeHTML(message)}. Réessayez dans quelques instants ou demandez un devis en direct au <a href="tel:+33769010202">07 69 01 02 02</a>.</span>
+    `;
+    toast.hidden = false;
+    toast.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => { toast.hidden = true; }, 9000);
+  }
+  function escapeHTML(s) {
+    return String(s).replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  }
+
+  // ============================================
+  // ÉTAPE 04 — RÉSULTAT
+  // ============================================
+  function getRecapDetails() {
+    if (state.pack === 'libre') {
       const s = state.libreSelections;
-      const sol = s.sol ? s.sol.name : '—';
-      const murs = s.murs ? s.murs.name : '—';
-      const col = s.colonne ? s.colonne.name : '—';
-      const par = s.paroi ? s.paroi.name : '—';
-      return `${sol} au sol, ${murs} aux murs, ${col}, ${par}.`;
+      return `${s.sol.name} au sol, ${s.murs.name} aux murs, ${s.colonne.name}, ${s.paroi.name}.`;
     }
-    const p = PACKS[packId];
+    const p = PACKS[state.pack];
     return `${p.sol.name} au sol, ${p.murs.name} aux murs, ${p.colonne.name}, ${p.paroi.name}.`;
   }
-
-  function getPackLabel(packId) {
-    const p = PACKS[packId];
-    return p ? p.label : 'Composition libre';
+  function getPackLabel() {
+    if (state.pack === 'libre') return 'Composition libre';
+    return PACKS[state.pack] ? PACKS[state.pack].label : 'Composition';
   }
 
-  function showResult(packId) {
+  function showResult() {
     const img = document.getElementById('cpResultImg');
     const title = document.getElementById('cpResultTitle');
     const packLabel = document.getElementById('cpResultPack');
 
-    const resultSrc = pickResultImage(packId);
-    state.lastResultImg = resultSrc;
-    img.src = resultSrc;
-    img.alt = `Rendu IA — ${getPackLabel(packId)}`;
+    img.src = state.lastResultUrl;
+    img.alt = `Rendu IA — ${getPackLabel()}`;
 
-    const label = getPackLabel(packId);
-    title.innerHTML = packId === 'libre'
+    const label = getPackLabel();
+    title.innerHTML = state.pack === 'libre'
       ? 'Voilà votre <em>création unique.</em>'
       : `Voilà votre <em>${label}.</em>`;
     packLabel.textContent = label;
@@ -419,7 +471,7 @@
     document.getElementById('cpRegen').addEventListener('click', () => {
       if (getEssaisRestants() <= 0) return;
       if (!state.pack) return;
-      runGeneration(state.pack);
+      runGeneration();
     });
     document.getElementById('cpEditChoices').addEventListener('click', () => {
       showStep('cpStep2', true);
@@ -430,28 +482,41 @@
     });
   }
 
-  // FORM
+  // ============================================
+  // ÉTAPE 05 — Formulaire devis
+  // ============================================
   function buildRecap() {
     if (!state.pack) return;
     const recapImg = document.getElementById('cpRecapImg');
     const recapTitle = document.getElementById('cpRecapTitle');
     const recapDetails = document.getElementById('cpRecapDetails');
 
-    recapImg.src = state.lastResultImg || '';
-    recapTitle.textContent = state.pack === 'libre' ? 'Composition libre' : `Pack ${getPackLabel(state.pack)}`;
-    recapDetails.textContent = getRecapDetails(state.pack);
+    recapImg.src = state.lastResultUrl || '';
+    recapTitle.textContent = state.pack === 'libre' ? 'Composition libre' : `Pack ${getPackLabel()}`;
+    recapDetails.textContent = getRecapDetails();
 
     const sel = state.pack === 'libre' ? state.libreSelections : PACKS[state.pack];
-    setVal('cf-composer-pack', state.pack === 'libre' ? 'Composition libre' : `Pack ${getPackLabel(state.pack)}`);
-    setVal('cf-composer-sol-ref', sel.sol ? sel.sol.ref : '');
-    setVal('cf-composer-sol-nom', sel.sol ? sel.sol.name : '');
-    setVal('cf-composer-murs-ref', sel.murs ? sel.murs.ref : '');
-    setVal('cf-composer-murs-nom', sel.murs ? sel.murs.name : '');
+    setVal('cf-composer-pack', state.pack === 'libre' ? 'Composition libre' : `Pack ${getPackLabel()}`);
+    setVal('cf-composer-sol-ref',     sel.sol ? sel.sol.ref : '');
+    setVal('cf-composer-sol-nom',     sel.sol ? sel.sol.name : '');
+    setVal('cf-composer-murs-ref',    sel.murs ? sel.murs.ref : '');
+    setVal('cf-composer-murs-nom',    sel.murs ? sel.murs.name : '');
     setVal('cf-composer-colonne-ref', sel.colonne ? sel.colonne.ref : '');
     setVal('cf-composer-colonne-nom', sel.colonne ? sel.colonne.name : '');
-    setVal('cf-composer-paroi-ref', sel.paroi ? sel.paroi.ref : '');
-    setVal('cf-composer-paroi-nom', sel.paroi ? sel.paroi.name : '');
-    setVal('cf-composer-essais', String(getEssaisUsed()));
+    setVal('cf-composer-paroi-ref',   sel.paroi ? sel.paroi.ref : '');
+    setVal('cf-composer-paroi-nom',   sel.paroi ? sel.paroi.name : '');
+    setVal('cf-composer-essais',      String(state.essaisUsed));
+
+    // Ajoute l'URL du rendu généré pour que ça arrive dans le mail Formspree
+    let urlInput = document.getElementById('cf-composer-image-url');
+    if (!urlInput) {
+      urlInput = document.createElement('input');
+      urlInput.type = 'hidden';
+      urlInput.id = 'cf-composer-image-url';
+      urlInput.name = 'composer_image_generee_url';
+      document.getElementById('cpForm').appendChild(urlInput);
+    }
+    urlInput.value = state.lastResultUrl || '';
   }
 
   function setVal(id, val) {
@@ -530,13 +595,12 @@
   }
 
   function init() {
-    checkResetEssais();
     updateEssaisUI();
     initUpload();
     initStep2();
     initStep4();
     initStep5();
-    console.log('Luxeo Composer V2 — ready');
+    console.log('Luxeo Composer V2 (real AI) — ready · API:', API_GENERATE);
   }
 
   if (document.readyState === 'loading') {
