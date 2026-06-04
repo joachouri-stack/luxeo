@@ -6032,3 +6032,306 @@ footer {
   .bq-cp-ico svg { width: 14px; height: 14px; }
   .bq-cp-count { top: 2px; left: 32px; min-width: 16px; height: 16px; font-size: 9px; }
 }
+
+/* ============================================
+   CLÉ EN MAIN — Single premium offer
+   ============================================ */
+.km {
+  background: linear-gradient(180deg, #fff 0%, var(--fond-clair) 100%);
+  padding: clamp(60px, 8vw, 110px) var(--pad-x);
+  padding-left: calc(var(--pad-x) + env(safe-area-inset-left));
+  padding-right: calc(var(--pad-x) + env(safe-area-inset-right));
+}
+.km .wrap { max-width: 920px; }
+
+/* Section heading */
+.km .section-head h2 {
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 12px 0 16px;
+}
+.km .section-head .lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--texte);
+  max-width: 56ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main offer card */
+.km-card {
+  margin-top: clamp(36px, 5vw, 56px);
+  background: #fff;
+  border-radius: 14px;
+  padding: clamp(28px, 4vw, 48px);
+  position: relative;
+  box-shadow:
+    0 0 0 1px var(--ligne),
+    0 30px 70px -28px rgba(10, 42, 42, 0.18);
+}
+
+/* Header : price + CTA */
+.km-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding-bottom: clamp(24px, 3vw, 36px);
+  border-bottom: 1px solid var(--ligne);
+}
+.km-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.km-from {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--texte-mute);
+}
+.km-amount {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-size: clamp(40px, 5.5vw, 62px);
+  font-weight: 300;
+  color: var(--texte);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-feature-settings: "tnum";
+}
+.km-num { display: inline; }
+.km-cur { font-size: 0.55em; font-weight: 400; color: var(--or); margin-left: 4px; }
+.km-ttc {
+  font-size: 13px;
+  color: var(--texte-mute);
+  letter-spacing: 0.02em;
+  margin-top: 6px;
+}
+.km-cta {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 28px !important;
+  font-size: 15px !important;
+  white-space: nowrap;
+}
+
+/* Block sections (Inclus / Personnaliser) */
+.km-block {
+  padding: clamp(28px, 3.5vw, 40px) 0;
+  border-bottom: 1px solid var(--ligne);
+}
+.km-block:last-of-type { border-bottom: 0; }
+.km-block-title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--texte);
+  margin: 0 0 22px;
+}
+.km-intro {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--texte-mute);
+  margin: 0 0 20px;
+  max-width: 64ch;
+}
+
+/* Soft block (Personnaliser) — visuellement distinct du bloc Inclus */
+.km-block-soft {
+  background: var(--fond-bleu);
+  border: 1px solid rgba(14, 124, 123, 0.18);
+  border-radius: 10px;
+  padding: clamp(22px, 3vw, 32px) clamp(20px, 3vw, 32px);
+  margin: clamp(20px, 3vw, 28px) 0;
+}
+.km-block-soft .km-block-title {
+  font-size: 19px;
+  color: var(--turquoise-deep);
+}
+
+/* List with checks */
+.km-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+.km-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--texte);
+}
+.km-list li em {
+  font-style: normal;
+  color: var(--texte-mute);
+  font-weight: 400;
+}
+.km-check {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or) 0%, var(--or-deep) 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  margin-top: 1px;
+  box-shadow: 0 4px 10px -3px rgba(201, 168, 76, 0.5);
+}
+.km-check svg { width: 14px; height: 14px; }
+
+/* Arrow variant (Personnaliser) */
+.km-list-arrow {
+  gap: 10px;
+}
+.km-list-arrow li {
+  font-size: 15px;
+  align-items: baseline;
+  color: var(--texte);
+}
+.km-arrow {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(14, 124, 123, 0.1);
+  color: var(--turquoise-deep);
+  display: inline-grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  transform: translateY(2px);
+}
+
+/* Details accordion */
+.km-details {
+  margin-top: clamp(16px, 2.5vw, 24px);
+  border-top: 1px solid var(--ligne);
+}
+.km-details > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 22px 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texte);
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.km-details > summary::-webkit-details-marker { display: none; }
+.km-details > summary::marker { content: ''; }
+.km-details > summary:hover { color: var(--turquoise); }
+.km-summary-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--turquoise);
+  color: var(--turquoise);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 0.3s var(--ease-out), background 0.2s, color 0.2s;
+}
+.km-details[open] .km-summary-icon {
+  transform: rotate(45deg);
+  background: var(--turquoise);
+  color: #fff;
+}
+.km-details > summary > span:nth-child(2) {
+  flex: 1;
+  text-align: left;
+  padding-left: 12px;
+}
+.km-details-content {
+  padding: 0 4px 24px;
+  display: grid;
+  gap: 22px;
+}
+.km-spec h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  margin: 0 0 8px;
+}
+.km-spec p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--texte);
+  margin: 0;
+}
+
+/* Extra block — rénovation complète */
+.km-extra {
+  margin-top: clamp(30px, 4vw, 50px);
+  padding: clamp(20px, 3vw, 28px) clamp(22px, 3vw, 32px);
+  background: transparent;
+  border: 1px dashed rgba(14, 124, 123, 0.35);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.km-extra-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--texte);
+  margin: 0 0 6px;
+  letter-spacing: -0.005em;
+}
+.km-extra-text p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--texte-mute);
+  margin: 0;
+}
+.km-extra .btn { white-space: nowrap; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .km .wrap { max-width: 100%; }
+  .km-card { padding: 22px 18px; border-radius: 12px; }
+  .km-header {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: left;
+  }
+  .km-cta { width: 100%; padding: 16px 22px !important; font-size: 14.5px !important; }
+  .km-amount { font-size: 42px; }
+  .km-block-title { font-size: 19px; margin-bottom: 18px; }
+  .km-list li { font-size: 15px; gap: 12px; }
+  .km-check { width: 24px; height: 24px; }
+  .km-check svg { width: 13px; height: 13px; }
+  .km-list-arrow li { font-size: 14px; }
+  .km-extra {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: left;
+  }
+  .km-extra .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 420px) {
+  .km-amount { font-size: 38px; }
+  .km-list li { font-size: 14.5px; }
+}
