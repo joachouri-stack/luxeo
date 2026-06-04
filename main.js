@@ -21,13 +21,21 @@
 
   if (burger) {
     burger.addEventListener('click', () => {
-      nav.classList.toggle('nav-mobile-open');
+      const open = nav.classList.toggle('nav-mobile-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
     });
   }
 
   // Close mobile nav on link click
   document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => nav.classList.remove('nav-mobile-open'));
+    a.addEventListener('click', () => {
+      nav.classList.remove('nav-mobile-open');
+      if (burger) {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Ouvrir le menu');
+      }
+    });
   });
 
   /* ---------- HERO PARALLAX ---------- */

@@ -329,6 +329,11 @@ section {
   gap: 5px;
   width: 30px;
   cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
 }
 .burger span {
   display: block;
