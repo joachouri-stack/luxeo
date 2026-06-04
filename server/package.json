@@ -1,7 +1,7 @@
 {
   "name": "luxeo-composer-api",
-  "version": "1.0.0",
-  "description": "Backend API pour le Composer Luxeo — édition d'image par IA (fal.ai)",
+  "version": "1.1.0",
+  "description": "Backend API pour le Composer Luxeo — édition d'image (fal.ai) + email de devis (Nodemailer)",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.0",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.16"
   }
 }

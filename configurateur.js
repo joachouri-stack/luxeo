@@ -10,6 +10,7 @@
   // Endpoint du backend (configurable via window.LUXEO_API_BASE)
   const API_BASE = (window.LUXEO_API_BASE || '').replace(/\/$/, '');
   const API_GENERATE = API_BASE + '/api/generate-image';
+  const API_QUOTE = API_BASE + '/api/send-quote';
 
   const SVG_COL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><line x1="12" y1="6" x2="12" y2="14"/><circle cx="12" cy="14" r="3.2"/><line x1="9" y1="17" x2="8.5" y2="20.5"/><line x1="12" y1="17" x2="12" y2="20.5"/><line x1="15" y1="17" x2="15.5" y2="20.5"/></svg>';
   const SVG_PAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="4" y1="9" x2="20" y2="9" opacity="0.4"/><line x1="4" y1="15" x2="20" y2="15" opacity="0.4"/></svg>';
@@ -552,31 +553,32 @@
 
       try {
         const fd = new FormData(form);
-        const res = await fetch(form.action, {
+        // Joint la photo originale uploadée par l'utilisateur (Composer)
+        if (state.photo && state.photo.file) {
+          fd.append('photo_originale', state.photo.file, state.photo.name || 'photo.jpg');
+        }
+        // Transmet le prompt utilisé (utile pour debug côté Luxeo)
+        if (state.lastPromptUsed) {
+          fd.append('composer_prompt_utilise', state.lastPromptUsed);
+        }
+
+        const res = await fetch(API_QUOTE, {
           method: 'POST',
           body: fd,
           headers: { Accept: 'application/json' },
         });
         const data = await res.json().catch(() => ({}));
-        if (res.ok) {
+        if (res.ok && data.success !== false) {
           form.reset();
           form.querySelectorAll('input, textarea, select').forEach(i => i.dispatchEvent(new Event('input')));
           okBox.hidden = false;
           okBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-          let detail = '';
-          if (Array.isArray(data.errors) && data.errors.length) {
-            detail = '<b>Formspree refuse l\'envoi :</b><br>' +
-              data.errors.map(er => '• ' + (er.message || JSON.stringify(er))).join('<br>');
-          } else if (data.error) {
-            detail = '<b>Formspree refuse l\'envoi :</b> ' + data.error;
-          } else {
-            detail = '<b>Erreur HTTP ' + res.status + '</b> sans détail.';
-          }
-          showFormError(detail);
+          const errText = (data && data.error) ? data.error : `Erreur HTTP ${res.status}`;
+          showFormError('<b>Envoi impossible :</b> ' + escapeHTML(errText));
         }
       } catch (err) {
-        showFormError('<b>Erreur réseau :</b> ' + (err && err.message ? err.message : 'connexion impossible.'));
+        showFormError('<b>Erreur réseau :</b> ' + (err && err.message ? err.message : 'connexion impossible au serveur Luxeo.'));
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = submitOriginal;
