@@ -6620,3 +6620,69 @@ footer {
   .km-amount { font-size: 38px; }
   .km-list li { font-size: 14.5px; }
 }
+
+/* =========================================
+   FORMULAIRE — Messages de statut (Formspree)
+   ========================================= */
+.form-status {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  animation: fs-pop 0.35s var(--ease-out);
+}
+.form-status .fs-ico {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.form-status .fs-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
+}
+.form-status p {
+  margin: 0;
+  color: var(--texte);
+}
+.form-status p a {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.form-status-success {
+  background: rgba(14, 124, 123, 0.08);
+  border: 1px solid rgba(14, 124, 123, 0.28);
+  color: var(--turquoise-deep);
+}
+.form-status-success .fs-ico {
+  background: linear-gradient(135deg, var(--turquoise), var(--turquoise-deep));
+  box-shadow: 0 6px 14px -4px rgba(14, 124, 123, 0.45);
+}
+.form-status-success .fs-title { color: var(--turquoise-deep); }
+
+.form-status-error {
+  background: rgba(200, 60, 60, 0.06);
+  border: 1px solid rgba(200, 60, 60, 0.28);
+  color: rgb(150, 35, 35);
+}
+.form-status-error .fs-ico {
+  background: linear-gradient(135deg, rgb(220, 70, 70), rgb(170, 40, 40));
+  box-shadow: 0 6px 14px -4px rgba(200, 60, 60, 0.4);
+}
+.form-status-error .fs-title { color: rgb(150, 35, 35); }
+
+@keyframes fs-pop {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

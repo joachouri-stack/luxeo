@@ -435,3 +435,53 @@
     fill();
   }
 })();
+
+/* ============================================
+   FORMULAIRE DEVIS — Soumission AJAX Formspree
+   Reste sur le site, affiche un message in-form
+   ============================================ */
+(function () {
+  const form = document.getElementById('devisForm');
+  if (!form) return;
+  const btn = document.getElementById('devisSubmit');
+  const ok = document.getElementById('devisSuccess');
+  const ko = document.getElementById('devisError');
+  if (!btn || !ok || !ko) return;
+
+  const btnOriginalHTML = btn.innerHTML;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    ok.hidden = true;
+    ko.hidden = true;
+    btn.disabled = true;
+    btn.innerHTML = 'Envoi en cours…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: form.method || 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        form.reset();
+        // Re-flotter les labels après reset
+        form.querySelectorAll('input, textarea, select').forEach(i => i.dispatchEvent(new Event('input')));
+        ok.hidden = false;
+        ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        const data = await res.json().catch(() => ({}));
+        console.error('Formspree error', data);
+        ko.hidden = false;
+      }
+    } catch (err) {
+      console.error('Network error', err);
+      ko.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = btnOriginalHTML;
+    }
+  });
+})();

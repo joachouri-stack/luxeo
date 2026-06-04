@@ -1099,38 +1099,64 @@
         </div>
       </div>
 
-      <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Demande envoyée ✓';">
+      <form class="contact-form reveal reveal-delay-1" id="devisForm" action="https://formspree.io/f/xqeokooo" method="POST">
         <h3>Devis gratuit · sans engagement</h3>
 
         <div class="form-row">
-          <div class="field"><input type="text" id="f-prenom" placeholder=" " required><label for="f-prenom">Prénom</label></div>
-          <div class="field"><input type="text" id="f-nom" placeholder=" " required><label for="f-nom">Nom</label></div>
+          <div class="field"><input type="text" id="f-prenom" name="Prénom" placeholder=" " required><label for="f-prenom">Prénom</label></div>
+          <div class="field"><input type="text" id="f-nom" name="Nom" placeholder=" " required><label for="f-nom">Nom</label></div>
         </div>
         <div class="form-row">
-          <div class="field"><input type="email" id="f-email" placeholder=" " required><label for="f-email">Email</label></div>
-          <div class="field"><input type="tel" id="f-tel" placeholder=" " required><label for="f-tel">Téléphone</label></div>
+          <div class="field"><input type="email" id="f-email" name="Email" placeholder=" " required><label for="f-email">Email</label></div>
+          <div class="field"><input type="tel" id="f-tel" name="Téléphone" placeholder=" " required><label for="f-tel">Téléphone</label></div>
         </div>
         <div class="form-row">
-          <div class="field"><input type="text" id="f-ville" placeholder=" " required><label for="f-ville">Ville</label></div>
+          <div class="field"><input type="text" id="f-ville" name="Ville" placeholder=" " required><label for="f-ville">Ville</label></div>
           <div class="field field-select">
-            <select id="f-pack" required>
+            <select id="f-pack" name="Type de projet" required>
               <option value="" disabled selected></option>
-              <option value="cle-en-main">Clé en Main — à partir de 5 700 €</option>
-              <option value="renovation-complete">Rénovation complète — sur devis</option>
-              <option value="conseil">Je veux être conseillé</option>
+              <option value="Clé en Main — à partir de 5 700 €">Clé en Main — à partir de 5 700 €</option>
+              <option value="Rénovation complète — sur devis">Rénovation complète — sur devis</option>
+              <option value="Je veux être conseillé">Je veux être conseillé</option>
             </select>
             <label for="f-pack">Type de projet</label>
           </div>
         </div>
         <div class="form-row">
-          <div class="field field-full"><textarea id="f-msg" placeholder=" " rows="3"></textarea><label for="f-msg">Votre projet (facultatif)</label></div>
+          <div class="field field-full"><textarea id="f-msg" name="Projet" placeholder=" " rows="3"></textarea><label for="f-msg">Votre projet (facultatif)</label></div>
         </div>
         <div class="form-row">
-          <div class="field field-full"><input type="text" id="f-parr" placeholder=" "><label for="f-parr">Avez-vous été recommandé par un client Luxeo ? (prénom + nom)</label></div>
+          <div class="field field-full"><input type="text" id="f-parr" name="Parrainage" placeholder=" "><label for="f-parr">Avez-vous été recommandé par un client Luxeo ? (prénom + nom)</label></div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Envoyer ma demande <span class="arrow">→</span></button>
+        <!-- Honeypot anti-spam (invisible aux humains) -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+        <!-- Métadonnées Formspree -->
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis Luxeo">
+        <input type="hidden" name="_language" value="fr">
+
+        <button type="submit" class="btn btn-primary" id="devisSubmit">Envoyer ma demande <span class="arrow">→</span></button>
         <p class="consent">En envoyant ce formulaire, vous acceptez que Luxeo vous contacte concernant votre projet. Aucune donnée n'est transmise à des tiers.</p>
+
+        <!-- Messages de statut (rendus visibles via JS) -->
+        <div class="form-status form-status-success" id="devisSuccess" hidden role="status" aria-live="polite">
+          <span class="fs-ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <div class="fs-title">Demande envoyée ✓</div>
+            <p>Un conseiller Luxeo vous recontacte sous 24 h ouvrées. Merci de votre confiance.</p>
+          </div>
+        </div>
+        <div class="form-status form-status-error" id="devisError" hidden role="alert">
+          <span class="fs-ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </span>
+          <div>
+            <div class="fs-title">Envoi impossible</div>
+            <p>Un problème est survenu. Vous pouvez réessayer dans quelques instants, nous appeler au <a href="tel:+33769010202">07 69 01 02 02</a> ou écrire à <a href="mailto:info@luxeo.pro">info@luxeo.pro</a>.</p>
+          </div>
+        </div>
       </form>
     </div>
   </div>
