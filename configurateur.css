@@ -11,6 +11,10 @@
 
 .cp-body { background: #fff; }
 
+/* IMPORTANT : force le respect de l'attribut HTML hidden,
+   sinon nos display:grid/flex le neutralisent */
+.cp-body [hidden] { display: none !important; }
+
 /* ============================================
    HERO COMPOSER
    ============================================ */
