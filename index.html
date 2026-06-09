@@ -145,7 +145,62 @@
         "Rénovation salle de bain clé en main",
         "Étanchéité receveur",
         "Carrelage grand format"
-      ]
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+33769010202",
+          "contactType": "customer service",
+          "areaServed": ["FR-84", "FR-30", "FR-13", "FR-34"],
+          "availableLanguage": ["French"]
+        }
+      ],
+      "sameAs": []
+    },
+    {
+      "@type": "Service",
+      "@id": "https://luxeo.pro/#service-douche-italienne",
+      "name": "Installation de douche à l'italienne clé en main",
+      "serviceType": "Rénovation salle de bain",
+      "provider": { "@id": "https://luxeo.pro/#business" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Vaucluse" },
+        { "@type": "AdministrativeArea", "name": "Gard" },
+        { "@type": "AdministrativeArea", "name": "Bouches-du-Rhône" },
+        { "@type": "AdministrativeArea", "name": "Hérault" }
+      ],
+      "audience": { "@type": "Audience", "audienceType": "Propriétaires et locataires (avec accord) — résidences principales et secondaires" },
+      "offers": {
+        "@type": "Offer",
+        "name": "Pack Clé en Main",
+        "description": "Douche à l'italienne installée de A à Z : dépose ancienne baignoire, étanchéité aux normes SPEC, carrelage de sol jusqu'à 8 m², faïence murale jusqu'à 6 m², mitigeur thermostatique, paroi 8 mm anticalcaire, garantie décennale.",
+        "price": "5700",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "5700",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": true,
+          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitText": "installation" },
+          "description": "À partir de — TVA 10 % incluse"
+        },
+        "availability": "https://schema.org/InStock",
+        "deliveryLeadTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 5, "unitCode": "DAY" }
+      }
     },
     {
       "@type": "WebSite",
