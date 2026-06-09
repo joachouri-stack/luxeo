@@ -1,4 +1,10 @@
+# robots.txt — Luxeo
+# https://luxeo.pro
+
 User-agent: *
 Allow: /
+
+# Page transactionnelle, état utilisateur uniquement
+Disallow: /panier/
 
 Sitemap: https://luxeo.pro/sitemap.xml
