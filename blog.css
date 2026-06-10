@@ -178,6 +178,7 @@
   letter-spacing: -0.01em;
   margin: 0 0 16px;
   color: var(--blog-text);
+  text-wrap: pretty;
 }
 .featured-body p.excerpt {
   font-family: 'Crimson Pro', serif;
@@ -354,6 +355,7 @@
   letter-spacing: -0.01em;
   line-height: 1.3;
   color: var(--blog-text);
+  text-wrap: pretty;
 }
 .article-card .excerpt {
   font-family: 'Crimson Pro', serif;
@@ -411,6 +413,7 @@
   letter-spacing: -0.02em;
   margin: 18px 0 22px;
   color: #fff;
+  text-wrap: pretty;
 }
 .article-hero-meta {
   display: flex;

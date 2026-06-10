@@ -75,6 +75,18 @@ function escapeHTML(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
+// Typographie FR : insère des espaces insécables là où c'est utile
+// pour éviter les orphelins sur titres (ex : "en 2026 :", "à 4 000 €").
+function prettyTitleFR(s) {
+  return escapeHTML(s)
+    // espace avant ponctuation double (: ; ! ?) → NBSP
+    .replace(/ ([:;!?])/g, ' $1')
+    // préposition courte + année 4 chiffres → NBSP entre les deux
+    .replace(/\b(en|de|du|depuis|vers|jusqu'en|d['’])\s(\d{4})\b/gi, '$1 $2')
+    // montant + euros → NBSP
+    .replace(/(\d)\s(€)/g, '$1 $2');
+}
+
 function slugify(s) {
   return String(s).toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -327,7 +339,7 @@ ${NAV_LINKS}
 <header class="article-hero reveal" style="background-image: url('${post.image}');">
   <div class="article-hero-inner">
     <span class="cat-badge ${post.category}">${cat.emoji} ${escapeHTML(cat.name)}</span>
-    <h1>${escapeHTML(post.title)}</h1>
+    <h1>${prettyTitleFR(post.title)}</h1>
     <div class="article-hero-meta">
       <span class="author">
         <span class="author-avatar">${authorInitials(post.author)}</span>
@@ -487,7 +499,7 @@ ${featured ? `
       <div class="featured-body">
         <span class="featured-eyebrow">Article à la une</span>
         <span class="cat-badge ${featured.category}" style="display:inline-block;margin-bottom:14px;">${(CATEGORIES[featured.category] || {}).emoji} ${escapeHTML((CATEGORIES[featured.category] || {}).name)}</span>
-        <h2>${escapeHTML(featured.title)}</h2>
+        <h2>${prettyTitleFR(featured.title)}</h2>
         <p class="excerpt">${escapeHTML(featured.excerpt)}</p>
         <div class="featured-meta">
           <span>${escapeHTML(featured.author)}</span>
@@ -557,7 +569,7 @@ function renderArticleCard(p) {
         <span class="cat-badge ${p.category}">${cat.emoji} ${escapeHTML(cat.name)}</span>
       </div>
       <div class="article-card-body">
-        <h3>${escapeHTML(p.title)}</h3>
+        <h3>${prettyTitleFR(p.title)}</h3>
         <p class="excerpt">${escapeHTML(p.excerpt)}</p>
         <div class="article-card-meta">${formatDateFR(p.date)} · ${p.read_time || 5} min de lecture</div>
       </div>
@@ -688,7 +700,7 @@ function main() {
       .slice(0, 3)
       .map(r => ({
         url: `/blog/articles/${r.slug}/`,
-        title: r.title,
+        title: prettyTitleFR(r.title),
         excerpt: r.excerpt,
         image: r.image,
         image_alt: r.image_alt,
