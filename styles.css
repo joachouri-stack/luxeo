@@ -268,34 +268,34 @@ section {
 }
 .nav.scrolled .logo { color: var(--texte); }
 
-/* Logo avec icône — pictogramme doré qui apparaît au scroll (home only) */
+/* Logo avec icône — goutte dorée minimaliste qui apparaît au scroll (home only) */
 .logo-with-icon .logo-icon {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   color: var(--or, #C9A24B);
   width: 0;
   max-width: 0;
-  height: 1em;
+  height: 1.1em;
   margin-right: 0;
   opacity: 0;
   overflow: hidden;
   transition:
-    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    margin-right 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.3s ease-out 0.05s;
+    max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-right 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease-out 0.08s;
   flex-shrink: 0;
 }
 .logo-with-icon .logo-icon svg {
-  width: 1em;
-  height: 1em;
+  width: 0.7em;
+  height: 1.05em;
   display: block;
+  vertical-align: middle;
 }
 .nav.scrolled .logo-with-icon .logo-icon {
-  width: 1em;
-  max-width: 1em;
-  margin-right: 0.45em;
+  width: 0.7em;
+  max-width: 0.7em;
+  margin-right: 0.55em;
   opacity: 1;
 }
 
