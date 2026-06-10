@@ -268,15 +268,14 @@ section {
 }
 .nav.scrolled .logo { color: var(--texte); }
 
-/* Logo avec icône — goutte dorée minimaliste qui apparaît au scroll (home only) */
+/* Logo officiel (favicon-style) qui apparaît au scroll (home only) */
 .logo-with-icon .logo-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--or, #C9A24B);
   width: 0;
   max-width: 0;
-  height: 1.1em;
+  height: 32px;
   margin-right: 0;
   opacity: 0;
   overflow: hidden;
@@ -287,16 +286,21 @@ section {
   flex-shrink: 0;
 }
 .logo-with-icon .logo-icon svg {
-  width: 0.7em;
-  height: 1.05em;
+  width: 32px;
+  height: 32px;
   display: block;
-  vertical-align: middle;
+  border-radius: 7px;
 }
 .nav.scrolled .logo-with-icon .logo-icon {
-  width: 0.7em;
-  max-width: 0.7em;
-  margin-right: 0.55em;
+  width: 32px;
+  max-width: 32px;
+  margin-right: 12px;
   opacity: 1;
+}
+@media (max-width: 768px) {
+  .logo-with-icon .logo-icon { height: 26px; }
+  .logo-with-icon .logo-icon svg { width: 26px; height: 26px; border-radius: 6px; }
+  .nav.scrolled .logo-with-icon .logo-icon { width: 26px; max-width: 26px; margin-right: 10px; }
 }
 
 .nav-links {
