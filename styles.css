@@ -264,8 +264,46 @@ section {
   letter-spacing: 0.32em;
   color: #fff;
   transition: color 0.4s;
+  text-decoration: none;
+  gap: 12px;
 }
 .nav.scrolled .logo { color: var(--texte); }
+
+/* Logo avec icône (uniquement sur la home, apparaît au scroll) */
+.logo-with-icon .logo-text {
+  display: inline-block;
+}
+.logo-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 0;
+  height: 36px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    width 0.4s var(--ease-out, cubic-bezier(0.4, 0, 0.2, 1)),
+    opacity 0.4s var(--ease-out, cubic-bezier(0.4, 0, 0.2, 1)),
+    transform 0.4s var(--ease-out, cubic-bezier(0.4, 0, 0.2, 1));
+  flex-shrink: 0;
+}
+.logo-icon svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  border-radius: 8px;
+}
+.nav.scrolled .logo-with-icon .logo-icon {
+  width: 36px;
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (max-width: 768px) {
+  .logo-icon { height: 30px; }
+  .logo-icon svg { width: 30px; height: 30px; border-radius: 7px; }
+  .nav.scrolled .logo-with-icon .logo-icon { width: 30px; }
+  .logo { gap: 10px; }
+}
 
 .nav-links {
   display: flex;
